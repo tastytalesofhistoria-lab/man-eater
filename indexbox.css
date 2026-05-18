@@ -1,11 +1,16 @@
 /* =========================================================
    MAN EATER — INDEX_BOX PHPBB2 / FORUMACTIF
    Fichier : indexbox.css
-   Base commune + catégorie 01
+   Base commune + Catégorie 01
    Préfixes : mib- / foragb-
 ========================================================= */
 
-/* ===================== ROOT / VARIABLES ===================== */
+
+/* =========================================================
+   00 — VARIABLES GLOBALES
+   Les variables sont en :root pour être lisibles aussi
+   par .mib-index-top, qui est hors de #mib-indexbox.
+========================================================= */
 
 :root{
 	--mib-red:#c6262d;
@@ -39,7 +44,12 @@
 	--mib-speed:.22s;
 }
 
-/* ===================== RESET LOCAL ===================== */
+
+/* =========================================================
+   01 — RESET LOCAL
+   Nettoyage limité à l’indexbox pour éviter les conflits
+   avec le reste du forum phpBB2.
+========================================================= */
 
 #mib-indexbox,
 #mib-indexbox *,
@@ -83,7 +93,16 @@
 	border:0;
 }
 
-/* ===================== LIENS ===================== */
+#mib-indexbox br{
+	line-height:1;
+}
+
+
+/* =========================================================
+   02 — LIENS
+   Les pseudos colorés par Forumactif restent gérés par
+   Forumactif : on ne force pas les couleurs des spans.
+========================================================= */
 
 #mib-indexbox a{
 	color:#fff;
@@ -114,7 +133,17 @@
 	color:#fff!important;
 }
 
-/* ===================== TOPBAR PHPBB2 ===================== */
+#mib-indexbox .forumtitle:hover,
+#mib-indexbox a.forumtitle:hover,
+#mib-indexbox .forumlink a:hover,
+#mib-indexbox a.forumlink:hover{
+	color:var(--mib-red)!important;
+}
+
+
+/* =========================================================
+   03 — BARRE PHPBB2 DU HAUT
+========================================================= */
 
 .mib-index-top{
 	width:100%;
@@ -154,7 +183,12 @@
 	color:var(--mib-red)!important;
 }
 
-/* ===================== WRAPPER MODERNISÉ ===================== */
+
+/* =========================================================
+   04 — WRAPPER DES CATÉGORIES
+   Structure inspirée de ton autre index :
+   .categories-wrapper > .forabg > .topiclist.forums > .row
+========================================================= */
 
 #mib-indexbox .categories-wrapper{
 	display:flex;
@@ -192,17 +226,19 @@
 	z-index:2;
 }
 
-#mib-indexbox .topiclist{
+#mib-indexbox .topiclist,
+#mib-indexbox .topiclist.forums{
 	margin:0;
 	padding:0;
 	background:transparent!important;
 }
 
-#mib-indexbox .topiclist.forums{
-	position:relative;
-}
 
-/* ===================== HEADER CATÉGORIE ===================== */
+/* =========================================================
+   05 — HEADER CATÉGORIE
+   Aucun texte dur : le titre affiché reste
+   {catrow.tablehead.L_FORUM}.
+========================================================= */
 
 #mib-indexbox .mib-category-head{
 	display:flex;
@@ -228,7 +264,12 @@
 	letter-spacing:.04em;
 }
 
-/* ===================== FORUM BASE ===================== */
+
+/* =========================================================
+   06 — FORUM BASE
+   Base commune pour toutes les catégories.
+   La catégorie 01 viendra seulement préciser les dimensions.
+========================================================= */
 
 #mib-indexbox .mib-forum{
 	position:relative;
@@ -238,7 +279,7 @@
 #mib-indexbox .mib-inc,
 #mib-indexbox .mib-cathead,
 #mib-indexbox .mib-catfoot{
-	display:none;
+	display:none!important;
 }
 
 #mib-indexbox .mib-forum-icon{
@@ -260,36 +301,49 @@
 	max-width:28px;
 	max-height:28px;
 	object-fit:contain;
-	filter:sepia(1) saturate(2.2) hue-rotate(325deg) brightness(1.05);
+	filter:
+		brightness(0)
+		saturate(100%)
+		invert(24%)
+		sepia(88%)
+		saturate(1980%)
+		hue-rotate(337deg)
+		brightness(95%)
+		contrast(94%);
 }
 
 #mib-indexbox .mib-forum-main{
 	min-width:0;
 }
 
+
+/* =========================================================
+   07 — CONTENU INTERNE D’UN FORUM
+   Structure attendue :
+   titre + desc + boutons | stats | dernier message
+========================================================= */
+
 #mib-indexbox .forum-content{
 	position:relative;
 	display:grid;
-	grid-template-columns:minmax(0,1fr) 260px;
+	grid-template-columns:minmax(0,1fr) 130px 260px;
 	grid-template-areas:
-		"head head"
-		"desc last";
+		"head stats last"
+		"desc stats last";
 	column-gap:20px;
-	row-gap:14px;
+	row-gap:8px;
 	width:100%;
 	min-width:0;
+	align-items:center;
 }
 
+/* Permet de sortir les stats de .hierarchy visuellement */
 #mib-indexbox .mib-forum-headline{
-	grid-area:head;
-	display:flex!important;
-	align-items:center;
-	justify-content:space-between;
-	gap:20px;
-	width:100%;
+	display:contents!important;
 }
 
 #mib-indexbox .mib-forum-title{
+	grid-area:head;
 	margin:0;
 	padding:0;
 	font-family:var(--mib-font-title);
@@ -300,62 +354,34 @@
 	letter-spacing:-.04em;
 }
 
+#mib-indexbox .mib-forum-title a{
+	color:#fff!important;
+}
+
+#mib-indexbox .mib-forum-title a:hover{
+	color:var(--mib-red)!important;
+}
+
+
+/* =========================================================
+   08 — DESCRIPTION + SOUS-FORUMS
+========================================================= */
+
+#mib-indexbox .descrpfo,
 #mib-indexbox .mib-forum-desc{
 	grid-area:desc;
-	margin:0;
-	color:var(--mib-muted);
-	font-family:var(--mib-font-body);
-	font-size:15px;
-	font-weight:600;
-	line-height:1.35;
-}
-
-#mib-indexbox .mib-lastpost{
-	grid-area:last;
-}
-
-/* ===================== STATS INLINE ===================== */
-
-#mib-indexbox .sujetmess{
-	display:inline-flex;
-	align-items:center;
-	justify-content:flex-end;
-	gap:5px;
-	margin-left:auto;
-	color:var(--mib-muted);
-	font-family:var(--mib-font-body);
-	font-size:13px;
-	font-weight:900;
-	text-transform:uppercase;
-	letter-spacing:.04em;
-	white-space:nowrap;
-}
-
-#mib-indexbox .mib-topic-count,
-#mib-indexbox .mib-post-count{
-	color:var(--mib-soft);
-	font-size:22px;
-	line-height:1;
-}
-
-#mib-indexbox .mib-post-count{
-	color:var(--mib-red);
-}
-
-#mib-indexbox .mib-stat-sep{
-	color:var(--mib-line-strong);
-}
-
-/* ===================== DESCRIPTION / SOUS-FORUMS ===================== */
-
-#mib-indexbox .descrpfo{
 	position:relative;
 	display:block;
-	min-height:72px;
+	min-height:auto;
+	margin:0;
 	padding:0;
 	overflow:visible;
 	background:transparent;
 	color:var(--mib-muted);
+	font-family:var(--mib-font-body);
+	font-size:15px;
+	font-weight:700;
+	line-height:1.35;
 }
 
 #mib-indexbox .mib-subforums,
@@ -398,18 +424,18 @@
 		border-color var(--mib-speed) ease;
 }
 
+#mib-indexbox .mib-subforums a:first-of-type,
+#mib-indexbox .subforum-buttons a:first-of-type{
+	border-color:var(--mib-red);
+	background:var(--mib-red);
+	color:#fff!important;
+}
+
 #mib-indexbox .mib-subforums a:hover,
 #mib-indexbox .subforum-buttons a:hover,
 #mib-indexbox .mib-sub-btn:hover{
 	border-color:var(--mib-red)!important;
 	background:#000!important;
-	color:#fff!important;
-}
-
-#mib-indexbox .mib-subforums a:first-of-type,
-#mib-indexbox .subforum-buttons a:first-of-type{
-	border-color:var(--mib-red);
-	background:var(--mib-red);
 	color:#fff!important;
 }
 
@@ -421,7 +447,113 @@
 	font-size:13px;
 }
 
-/* ===================== NIVEAUX / RUNNER ===================== */
+
+/* =========================================================
+   09 — STATS
+   Les stats sont dans .sujetmess dans le template.
+========================================================= */
+
+#mib-indexbox .sujetmess{
+	grid-area:stats;
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	align-items:center;
+	justify-items:center;
+	gap:14px;
+	margin:0;
+	color:#9d928d;
+	font-family:var(--mib-font-body);
+	font-size:13px;
+	font-weight:900;
+	text-transform:uppercase;
+	letter-spacing:.04em;
+	white-space:nowrap;
+}
+
+#mib-indexbox .mib-stat-sep{
+	display:none;
+}
+
+#mib-indexbox .mib-topic-count,
+#mib-indexbox .mib-post-count{
+	display:block;
+	color:#e8ded3;
+	font-size:22px;
+	font-weight:900;
+	line-height:1;
+}
+
+#mib-indexbox .mib-post-count{
+	color:var(--mib-red);
+}
+
+#mib-indexbox .mib-topic-label,
+#mib-indexbox .mib-post-label{
+	display:block;
+	margin-top:5px;
+	color:#9d928d;
+	font-size:13px;
+	font-weight:900;
+	line-height:1;
+}
+
+
+/* =========================================================
+   10 — DERNIER MESSAGE
+   On masque les avatars/images pour rester sur le rendu voulu.
+========================================================= */
+
+#mib-indexbox .mib-lastpost,
+#mib-indexbox .forum_lastpost{
+	grid-area:last;
+	min-height:96px;
+	display:flex;
+	align-items:center;
+	justify-content:flex-start;
+	padding:12px;
+	border:1px solid var(--mib-line);
+	background:rgba(0,0,0,.30);
+	color:var(--mib-muted);
+	font-size:13px;
+	font-weight:600;
+	line-height:1.35;
+	text-align:left;
+}
+
+#mib-indexbox .mib-lastpost-content,
+#mib-indexbox .lastpost-infos{
+	display:block;
+	min-width:0;
+}
+
+#mib-indexbox .mib-lastpost a,
+#mib-indexbox .forum_lastpost a{
+	font-weight:900;
+	text-transform:uppercase;
+}
+
+#mib-indexbox .mib-lastpost a:hover,
+#mib-indexbox .forum_lastpost a:hover{
+	color:var(--mib-red)!important;
+}
+
+#mib-indexbox .lastpost-avatar,
+#mib-indexbox .mib-lastpost-avatar,
+#mib-indexbox .mib-lastpost img,
+#mib-indexbox .forum_lastpost img{
+	display:none!important;
+}
+
+#mib-indexbox .mib-ad-lastpost{
+	display:grid;
+	gap:3px;
+}
+
+
+/* =========================================================
+   11 — NIVEAUX / BOUTON V ANIMÉ
+   Servira plus tard pour la catégorie Quêtes.
+========================================================= */
 
 #mib-indexbox .mib-level-danger{
 	border-color:var(--mib-red)!important;
@@ -471,54 +603,10 @@
 	100%{background-position:146% 0,100% 146%,-46% 100%,0 -46%;}
 }
 
-/* ===================== DERNIER MESSAGE ===================== */
 
-#mib-indexbox .mib-lastpost,
-#mib-indexbox .forum_lastpost{
-	min-height:96px;
-	display:flex;
-	align-items:center;
-	justify-content:flex-start;
-	padding:12px;
-	border:1px solid var(--mib-line);
-	background:rgba(0,0,0,.30);
-	color:var(--mib-muted);
-	font-size:13px;
-	font-weight:600;
-	line-height:1.35;
-	text-align:left;
-}
-
-#mib-indexbox .mib-lastpost-content,
-#mib-indexbox .lastpost-infos{
-	display:block;
-	min-width:0;
-}
-
-#mib-indexbox .mib-lastpost a,
-#mib-indexbox .forum_lastpost a{
-	font-weight:900;
-	text-transform:uppercase;
-}
-
-#mib-indexbox .mib-lastpost a:hover,
-#mib-indexbox .forum_lastpost a:hover{
-	color:var(--mib-red)!important;
-}
-
-#mib-indexbox .lastpost-avatar,
-#mib-indexbox .mib-lastpost-avatar,
-#mib-indexbox .mib-lastpost img,
-#mib-indexbox .forum_lastpost img{
-	display:none!important;
-}
-
-#mib-indexbox .mib-ad-lastpost{
-	display:grid;
-	gap:3px;
-}
-
-/* ===================== SWITCH FORUM IMAGES ===================== */
+/* =========================================================
+   12 — SWITCH FORUM IMAGES
+========================================================= */
 
 .mib-forum-images{
 	max-width:1050px;
@@ -529,8 +617,10 @@
 	color:var(--mib-text);
 }
 
+
 /* =========================================================
-   CATÉGORIE 01 — FORAGB-01 / LIGNES
+   13 — CATÉGORIE 01 / FORAGB-01
+   Organisation : lignes simples comme la maquette.
 ========================================================= */
 
 #mib-indexbox .foragb-01{
@@ -540,6 +630,7 @@
 	border-color:rgba(255,255,255,.13);
 }
 
+/* Header catégorie 01 */
 #mib-indexbox .foragb-01 .mib-category-head{
 	min-height:56px;
 	align-items:center;
@@ -548,6 +639,12 @@
 	border-bottom:1px solid rgba(255,255,255,.12);
 }
 
+#mib-indexbox .foragb-01 .cattitre1{
+	color:var(--mib-soft);
+	font-size:34px;
+}
+
+/* Liste des forums */
 #mib-indexbox .foragb-01 .mib-forums-list{
 	padding-top:16px;
 }
@@ -567,21 +664,15 @@
 	border-top:0;
 }
 
+/* Icône catégorie 01 */
 #mib-indexbox .foragb-01 .mib-forum-icon{
 	background-color:#050505;
 	border-color:rgba(255,255,255,.12);
 }
 
-#mib-indexbox .foragb-01 .mib-forum-icon img{
-	filter:
-		brightness(0)
-		saturate(100%)
-		invert(24%)
-		sepia(88%)
-		saturate(1980%)
-		hue-rotate(337deg)
-		brightness(95%)
-		contrast(94%);
+/* Texte catégorie 01 */
+#mib-indexbox .foragb-01 .mib-forum-title{
+	font-size:30px;
 }
 
 #mib-indexbox .foragb-01 .mib-forum-desc{
@@ -589,7 +680,16 @@
 	font-weight:700;
 }
 
-/* ===================== RESPONSIVE ===================== */
+/* Dernier message catégorie 01 */
+#mib-indexbox .foragb-01 .mib-lastpost{
+	border-color:rgba(255,255,255,.12);
+	background:rgba(0,0,0,.30);
+}
+
+
+/* =========================================================
+   14 — RESPONSIVE
+========================================================= */
 
 @media (max-width:980px){
 	#mib-indexbox .mib-forabg{
@@ -605,16 +705,14 @@
 		grid-template-areas:
 			"head"
 			"desc"
+			"stats"
 			"last";
 	}
 
-	#mib-indexbox .mib-forum-headline{
-		align-items:flex-start;
-		flex-direction:column;
-	}
-
 	#mib-indexbox .sujetmess{
-		margin-left:0;
+		justify-items:start;
+		justify-content:start;
+		max-width:220px;
 	}
 
 	#mib-indexbox .foragb-01 .mib-forum{
