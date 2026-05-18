@@ -30,7 +30,7 @@
 	--mib-dim:#8f8580;
 	--mib-grey:#b9b9b9;
 
-	--mib-font-title:"Cinzel Decorative",Cinzel,Georgia,serif;
+	--mib-font-title:"Cinzel Decorative",Cinzel,"Cormorant Garamond",Georgia,serif;
 	--mib-font-body:Inter,Arial,Helvetica,sans-serif;
 
 	--mib-speed:.22s;
@@ -109,45 +109,39 @@
 }
 /* =========================================================
    02B — MISE EN FORME TYPO
-   Le rouge sur le gras est volontairement limité :
-   les descriptions peuvent contenir beaucoup de <b>/<strong>.
+   Rouge/gris/souligné sans massacrer les descriptions.
 ========================================================= */
 
-/* Gras rouge uniquement dans les zones d'interface */
-#mib-indexbox .mib-lastpost strong,
-#mib-indexbox .mib-lastpost b,
-#mib-indexbox .mib-subforums strong,
-#mib-indexbox .mib-subforums b,
-#mib-indexbox .subforum-buttons strong,
-#mib-indexbox .subforum-buttons b{
-	color:var(--mib-red);
-	font-weight:900;
-}
-
-/* Description : le gras reste lisible et ne devient pas tout rouge */
+/* Dans les descriptions : le gras reste clair, pas rouge partout */
 #mib-indexbox .mib-forum-desc strong,
 #mib-indexbox .mib-forum-desc b,
 #mib-indexbox .descrpfo strong,
 #mib-indexbox .descrpfo b{
-	color:inherit;
+	color:var(--mib-soft);
 	font-weight:800;
 }
 
-/* Pour forcer du rouge dans une description si besoin */
-#mib-indexbox .mib-forum-desc .mib-red,
-#mib-indexbox .descrpfo .mib-red{
+/* Gras rouge uniquement hors descriptions */
+#mib-indexbox :not(.mib-forum-desc):not(.descrpfo) > strong,
+#mib-indexbox :not(.mib-forum-desc):not(.descrpfo) > b{
+	color:var(--mib-red);
+	font-weight:900;
+}
+
+/* Classe volontaire pour mettre un morceau en rouge */
+#mib-indexbox .mib-red{
 	color:var(--mib-red)!important;
 	font-weight:900;
 }
 
-/* Italique gris argent */
+/* Italiques gris argent */
 #mib-indexbox em,
 #mib-indexbox i{
 	color:var(--mib-grey);
 	font-style:italic;
 }
 
-/* Souligné blanc avec ligne rouge */
+/* Soulignés blancs avec soulignement rouge */
 #mib-indexbox u,
 #mib-indexbox .bb-underline{
 	color:#fff;
