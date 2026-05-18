@@ -1590,3 +1590,271 @@
 	background:#000!important;
 	border-color:var(--mib-red)!important;
 }
+/* =========================================================
+   15 — CATÉGORIE 05 / FORAGB-05
+   TUVERAS
+   Organisation :
+   - 4 cartes lieux côte à côte
+   - pas de stats affichées
+   - dernier post en bas de carte
+   - couleurs différenciées par lieu
+========================================================= */
+
+#mib-indexbox .foragb-05{
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 34%),
+		linear-gradient(180deg,#111,#0d0d0d);
+	border-color:rgba(255,255,255,.13);
+}
+
+#mib-indexbox .foragb-05 .cattitre1::before{
+	content:"CARTE DES ZONES HUMIDES -";
+}
+
+#mib-indexbox .foragb-05 .mib-cat-head::after{
+	content:"EAU / TERRITOIRE  ⊘";
+	position:absolute;
+	right:0;
+	top:6px;
+	color:var(--mib-muted);
+	font-family:var(--mib-font-body);
+	font-size:13px;
+	font-weight:900;
+	text-transform:uppercase;
+	letter-spacing:.16em;
+}
+
+/* =====================
+   Grille des lieux
+===================== */
+
+#mib-indexbox .foragb-05 .mib-forums-list{
+	display:grid;
+	grid-template-columns:repeat(4,minmax(0,1fr));
+	gap:16px;
+}
+
+/* Carte lieu */
+#mib-indexbox .foragb-05 .mib-forum{
+	position:relative;
+	min-height:294px;
+	padding:16px;
+	border:1px solid var(--mib-line)!important;
+	background:
+		linear-gradient(180deg,rgba(255,255,255,.025),transparent 35%),
+		rgba(0,0,0,.18)!important;
+	overflow:hidden;
+}
+
+/* Structure interne verticale */
+#mib-indexbox .foragb-05 .forum-content{
+	display:flex;
+	flex-direction:column;
+	align-items:stretch;
+	justify-content:flex-start;
+	gap:0;
+	height:100%;
+	min-height:260px;
+	margin:0!important;
+	padding:0!important;
+}
+
+/* On masque l’icône ronde native */
+#mib-indexbox .foragb-05 .mib-forum-icon{
+	display:none!important;
+}
+
+/* On masque les stats dans les lieux */
+#mib-indexbox .foragb-05 .mib-stats{
+	display:none!important;
+}
+
+/* On masque les sous-forums pour le rendu carte */
+#mib-indexbox .foragb-05 .mib-subforums,
+#mib-indexbox .foragb-05 .subforum-buttons{
+	display:none!important;
+}
+
+/* Ligne haute : label + symbole */
+#mib-indexbox .foragb-05 .mib-forum::before{
+	display:block;
+	margin-bottom:14px;
+	padding-bottom:13px;
+	border-bottom:1px solid currentColor;
+	font-family:var(--mib-font-body);
+	font-size:12px;
+	font-weight:900;
+	line-height:1;
+	text-transform:uppercase;
+	letter-spacing:.18em;
+}
+
+#mib-indexbox .foragb-05 .mib-forum::after{
+	content:"⊘";
+	position:absolute;
+	top:17px;
+	right:17px;
+	font-family:var(--mib-font-body);
+	font-size:20px;
+	font-weight:900;
+	line-height:1;
+}
+
+/* Corps */
+#mib-indexbox .foragb-05 .mib-forum-body{
+	min-width:0;
+	text-align:center;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-title,
+#mib-indexbox .foragb-05 .mib-forum-title a.forumtitle{
+	font-size:25px!important;
+	line-height:.95!important;
+	text-align:center!important;
+}
+
+#mib-indexbox .foragb-05 .descrpfo,
+#mib-indexbox .foragb-05 .mib-forum-desc{
+	max-width:230px;
+	margin:10px auto 0!important;
+	color:var(--mib-muted)!important;
+	font-size:15px;
+	font-weight:700!important;
+	line-height:1.28;
+	text-align:center;
+}
+
+/* Dernier post */
+#mib-indexbox .foragb-05 .mib-lastpost{
+	width:100%!important;
+	min-height:96px;
+	margin:34px 0 0!important;
+	padding:0;
+	align-self:stretch;
+}
+
+#mib-indexbox .foragb-05 .mib-lastpost-content,
+#mib-indexbox .foragb-05 .lastpost-infos{
+	align-items:center;
+	text-align:center;
+	padding:12px;
+}
+
+/* =====================
+   Couleurs des lieux
+===================== */
+
+/* Capitale */
+#mib-indexbox .foragb-05 .mib-forum-01{
+	color:#cf4035;
+	border-color:rgba(198,38,45,.42)!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-01::before{
+	content:"CAPITAL";
+}
+
+#mib-indexbox .foragb-05 .mib-forum-01 .forumtitle{
+	color:#e66a5b!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-01 .mib-lastpost{
+	border-color:rgba(198,38,45,.42)!important;
+}
+
+/* Montagne */
+#mib-indexbox .foragb-05 .mib-forum-02{
+	color:#8f8f8f;
+	border-color:rgba(180,180,180,.28)!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-02::before{
+	content:"MOUNTAIN";
+}
+
+#mib-indexbox .foragb-05 .mib-forum-02 .forumtitle{
+	color:#dedede!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-02 .mib-lastpost{
+	border-color:rgba(180,180,180,.28)!important;
+}
+
+/* Lac */
+#mib-indexbox .foragb-05 .mib-forum-03{
+	color:#4c91e8;
+	border-color:rgba(66,134,220,.42)!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-03::before{
+	content:"LAKE";
+}
+
+#mib-indexbox .foragb-05 .mib-forum-03 .forumtitle{
+	color:#8fbef5!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-03 .mib-lastpost{
+	border-color:rgba(66,134,220,.42)!important;
+}
+
+/* Forêt */
+#mib-indexbox .foragb-05 .mib-forum-04{
+	color:#8b5cf6;
+	border-color:rgba(139,92,246,.42)!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-04::before{
+	content:"FOREST";
+}
+
+#mib-indexbox .foragb-05 .mib-forum-04 .forumtitle{
+	color:#c7b3ff!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-04 .mib-lastpost{
+	border-color:rgba(139,92,246,.42)!important;
+}
+
+/* Couleurs dates / liens dans le lastpost */
+#mib-indexbox .foragb-05 .mib-forum-01 .mib-lastpost-date,
+#mib-indexbox .foragb-05 .mib-forum-01 .mib-lastpost-meta{
+	color:#cf4035!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-02 .mib-lastpost-date,
+#mib-indexbox .foragb-05 .mib-forum-02 .mib-lastpost-meta{
+	color:#b9b9b9!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-03 .mib-lastpost-date,
+#mib-indexbox .foragb-05 .mib-forum-03 .mib-lastpost-meta{
+	color:#4c91e8!important;
+}
+
+#mib-indexbox .foragb-05 .mib-forum-04 .mib-lastpost-date,
+#mib-indexbox .foragb-05 .mib-forum-04 .mib-lastpost-meta{
+	color:#8b5cf6!important;
+}
+
+/* =====================
+   Responsive catégorie 05
+===================== */
+
+@media (max-width:1100px){
+	#mib-indexbox .foragb-05 .mib-forums-list{
+		grid-template-columns:repeat(2,minmax(0,1fr));
+	}
+}
+
+@media (max-width:620px){
+	#mib-indexbox .foragb-05 .mib-forums-list{
+		grid-template-columns:1fr;
+	}
+
+	#mib-indexbox .foragb-05 .mib-cat-head::after{
+		position:static;
+		display:block;
+		margin-top:10px;
+	}
+}
