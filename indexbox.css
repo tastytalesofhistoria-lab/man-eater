@@ -1,7 +1,7 @@
 /* =========================================================
    MAN EATER — INDEX_BOX MODERNBB / FORUMACTIF
    Fichier : indexbox.css
-   Base commune + Catégorie 01
+   Version corrigée / doublons fusionnés
    Préfixes : mib- / foragb-
 ========================================================= */
 
@@ -38,7 +38,111 @@
 
 
 /* =========================================================
-   01 — RESET LOCAL
+   00B — TYPO BBCODE GLOBALE
+   Valable dans les messages, les contenus et l’index.
+   Gras = rouge sang
+   Italique = gris argent non gras
+   Souligné = blanc + underline rouge
+========================================================= */
+
+.postbody .content strong,
+.postbody .content b,
+.postbody .postbody-content strong,
+.postbody .postbody-content b,
+.post .content strong,
+.post .content b,
+.post-content strong,
+.post-content b,
+.block-content strong,
+.block-content b,
+#preview strong,
+#preview b,
+#mib-indexbox .mib-forum-desc strong,
+#mib-indexbox .mib-forum-desc b,
+#mib-indexbox .descrpfo strong,
+#mib-indexbox .descrpfo b{
+	color:var(--mib-red)!important;
+	font-weight:900!important;
+}
+
+.postbody .content em,
+.postbody .content i,
+.postbody .postbody-content em,
+.postbody .postbody-content i,
+.post .content em,
+.post .content i,
+.post-content em,
+.post-content i,
+.block-content em,
+.block-content i,
+#preview em,
+#preview i,
+#mib-indexbox .mib-forum-desc em,
+#mib-indexbox .mib-forum-desc i,
+#mib-indexbox .descrpfo em,
+#mib-indexbox .descrpfo i{
+	color:var(--mib-grey)!important;
+	font-style:italic!important;
+	font-weight:400!important;
+}
+
+.postbody .content u,
+.postbody .postbody-content u,
+.post .content u,
+.post-content u,
+.block-content u,
+#preview u,
+#mib-indexbox .mib-forum-desc u,
+#mib-indexbox .descrpfo u,
+.bb-underline{
+	color:#fff!important;
+	font-weight:500!important;
+	text-decoration-line:underline!important;
+	text-decoration-color:var(--mib-red)!important;
+	text-decoration-thickness:2px!important;
+	text-underline-offset:3px!important;
+}
+
+.postbody .content em strong,
+.postbody .content strong em,
+.postbody .content i b,
+.postbody .content b i,
+.postbody .postbody-content em strong,
+.postbody .postbody-content strong em,
+.postbody .postbody-content i b,
+.postbody .postbody-content b i,
+.post .content em strong,
+.post .content strong em,
+.post .content i b,
+.post .content b i,
+.post-content em strong,
+.post-content strong em,
+.post-content i b,
+.post-content b i,
+.block-content em strong,
+.block-content strong em,
+.block-content i b,
+.block-content b i,
+#preview em strong,
+#preview strong em,
+#preview i b,
+#preview b i,
+#mib-indexbox .mib-forum-desc em strong,
+#mib-indexbox .mib-forum-desc strong em,
+#mib-indexbox .mib-forum-desc i b,
+#mib-indexbox .mib-forum-desc b i,
+#mib-indexbox .descrpfo em strong,
+#mib-indexbox .descrpfo strong em,
+#mib-indexbox .descrpfo i b,
+#mib-indexbox .descrpfo b i{
+	color:var(--mib-grey)!important;
+	font-style:italic!important;
+	font-weight:400!important;
+}
+
+
+/* =========================================================
+   01 — RESET LOCAL INDEXBOX
 ========================================================= */
 
 #mib-indexbox,
@@ -79,7 +183,7 @@
 
 
 /* =========================================================
-   02 — LIENS
+   02 — LIENS INDEXBOX
 ========================================================= */
 
 #mib-indexbox a{
@@ -107,63 +211,7 @@
 #mib-indexbox .forumtitle:hover{
 	color:var(--mib-red)!important;
 }
-/* =========================================================
-   02B — MISE EN FORME TYPO DES DESCRIPTIONS
-   Gras rouge / Italique argent non gras / Souligné blanc + underline rouge
-========================================================= */
 
-/* Description forum : base sans gras forcé */
-#mib-indexbox .mib-forum-desc,
-#mib-indexbox .descrpfo{
-	color:var(--mib-muted);
-	font-weight:500!important;
-}
-
-/* Gras dans les descriptions : rouge sang */
-#mib-indexbox .mib-forum-desc strong,
-#mib-indexbox .mib-forum-desc b,
-#mib-indexbox .descrpfo strong,
-#mib-indexbox .descrpfo b{
-	color:var(--mib-red)!important;
-	font-weight:900!important;
-}
-
-/* Italique dans les descriptions : argenté et PAS gras */
-#mib-indexbox .mib-forum-desc em,
-#mib-indexbox .mib-forum-desc i,
-#mib-indexbox .descrpfo em,
-#mib-indexbox .descrpfo i{
-	color:var(--mib-grey)!important;
-	font-style:italic!important;
-	font-weight:400!important;
-}
-
-/* Souligné dans les descriptions : texte blanc + underline rouge */
-#mib-indexbox .mib-forum-desc u,
-#mib-indexbox .descrpfo u,
-#mib-indexbox .mib-forum-desc .bb-underline,
-#mib-indexbox .descrpfo .bb-underline{
-	color:#fff!important;
-	font-weight:500!important;
-	text-decoration-line:underline!important;
-	text-decoration-color:var(--mib-red)!important;
-	text-decoration-thickness:2px!important;
-	text-underline-offset:3px!important;
-}
-
-/* Sécurité : si italique + gras ensemble, l’italique reste argenté non gras */
-#mib-indexbox .mib-forum-desc em strong,
-#mib-indexbox .mib-forum-desc strong em,
-#mib-indexbox .mib-forum-desc i b,
-#mib-indexbox .mib-forum-desc b i,
-#mib-indexbox .descrpfo em strong,
-#mib-indexbox .descrpfo strong em,
-#mib-indexbox .descrpfo i b,
-#mib-indexbox .descrpfo b i{
-	color:var(--mib-grey)!important;
-	font-style:italic!important;
-	font-weight:400!important;
-}
 
 /* =========================================================
    03 — BARRES DE LIENS MODERNBB
@@ -343,33 +391,6 @@
 	min-width:0;
 }
 
-#mib-indexbox .mib-forum-title{
-	margin:0;
-	padding:0;
-	font-family:var(--mib-font-title);
-	font-size:30px;
-	font-weight:900;
-	line-height:.95;
-	text-transform:uppercase;
-	letter-spacing:-.04em;
-}
-
-#mib-indexbox .descrpfo,
-#mib-indexbox .mib-forum-desc{
-	margin:8px 0 0;
-	padding:0;
-	background:transparent;
-	color:var(--mib-muted);
-	font-family:var(--mib-font-body);
-	font-size:15px;
-	font-weight:500;
-	line-height:1.35;
-}
-/* =========================================================
-   TITRES DES FORUMS
-   Force la police décorative sur les liens de forums
-========================================================= */
-
 #mib-indexbox .mib-forum-title,
 #mib-indexbox .mib-forum-title .forumtitle,
 #mib-indexbox .mib-forum-title a.forumtitle,
@@ -390,19 +411,31 @@
 #mib-indexbox .mib-forum-title .forumtitle,
 #mib-indexbox .mib-forum-title a.forumtitle{
 	display:inline-block;
-	color:#fff!important;
-	font-family:var(--mib-font-title)!important;
-	font-size:30px!important;
-	font-weight:900!important;
-	line-height:.95!important;
-	text-transform:uppercase!important;
-	letter-spacing:-.04em!important;
 }
 
 #mib-indexbox .mib-forum-title .forumtitle:hover,
 #mib-indexbox .mib-forum-title a.forumtitle:hover{
 	color:var(--mib-red)!important;
 }
+
+#mib-indexbox .descrpfo,
+#mib-indexbox .mib-forum-desc{
+	margin:8px 0 0;
+	padding:0;
+	background:transparent;
+	color:var(--mib-muted)!important;
+	font-family:var(--mib-font-body);
+	font-size:15px;
+	font-weight:500!important;
+	line-height:1.35;
+}
+
+#mib-indexbox .mib-forum-desc *,
+#mib-indexbox .descrpfo *{
+	font-family:var(--mib-font-body);
+}
+
+
 /* =========================================================
    07 — SOUS-FORUMS / BOUTONS
 ========================================================= */
@@ -568,13 +601,12 @@
 	word-break:break-word;
 }
 
-/* Les liens/pseudos Forumactif restent gérés par Forumactif */
 #mib-indexbox .mib-lastpost-meta a{
 	font-weight:800;
 	text-transform:none;
 }
 
-/* On masque les icônes parasites si Forumactif les injecte */
+/* Icônes parasites éventuelles dans le dernier message */
 #mib-indexbox .mib-lastpost .material-icons,
 #mib-indexbox .mib-lastpost .material-symbols-outlined,
 #mib-indexbox .mib-lastpost i{
@@ -588,9 +620,9 @@
 	display:none!important;
 }
 
+
 /* =========================================================
    10 — NIVEAUX / QUÊTES
-   Gardé pour plus tard.
 ========================================================= */
 
 #mib-indexbox .mib-level-danger{
@@ -653,7 +685,6 @@
 	border-color:rgba(255,255,255,.13);
 }
 
-/* Titre catégorie : variable Forumactif + complément visuel */
 #mib-indexbox .foragb-01 .cattitre1{
 	display:flex;
 	flex-wrap:wrap;
@@ -685,7 +716,6 @@
 	letter-spacing:.16em;
 }
 
-/* Lignes */
 #mib-indexbox .foragb-01 .mib-forum{
 	padding:22px 0;
 	border-top:1px solid rgba(255,255,255,.10)!important;
