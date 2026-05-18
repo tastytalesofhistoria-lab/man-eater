@@ -1284,10 +1284,12 @@
 /* =========================================================
    14 — CATÉGORIE 04 / FORAGB-04
    QUÊTES
-   Organisation :
-   - 1 forum pleine largeur
-   - niveaux en 3 zones : SS/S | A-B-C-D-E | V
-   - Niveau V avec ligne animée
+   Version corrigée :
+   - plus de gros décalage vertical
+   - niveaux organisés en grille compacte
+   - SS/S à gauche
+   - A/B/C puis D/E au centre
+   - V à droite
 ========================================================= */
 
 #mib-indexbox .foragb-04{
@@ -1314,7 +1316,7 @@
 	letter-spacing:.16em;
 }
 
-/* Un seul forum en ligne pleine largeur */
+/* Forum unique */
 #mib-indexbox .foragb-04 .mib-forum{
 	position:relative;
 	min-height:190px;
@@ -1323,7 +1325,7 @@
 	background:transparent!important;
 }
 
-/* Structure principale */
+/* Structure générale */
 #mib-indexbox .foragb-04 .forum-content{
 	display:grid;
 	grid-template-columns:76px minmax(0,1fr) 120px 260px;
@@ -1331,6 +1333,7 @@
 	gap:20px;
 	align-items:center;
 	margin:0!important;
+	padding:0!important;
 }
 
 #mib-indexbox .foragb-04 .mib-forum-icon{
@@ -1365,21 +1368,25 @@
 #mib-indexbox .foragb-04 .mib-subforums,
 #mib-indexbox .foragb-04 .subforum-buttons{
 	display:grid;
-	grid-template-columns:140px minmax(0,1fr) 120px;
-	gap:12px 18px;
-	align-items:start;
+	grid-template-columns:140px 92px 92px 92px 120px;
+	grid-template-rows:30px 30px;
+	gap:8px 10px;
+	align-items:stretch;
+	width:max-content;
+	max-width:100%;
 	margin-top:16px;
 	font-size:0;
 }
 
-/* reset boutons */
+/* Reset boutons */
 #mib-indexbox .foragb-04 .mib-subforums a,
 #mib-indexbox .foragb-04 .subforum-buttons a{
-	display:inline-flex;
+	display:flex;
 	align-items:center;
 	justify-content:center;
+	min-width:0;
 	min-height:30px;
-	padding:8px 12px;
+	padding:0 12px;
 	border:1px solid var(--mib-line-strong);
 	background:#171717;
 	color:#d6cbc5!important;
@@ -1392,37 +1399,51 @@
 	letter-spacing:.04em;
 }
 
-/* Groupe danger : Niveau SS + Niveau S */
-#mib-indexbox .foragb-04 .mib-sub-niveau-ss,
-#mib-indexbox .foragb-04 .mib-sub-niveau-s{
+/* Placement exact */
+#mib-indexbox .foragb-04 .mib-sub-niveau-ss{
 	grid-column:1;
+	grid-row:1;
 	border-color:var(--mib-red)!important;
 	background:var(--mib-red)!important;
 	color:#fff!important;
 }
 
-/* Groupe central : A B C D E */
-#mib-indexbox .foragb-04 .mib-sub-niveau-a,
-#mib-indexbox .foragb-04 .mib-sub-niveau-b,
-#mib-indexbox .foragb-04 .mib-sub-niveau-c,
-#mib-indexbox .foragb-04 .mib-sub-niveau-d,
-#mib-indexbox .foragb-04 .mib-sub-niveau-e{
-	grid-column:2;
+#mib-indexbox .foragb-04 .mib-sub-niveau-s{
+	grid-column:1;
+	grid-row:2;
+	border-color:var(--mib-red)!important;
+	background:var(--mib-red)!important;
+	color:#fff!important;
 }
 
-/* On force un sous-grid visuel via order */
-#mib-indexbox .foragb-04 .mib-sub-niveau-ss{ order:1; }
-#mib-indexbox .foragb-04 .mib-sub-niveau-s{ order:2; }
+#mib-indexbox .foragb-04 .mib-sub-niveau-a{
+	grid-column:2;
+	grid-row:1;
+}
 
-#mib-indexbox .foragb-04 .mib-sub-niveau-a{ order:3; }
-#mib-indexbox .foragb-04 .mib-sub-niveau-b{ order:4; }
-#mib-indexbox .foragb-04 .mib-sub-niveau-c{ order:5; }
-#mib-indexbox .foragb-04 .mib-sub-niveau-d{ order:6; }
-#mib-indexbox .foragb-04 .mib-sub-niveau-e{ order:7; }
+#mib-indexbox .foragb-04 .mib-sub-niveau-b{
+	grid-column:3;
+	grid-row:1;
+}
+
+#mib-indexbox .foragb-04 .mib-sub-niveau-c{
+	grid-column:4;
+	grid-row:1;
+}
+
+#mib-indexbox .foragb-04 .mib-sub-niveau-d{
+	grid-column:2;
+	grid-row:2;
+}
+
+#mib-indexbox .foragb-04 .mib-sub-niveau-e{
+	grid-column:3;
+	grid-row:2;
+}
 
 #mib-indexbox .foragb-04 .mib-sub-niveau-v{
-	order:8;
-	grid-column:3;
+	grid-column:5;
+	grid-row:1 / span 2;
 	position:relative;
 	overflow:visible;
 	border-color:var(--mib-grey)!important;
@@ -1484,7 +1505,9 @@
 
 	#mib-indexbox .foragb-04 .mib-subforums,
 	#mib-indexbox .foragb-04 .subforum-buttons{
-		grid-template-columns:1fr;
+		width:100%;
+		grid-template-columns:repeat(2,minmax(0,1fr));
+		grid-template-rows:auto;
 	}
 
 	#mib-indexbox .foragb-04 .mib-subforums a,
@@ -1498,6 +1521,7 @@
 	#mib-indexbox .foragb-04 .mib-sub-niveau-e,
 	#mib-indexbox .foragb-04 .mib-sub-niveau-v{
 		grid-column:auto;
+		grid-row:auto;
 	}
 
 	#mib-indexbox .foragb-04 .mib-stats{
@@ -1526,6 +1550,11 @@
 
 	#mib-indexbox .foragb-04 .mib-forum-icon{
 		margin-bottom:12px;
+	}
+
+	#mib-indexbox .foragb-04 .mib-subforums,
+	#mib-indexbox .foragb-04 .subforum-buttons{
+		grid-template-columns:1fr;
 	}
 
 	#mib-indexbox .foragb-04 .mib-stats,
