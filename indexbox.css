@@ -1,8 +1,8 @@
-
 /* =========================================================
    MAN EATER — INDEX_BOX PHPBB2 / FORUMACTIF
    Fichier : indexbox.css
    Préfixe unique : mib-
+   Agencements différenciés : forag-
 ========================================================= */
 
 /* ===================== BASE ===================== */
@@ -27,10 +27,6 @@
 	--mib-soft:#d8c8bf;
 	--mib-muted:#b7aaa4;
 	--mib-grey:#b9b9b9;
-
-	--mib-sangpur:#e8ded3;
-	--mib-hybride:#ff333d;
-	--mib-mutant:#8f5cff;
 
 	max-width:1220px;
 	margin:0 auto;
@@ -89,15 +85,13 @@
 	color:var(--mib-soft);
 }
 
-  
-
 /* ===================== CATEGORY ===================== */
 
 .mib-category{
 	position:relative;
 	max-width:1050px;
-	margin:24px auto;
-	padding:20px;
+	margin:26px auto;
+	padding:24px;
 	overflow:hidden;
 	background:var(--mib-panel);
 	border:1px solid var(--mib-line);
@@ -109,8 +103,8 @@
 	inset:0;
 	pointer-events:none;
 	background:
-		radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 30%),
-		linear-gradient(180deg,rgba(255,255,255,.02),transparent 30%);
+		radial-gradient(circle at 55% 0%,rgba(198,38,45,.13),transparent 34%),
+		linear-gradient(180deg,rgba(255,255,255,.025),transparent 28%);
 }
 
 .mib-category > *{
@@ -123,18 +117,18 @@
 	align-items:flex-end;
 	justify-content:space-between;
 	gap:20px;
-	margin-bottom:16px;
-	padding-bottom:16px;
+	margin-bottom:18px;
+	padding-bottom:18px;
 	border-bottom:1px solid var(--mib-line);
 }
 
 .mib-category-mood{
-	margin-bottom:4px;
+	margin-bottom:6px;
 	color:var(--mib-muted);
 	font-size:13px;
 	font-weight:900;
 	text-transform:uppercase;
-	letter-spacing:.16em;
+	letter-spacing:.18em;
 }
 
 .mib-category-head h2{
@@ -148,13 +142,14 @@
 	letter-spacing:.04em;
 }
 
-.mib-category-head h2 a{
-	color:var(--mib-soft)!important;
+.mib-category-head h2::before{
+	content:"";
 }
 
-.mib-category-head h2 a::before{
-	content:"— ";
-	color:var(--mib-red);
+.mib-category-head h2::after{
+	content:"";
+	display:inline-block;
+	width:10px;
 }
 
 .mib-category-tag{
@@ -169,17 +164,7 @@
 /* ===================== FORUM ROW DEFAULT ===================== */
 
 .mib-forum{
-	display:grid;
-	grid-template-columns:76px minmax(0,1fr) 120px 260px;
-	gap:20px;
-	align-items:center;
-	padding:20px 0;
-	border-top:1px solid var(--mib-line);
-}
-
-.mib-forum:first-of-type{
-	border-top:0;
-	padding-top:0;
+	position:relative;
 }
 
 .mib-forum-icon{
@@ -197,20 +182,30 @@
 	max-width:28px;
 	max-height:28px;
 	object-fit:contain;
-	filter:sepia(1) saturate(2) hue-rotate(320deg) brightness(.95);
+	filter:sepia(1) saturate(2.2) hue-rotate(325deg) brightness(1.05);
+}
+
+.mib-forum-main{
+	min-width:0;
 }
 
 .mib-forum-main h3{
 	margin:0;
 	font-family:"Cinzel Decorative",Cinzel,serif;
-	font-size:26px;
+	font-size:30px;
 	font-weight:900;
-	line-height:1;
+	line-height:.95;
 	text-transform:uppercase;
+	letter-spacing:-.04em;
 }
 
 .mib-forum-main h3 a{
 	color:#fff!important;
+	text-decoration:none!important;
+}
+
+.mib-forum-main h3 a:hover{
+	color:var(--mib-red)!important;
 }
 
 .mib-forum-desc{
@@ -223,6 +218,7 @@
 
 .mib-mods{
 	display:block;
+	width:100%;
 	margin-top:8px;
 	color:var(--mib-muted);
 }
@@ -369,31 +365,8 @@
 	text-transform:uppercase;
 }
 
-.mib-lastpost a[href*="Aoi"],
-.mib-lastpost a[href*="Lyra"],
-.mib-lastpost a[href*="Selene"],
-.mib-lastpost a[href*="Kael"],
-.mib-lastpost a[href*="Mira"],
-.mib-author-hybride{
-	color:var(--mib-hybride)!important;
-}
-
-.mib-lastpost a[href*="Eden"],
-.mib-lastpost a[href*="Astra"],
-.mib-lastpost a[href*="Riven"],
-.mib-lastpost a[href*="Nox"],
-.mib-author-mutant{
-	color:var(--mib-mutant)!important;
-}
-
-.mib-lastpost a[href*="Ren"],
-.mib-lastpost a[href*="Mika"],
-.mib-lastpost a[href*="Shin"],
-.mib-lastpost a[href*="Noah"],
-.mib-lastpost a[href*="Guild"],
-.mib-lastpost a[href*="Darian"],
-.mib-author-sangpur{
-	color:var(--mib-sangpur)!important;
+.mib-lastpost a:hover{
+	color:var(--mib-red)!important;
 }
 
 .mib-ad-lastpost{
@@ -401,84 +374,140 @@
 	gap:3px;
 }
 
-/* ===================== GRID LAYOUTS ===================== */
+/* ===================== FORAG — AGENCEMENTS DIFFÉRENCIÉS ===================== */
 
-.mib-layout-grid{
+/* Ligne standard */
+.forag-rows .mib-forum{
+	display:grid;
+	grid-template-columns:76px minmax(0,1fr) 120px 260px;
+	gap:20px;
+	align-items:center;
+	min-height:136px;
+	padding:22px 0;
+	border-top:1px solid var(--mib-line);
+}
+
+.forag-rows .mib-forum:first-of-type{
+	border-top:0;
+	padding-top:0;
+}
+
+/* Un Avant Gout : 2 cartes + Présentation en ligne */
+.forag-mixed{
 	display:grid;
 	grid-template-columns:1fr 1fr;
 	gap:16px;
 }
 
-.mib-layout-grid .mib-category-head{
+.forag-mixed .mib-category-head{
 	grid-column:1 / -1;
 }
 
-.mib-layout-grid .mib-forum{
+.forag-mixed .mib-forum{
 	display:flex;
+	flex-wrap:wrap;
 	align-items:flex-start;
 	gap:14px;
-	height:100%;
+	min-height:260px;
 	padding:16px;
 	border:1px solid var(--mib-line);
 	background:var(--mib-card);
 }
 
-.mib-layout-grid .mib-forum-main{
-	flex:1;
-	min-width:0;
-}
-
-.mib-layout-grid .mib-forum-stats,
-.mib-layout-grid .mib-lastpost{
-	margin-top:16px;
-}
-
-.mib-layout-grid .mib-forum{
-	flex-wrap:wrap;
-}
-
-.mib-layout-grid .mib-forum-icon{
+.forag-mixed .mib-forum-icon{
 	flex:0 0 66px;
 }
 
-.mib-layout-grid .mib-forum-main{
+.forag-mixed .mib-forum-main{
 	flex:1 1 calc(100% - 90px);
+	min-width:0;
 }
 
-.mib-layout-grid .mib-forum-stats{
+.forag-mixed .mib-forum-stats{
 	flex:0 0 140px;
+	margin-top:16px;
 }
 
-.mib-layout-grid .mib-lastpost{
+.forag-mixed .mib-lastpost{
 	flex:1 1 260px;
+	margin-top:16px;
 }
 
-.mib-layout-mixed .mib-forum-presentation,
-.mib-layout-mixed .mib-forum-presentation.mib-forum-line{
+.forag-mixed .forag-fullrow{
 	grid-column:1 / -1;
 	display:grid;
 	grid-template-columns:76px minmax(0,1fr) 120px 260px;
 	gap:20px;
 	align-items:center;
-	padding:20px 0;
+	min-height:136px;
+	padding:22px 0 0;
 	border:0;
 	border-top:1px solid var(--mib-line);
 	background:transparent;
 }
 
-/* ===================== LOCATION LAYOUT ===================== */
+.forag-mixed .forag-fullrow .mib-forum-icon,
+.forag-mixed .forag-fullrow .mib-forum-main,
+.forag-mixed .forag-fullrow .mib-forum-stats,
+.forag-mixed .forag-fullrow .mib-lastpost{
+	flex:none;
+	margin-top:0;
+}
 
-.mib-layout-locations{
+/* Gestion / Invités : grille 2 colonnes */
+.forag-grid{
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	gap:16px;
+}
+
+.forag-grid .mib-category-head{
+	grid-column:1 / -1;
+}
+
+.forag-grid .mib-forum{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:flex-start;
+	gap:14px;
+	height:100%;
+	min-height:260px;
+	padding:16px;
+	border:1px solid var(--mib-line);
+	background:var(--mib-card);
+}
+
+.forag-grid .mib-forum-icon{
+	flex:0 0 66px;
+}
+
+.forag-grid .mib-forum-main{
+	flex:1 1 calc(100% - 90px);
+	min-width:0;
+}
+
+.forag-grid .mib-forum-stats{
+	flex:0 0 140px;
+	margin-top:16px;
+}
+
+.forag-grid .mib-lastpost{
+	flex:1 1 260px;
+	margin-top:16px;
+}
+
+/* Tuveras : territoires */
+.forag-locations{
 	display:grid;
 	grid-template-columns:repeat(4,1fr);
 	gap:16px;
 }
 
-.mib-layout-locations .mib-category-head{
+.forag-locations .mib-category-head{
 	grid-column:1 / -1;
 }
 
-.mib-layout-locations .mib-forum{
+.forag-locations .mib-forum{
 	display:flex;
 	flex-direction:column;
 	align-items:stretch;
@@ -489,109 +518,116 @@
 	text-align:center;
 }
 
-.mib-layout-locations .mib-forum-icon{
+.forag-locations .mib-forum-icon{
 	display:none;
 }
 
-.mib-layout-locations .mib-forum-main::before{
+.forag-locations .mib-forum-main::before{
+	content:"TERRITOIRE";
 	display:flex;
 	align-items:center;
 	justify-content:space-between;
 	margin-bottom:14px;
 	padding-bottom:12px;
 	border-bottom:1px solid var(--mib-line);
-	color:var(--mib-red);
+	color:var(--mib-zone,var(--mib-red));
 	font-size:12px;
 	font-weight:900;
 	text-transform:uppercase;
 	letter-spacing:.18em;
 }
 
-.mib-tone-capital{
+.forag-tone-capital{
 	--mib-zone:#cf4035;
 	--mib-zone-title:#e66a5b;
 }
 
-.mib-tone-mountain{
+.forag-tone-mountain{
 	--mib-zone:#8f8f8f;
 	--mib-zone-title:#dedede;
 }
 
-.mib-tone-lake{
+.forag-tone-lake{
 	--mib-zone:#4c91e8;
 	--mib-zone-title:#8fbef5;
 }
 
-.mib-tone-forest{
+.forag-tone-forest{
 	--mib-zone:#8b5cf6;
 	--mib-zone-title:#c7b3ff;
 }
 
-.mib-layout-locations .mib-forum-main::before{
-	content:"TERRITOIRE";
-	color:var(--mib-zone,var(--mib-red));
-	border-color:color-mix(in srgb,var(--mib-zone,var(--mib-red)) 55%,transparent);
-}
-
-.mib-layout-locations .mib-forum-main h3 a{
+.forag-locations .mib-forum-main h3 a{
 	color:var(--mib-zone-title,#fff)!important;
 }
 
-.mib-layout-locations .mib-forum-desc{
+.forag-locations .mib-forum-desc{
 	max-width:230px;
 	margin-left:auto;
 	margin-right:auto;
 }
 
-.mib-layout-locations .mib-forum-stats{
+.forag-locations .mib-forum-stats{
 	display:none;
 }
 
-.mib-layout-locations .mib-lastpost{
+.forag-locations .mib-lastpost{
 	margin-top:auto;
 	text-align:left;
 }
 
-/* ===================== QUEST BOARD ===================== */
-
-.mib-quest-board .mib-subforums{
+/* Quêtes : niveaux en 3 colonnes */
+.forag-quest-board .mib-subforums{
 	display:grid;
 	grid-template-columns:140px minmax(0,1fr) 120px;
 	gap:14px;
 	align-items:start;
 }
 
-.mib-quest-board .mib-subforums a{
+.forag-quest-board .mib-subforums a{
 	text-align:center;
 }
 
-.mib-quest-board .mib-subforums a:nth-of-type(1),
-.mib-quest-board .mib-subforums a:nth-of-type(2){
+.forag-quest-board .mib-subforums a:nth-of-type(1),
+.forag-quest-board .mib-subforums a:nth-of-type(2){
+	grid-column:1;
 	border-color:var(--mib-red)!important;
 	background:var(--mib-red)!important;
 	color:#fff!important;
 }
 
-.mib-quest-board .mib-subforums a:nth-of-type(1),
-.mib-quest-board .mib-subforums a:nth-of-type(2){
-	grid-column:1;
-}
-
-.mib-quest-board .mib-subforums a:nth-of-type(3),
-.mib-quest-board .mib-subforums a:nth-of-type(4),
-.mib-quest-board .mib-subforums a:nth-of-type(5),
-.mib-quest-board .mib-subforums a:nth-of-type(6),
-.mib-quest-board .mib-subforums a:nth-of-type(7){
+.forag-quest-board .mib-subforums a:nth-of-type(3),
+.forag-quest-board .mib-subforums a:nth-of-type(4),
+.forag-quest-board .mib-subforums a:nth-of-type(5),
+.forag-quest-board .mib-subforums a:nth-of-type(6),
+.forag-quest-board .mib-subforums a:nth-of-type(7){
 	grid-column:2;
 }
 
-.mib-quest-board .mib-subforums a:nth-of-type(8){
+.forag-quest-board .mib-subforums a:nth-of-type(8){
 	grid-column:3;
 	grid-row:1;
 	border-color:var(--mib-grey)!important;
 	background:var(--mib-grey)!important;
 	color:#111!important;
 }
+
+/* Classes directes disponibles */
+.forag-01{}
+.forag-02{}
+.forag-03{}
+.forag-04{}
+.forag-05{}
+.forag-06{}
+.forag-07{}
+
+.forag-man-eater{}
+.forag-avant-gout{}
+.forag-gestion{}
+.forag-quetes{}
+.forag-tuveras{}
+.forag-invites{}
+.forag-zen{}
 
 /* ===================== FORUM IMAGES SWITCH ===================== */
 
@@ -615,13 +651,8 @@
 /* ===================== RESPONSIVE ===================== */
 
 @media (max-width:980px){
-	.mib-hero-title{
-		font-size:68px;
-	}
-
 	.mib-forum,
-	.mib-layout-mixed .mib-forum-presentation,
-	.mib-layout-mixed .mib-forum-presentation.mib-forum-line{
+	.forag-mixed .forag-fullrow{
 		grid-template-columns:66px minmax(0,1fr);
 	}
 
@@ -630,16 +661,17 @@
 		grid-column:1 / -1;
 	}
 
-	.mib-layout-grid,
-	.mib-layout-locations{
+	.forag-grid,
+	.forag-mixed,
+	.forag-locations{
 		grid-template-columns:1fr;
 	}
 
-	.mib-quest-board .mib-subforums{
+	.forag-quest-board .mib-subforums{
 		grid-template-columns:1fr;
 	}
 
-	.mib-quest-board .mib-subforums a{
+	.forag-quest-board .mib-subforums a{
 		grid-column:auto!important;
 		grid-row:auto!important;
 	}
@@ -648,19 +680,6 @@
 @media (max-width:620px){
 	.mib-topbar{
 		flex-direction:column;
-	}
-
-	.mib-hero{
-		min-height:320px;
-	}
-
-	.mib-hero-content{
-		min-height:320px;
-		padding:36px 20px;
-	}
-
-	.mib-hero-title{
-		font-size:46px;
 	}
 
 	.mib-category{
@@ -681,8 +700,7 @@
 	}
 
 	.mib-forum,
-	.mib-layout-mixed .mib-forum-presentation,
-	.mib-layout-mixed .mib-forum-presentation.mib-forum-line{
+	.forag-mixed .forag-fullrow{
 		display:block;
 	}
 
