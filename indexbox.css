@@ -870,14 +870,13 @@
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-lastpost{
 	position:absolute!important;
 	left:106px;
-	right:132px;
-	bottom:16px;
+	right:162px; /* +30px vers la gauche */
+	bottom:1px;  /* +15px vers le bas */
 	width:auto!important;
 	min-width:0;
 	min-height:96px;
 	margin:0!important;
 }
-
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-stats,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-stats{
 	position:absolute!important;
