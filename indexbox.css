@@ -828,14 +828,9 @@
 /* =========================================================
    14 — CATÉGORIE 02 / FORAGB-02
    UN AVANT GOUT
-   Organisation :
-   - Forum 01 + 02 = cartes 50/50
-   - Forum 03 = ligne pleine largeur
+   - Forum 01 + 02 : cartes 50/50
+   - Forum 03 : pleine largeur
 ========================================================= */
-
-/* =========================
-   BLOC CATÉGORIE
-========================= */
 
 #mib-indexbox .foragb-02{
 	background:
@@ -878,45 +873,40 @@
 	letter-spacing:.16em;
 }
 
-/* =========================
-   GRILLE GLOBALE DE LA CAT 2
-========================= */
-
+/* grille globale */
 #mib-indexbox .foragb-02 .mib-forums-list{
 	display:grid;
 	grid-template-columns:repeat(2,minmax(0,1fr));
 	gap:16px;
 }
 
-/* =========================
-   CARTES : PRÉ-LIENS / PRÉDÉFINIS
-========================= */
-
-#mib-indexbox .foragb-02 .mib-forum{
-	min-height:256px;
-	padding:18px;
+/* cartes 1 et 2 */
+#mib-indexbox .foragb-02 .mib-forum-01,
+#mib-indexbox .foragb-02 .mib-forum-02{
+	min-height:240px;
+	padding:16px;
 	border:1px solid rgba(255,255,255,.12)!important;
 	background:
 		linear-gradient(180deg,rgba(255,255,255,.025),transparent 35%),
 		rgba(0,0,0,.18)!important;
 }
 
-#mib-indexbox .foragb-02 .mib-forum:first-of-type,
-#mib-indexbox .foragb-02 .mib-forum{
-	border-top:1px solid rgba(255,255,255,.12)!important;
+/* IMPORTANT : annule les marges injectées */
+#mib-indexbox .foragb-02 .forum-content{
+	margin:0!important;
 }
 
-/* structure interne des 2 cartes */
+/* structure interne des cartes */
 #mib-indexbox .foragb-02 .mib-forum-01 .forum-content,
 #mib-indexbox .foragb-02 .mib-forum-02 .forum-content{
 	display:grid;
-	grid-template-columns:72px minmax(0,1fr) 132px;
+	grid-template-columns:74px minmax(0,1fr);
 	grid-template-areas:
-		"icon body body"
-		"icon last stats";
-	gap:16px 18px;
+		"icon body"
+		"last last";
+	gap:14px 16px;
 	align-items:start;
-	min-height:220px;
+	height:100%;
 }
 
 /* icône */
@@ -949,12 +939,11 @@
 	-webkit-mask-size:contain;
 }
 
-/* corps */
+/* corps haut */
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-forum-body,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-forum-body{
 	grid-area:body;
 	min-width:0;
-	align-self:start;
 }
 
 #mib-indexbox .foragb-02 .mib-forum-title,
@@ -972,40 +961,34 @@
 	line-height:1.35;
 }
 
-/* sous-forums / boutons */
 #mib-indexbox .foragb-02 .mib-subforums,
 #mib-indexbox .foragb-02 .subforum-buttons{
-	display:flex;
-	flex-wrap:wrap;
-	gap:8px;
-	margin-top:14px;
-	padding-top:0;
+	margin-top:12px;
 }
 
-/* last post dans les cartes */
+/* bas de carte : lastpost + stats */
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-lastpost,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-lastpost{
 	grid-area:last;
-	align-self:end;
+	width:calc(100% - 128px);
 	min-height:96px;
-	margin-top:0;
+	margin-left:90px;
+	margin-top:6px;
 }
 
-/* stats dans les cartes */
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-stats,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-stats{
-	grid-area:stats;
-	align-self:end;
+	position:absolute;
+	right:16px;
+	bottom:30px;
+	width:116px;
 	display:grid;
 	grid-template-columns:1fr 1fr;
 	gap:8px;
 	text-align:center;
 }
 
-/* =========================
-   PRÉSENTATION = PLEINE LARGEUR
-========================= */
-
+/* Présentation pleine largeur */
 #mib-indexbox .foragb-02 .mib-forum-03,
 #mib-indexbox .foragb-02 .mib-forum-fullrow{
 	grid-column:1 / -1;
@@ -1016,7 +999,6 @@
 	background:transparent!important;
 }
 
-/* grille ligne */
 #mib-indexbox .foragb-02 .mib-forum-03 .forum-content,
 #mib-indexbox .foragb-02 .mib-forum-fullrow .forum-content{
 	display:grid;
@@ -1024,54 +1006,34 @@
 	grid-template-areas:"icon body stats last";
 	gap:20px;
 	align-items:center;
-	min-height:0;
+	margin:0!important;
 }
 
-/* corps présentation */
 #mib-indexbox .foragb-02 .mib-forum-03 .mib-forum-body,
 #mib-indexbox .foragb-02 .mib-forum-fullrow .mib-forum-body{
 	grid-area:body;
-	min-width:0;
 }
 
-#mib-indexbox .foragb-02 .mib-forum-03 .descrpfo,
-#mib-indexbox .foragb-02 .mib-forum-fullrow .descrpfo,
-#mib-indexbox .foragb-02 .mib-forum-03 .mib-forum-desc,
-#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-forum-desc{
-	margin-top:8px;
-}
-
-#mib-indexbox .foragb-02 .mib-forum-03 .mib-subforums,
-#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-subforums,
-#mib-indexbox .foragb-02 .mib-forum-03 .subforum-buttons,
-#mib-indexbox .foragb-02 .mib-forum-fullrow .subforum-buttons{
-	margin-top:12px;
-}
-
-/* stats présentation */
 #mib-indexbox .foragb-02 .mib-forum-03 .mib-stats,
 #mib-indexbox .foragb-02 .mib-forum-fullrow .mib-stats{
+	position:static;
 	grid-area:stats;
+	width:auto;
 	display:grid;
 	grid-template-columns:1fr 1fr;
 	gap:10px;
 	text-align:center;
-	align-self:center;
 }
 
-/* lastpost présentation */
 #mib-indexbox .foragb-02 .mib-forum-03 .mib-lastpost,
 #mib-indexbox .foragb-02 .mib-forum-fullrow .mib-lastpost{
 	grid-area:last;
+	width:auto;
 	min-height:96px;
-	align-self:center;
-	margin-top:0;
+	margin:0;
 }
 
-/* =========================
-   RESPONSIVE CAT 2
-========================= */
-
+/* Responsive cat 2 */
 @media (max-width:980px){
 	#mib-indexbox .foragb-02 .mib-forums-list{
 		grid-template-columns:1fr;
@@ -1084,20 +1046,27 @@
 		grid-template-columns:72px minmax(0,1fr);
 		grid-template-areas:
 			"icon body"
-			"icon stats"
+			"stats stats"
 			"last last";
 	}
 
-	#mib-indexbox .foragb-02 .mib-stats{
+	#mib-indexbox .foragb-02 .mib-stats,
+	#mib-indexbox .foragb-02 .mib-forum-01 .mib-stats,
+	#mib-indexbox .foragb-02 .mib-forum-02 .mib-stats{
+		position:static;
 		grid-area:stats;
-		grid-template-columns:repeat(2,80px)!important;
+		width:auto;
+		grid-template-columns:repeat(2,80px);
 		justify-content:start;
 		margin-top:12px;
 	}
 
-	#mib-indexbox .foragb-02 .mib-lastpost{
+	#mib-indexbox .foragb-02 .mib-lastpost,
+	#mib-indexbox .foragb-02 .mib-forum-01 .mib-lastpost,
+	#mib-indexbox .foragb-02 .mib-forum-02 .mib-lastpost{
 		grid-area:last;
-		margin-top:14px;
+		width:auto;
+		margin:14px 0 0;
 	}
 
 	#mib-indexbox .foragb-02 .mib-cat-head::after{
