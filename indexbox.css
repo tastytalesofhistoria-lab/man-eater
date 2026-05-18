@@ -365,7 +365,44 @@
 	font-weight:500;
 	line-height:1.35;
 }
+/* =========================================================
+   TITRES DES FORUMS
+   Force la police décorative sur les liens de forums
+========================================================= */
 
+#mib-indexbox .mib-forum-title,
+#mib-indexbox .mib-forum-title .forumtitle,
+#mib-indexbox .mib-forum-title a.forumtitle,
+#mib-indexbox h2.mib-forum-title,
+#mib-indexbox h3.mib-forum-title,
+#mib-indexbox h4.mib-forum-title{
+	margin:0!important;
+	padding:0!important;
+	color:#fff!important;
+	font-family:var(--mib-font-title)!important;
+	font-size:30px!important;
+	font-weight:900!important;
+	line-height:.95!important;
+	text-transform:uppercase!important;
+	letter-spacing:-.04em!important;
+}
+
+#mib-indexbox .mib-forum-title .forumtitle,
+#mib-indexbox .mib-forum-title a.forumtitle{
+	display:inline-block;
+	color:#fff!important;
+	font-family:var(--mib-font-title)!important;
+	font-size:30px!important;
+	font-weight:900!important;
+	line-height:.95!important;
+	text-transform:uppercase!important;
+	letter-spacing:-.04em!important;
+}
+
+#mib-indexbox .mib-forum-title .forumtitle:hover,
+#mib-indexbox .mib-forum-title a.forumtitle:hover{
+	color:var(--mib-red)!important;
+}
 /* =========================================================
    07 — SOUS-FORUMS / BOUTONS
 ========================================================= */
