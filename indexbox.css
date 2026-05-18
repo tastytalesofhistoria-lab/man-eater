@@ -7,7 +7,9 @@
 
 /* ===================== ROOT / VARIABLES ===================== */
 
-#mib-indexbox{
+/* ===================== ROOT / VARIABLES ===================== */
+
+:root{
 	--mib-red:#c6262d;
 	--mib-red-hot:#ff333d;
 	--mib-red-dark:#6f1116;
@@ -474,10 +476,7 @@
 }
 
 /* Important : ne pas forcer la couleur des pseudos Forumactif */
-#mib-indexbox .mib-lastpost a span,
-#mib-indexbox .mib-lastpost span[style]{
-	color:inherit;
-}
+ 
 
 #mib-indexbox .mib-lastpost a:hover{
 	color:var(--mib-red)!important;
@@ -604,5 +603,244 @@
 	#mib-indexbox .mib-forum-stats,
 	#mib-indexbox .mib-lastpost{
 		margin-top:14px;
+	}
+}
+/* =========================================================
+   CATÉGORIE 01 — FORAGB-01
+   Base : lignes classiques
+   Aucun faux texte / aucun faux lien
+========================================================= */
+
+#mib-indexbox .foragb-01{
+	margin-top:28px;
+	background:
+		radial-gradient(circle at 54% 8%,rgba(198,38,45,.12),transparent 34%),
+		linear-gradient(180deg,#111,#0d0d0d);
+	border-color:rgba(255,255,255,.13);
+}
+
+/* ===================== TITRE CATÉGORIE ===================== */
+
+#mib-indexbox .foragb-01 .mib-category-head{
+	min-height:56px;
+	align-items:center;
+	margin-bottom:0;
+	padding-bottom:18px;
+	border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+#mib-indexbox .foragb-01 .mib-category-title{
+	display:block;
+	margin:0;
+	color:var(--mib-soft);
+	font-family:var(--mib-font-title);
+	font-size:34px;
+	font-weight:900;
+	line-height:1;
+	text-transform:uppercase;
+	letter-spacing:.04em;
+}
+
+#mib-indexbox .foragb-01 .mib-category-title a{
+	color:var(--mib-soft)!important;
+}
+
+#mib-indexbox .foragb-01 .mib-category-title a:hover{
+	color:var(--mib-red)!important;
+}
+
+/* ===================== LISTE DES FORUMS ===================== */
+
+#mib-indexbox .foragb-01 .mib-forums-list{
+	padding-top:16px;
+}
+
+#mib-indexbox .foragb-01 .mib-forum{
+	display:grid;
+	grid-template-columns:76px minmax(0,1fr) 120px 120px 260px;
+	gap:20px;
+	align-items:center;
+	min-height:136px;
+	padding:22px 0;
+	border-top:1px solid rgba(255,255,255,.10);
+}
+
+#mib-indexbox .foragb-01 .mib-forum:first-child,
+#mib-indexbox .foragb-01 .mib-forum:first-of-type{
+	border-top:0;
+}
+
+/* ===================== ICÔNE FORUM ===================== */
+
+#mib-indexbox .foragb-01 .mib-forum-icon{
+	width:66px;
+	height:66px;
+	border-radius:50%;
+	border:1px solid rgba(255,255,255,.12);
+	background:#050505;
+}
+
+#mib-indexbox .foragb-01 .mib-forum-icon img{
+	max-width:28px;
+	max-height:28px;
+	filter:
+		brightness(0)
+		saturate(100%)
+		invert(24%)
+		sepia(88%)
+		saturate(1980%)
+		hue-rotate(337deg)
+		brightness(95%)
+		contrast(94%);
+}
+
+/* ===================== TITRE / DESCRIPTION ===================== */
+
+#mib-indexbox .foragb-01 .mib-forum-title{
+	margin:0;
+	font-family:var(--mib-font-title);
+	font-size:30px;
+	font-weight:900;
+	line-height:.95;
+	text-transform:uppercase;
+	letter-spacing:-.04em;
+}
+
+#mib-indexbox .foragb-01 .mib-forum-title a{
+	color:#fff!important;
+}
+
+#mib-indexbox .foragb-01 .mib-forum-title a:hover{
+	color:var(--mib-red)!important;
+}
+
+#mib-indexbox .foragb-01 .mib-forum-desc{
+	max-width:560px;
+	margin-top:8px;
+	color:var(--mib-muted);
+	font-size:15px;
+	font-weight:700;
+}
+
+/* ===================== SOUS-FORUMS / BOUTONS ===================== */
+
+#mib-indexbox .foragb-01 .mib-subforums{
+	margin-top:12px;
+}
+
+#mib-indexbox .foragb-01 .mib-subforums a{
+	padding:7px 10px;
+	border:1px solid var(--mib-line-strong);
+	background:#171717;
+	color:#d6cbc5!important;
+	font-size:13px;
+	font-weight:900;
+	text-transform:uppercase;
+	letter-spacing:.04em;
+}
+
+#mib-indexbox .foragb-01 .mib-subforums a:first-of-type{
+	border-color:var(--mib-red);
+	background:var(--mib-red);
+	color:#fff!important;
+}
+
+#mib-indexbox .foragb-01 .mib-subforums a:hover{
+	border-color:var(--mib-red)!important;
+	background:#000!important;
+	color:#fff!important;
+}
+
+/* ===================== STATS ===================== */
+
+#mib-indexbox .foragb-01 .mib-forum-topics,
+#mib-indexbox .foragb-01 .mib-forum-posts{
+	align-self:center;
+}
+
+#mib-indexbox .foragb-01 .mib-forum-stats .gensmall{
+	font-size:22px;
+	font-weight:900;
+	color:#e8ded3;
+}
+
+#mib-indexbox .foragb-01 .mib-forum-posts .gensmall{
+	color:var(--mib-red);
+}
+
+#mib-indexbox .foragb-01 .mib-stat-label{
+	color:#9d928d;
+	font-size:13px;
+	font-weight:900;
+	text-transform:uppercase;
+	letter-spacing:.08em;
+}
+
+/* ===================== DERNIER MESSAGE ===================== */
+
+#mib-indexbox .foragb-01 .mib-lastpost{
+	min-height:96px;
+	align-self:center;
+	padding:12px;
+	border:1px solid rgba(255,255,255,.12);
+	background:rgba(0,0,0,.28);
+	color:var(--mib-muted);
+	text-align:left;
+}
+
+#mib-indexbox .foragb-01 .mib-lastpost-content{
+	display:block;
+	width:100%;
+}
+
+/* On ne force PAS la couleur des pseudos :
+   Forumactif garde les couleurs de groupe. */
+#mib-indexbox .foragb-01 .mib-lastpost a{
+	font-weight:900;
+	text-transform:uppercase;
+}
+
+#mib-indexbox .foragb-01 .mib-lastpost a:hover{
+	color:var(--mib-red)!important;
+}
+
+/* Avatar dernier posteur retiré */
+#mib-indexbox .foragb-01 .lastpost-avatar,
+#mib-indexbox .foragb-01 .mib-lastpost-avatar,
+#mib-indexbox .foragb-01 .mib-lastpost img{
+	display:none!important;
+}
+
+/* ===================== RESPONSIVE CATÉGORIE 01 ===================== */
+
+@media (max-width:980px){
+	#mib-indexbox .foragb-01 .mib-forum{
+		grid-template-columns:66px minmax(0,1fr);
+	}
+
+	#mib-indexbox .foragb-01 .mib-forum-topics,
+	#mib-indexbox .foragb-01 .mib-forum-posts,
+	#mib-indexbox .foragb-01 .mib-lastpost{
+		grid-column:1 / -1;
+	}
+}
+
+@media (max-width:620px){
+	#mib-indexbox .foragb-01 .mib-forum{
+		display:block;
+	}
+
+	#mib-indexbox .foragb-01 .mib-forum-icon{
+		margin-bottom:12px;
+	}
+
+	#mib-indexbox .foragb-01 .mib-forum-topics,
+	#mib-indexbox .foragb-01 .mib-forum-posts,
+	#mib-indexbox .foragb-01 .mib-lastpost{
+		margin-top:14px;
+	}
+
+	#mib-indexbox .foragb-01 .mib-category-title{
+		font-size:24px;
 	}
 }
