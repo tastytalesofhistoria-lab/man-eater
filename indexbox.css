@@ -1704,6 +1704,9 @@
 #mib-indexbox .foragb-05 .mib-forum-body{
 	min-width:0;
 	text-align:center;
+	display:flex;
+	flex-direction:column;
+	flex:1 1 auto;
 }
 
 #mib-indexbox .foragb-05 .mib-forum-title,
@@ -1724,11 +1727,11 @@
 	text-align:center;
 }
 
-/* Dernier post */
+ /* Dernier post aligné en bas de chaque carte */
 #mib-indexbox .foragb-05 .mib-lastpost{
 	width:100%!important;
 	min-height:96px;
-	margin:34px 0 0!important;
+	margin:auto 0 0!important;
 	padding:0;
 	align-self:stretch;
 }
@@ -1736,6 +1739,7 @@
 #mib-indexbox .foragb-05 .mib-lastpost-content,
 #mib-indexbox .foragb-05 .lastpost-infos{
 	align-items:center;
+	justify-content:center;
 	text-align:center;
 	padding:12px;
 }
