@@ -1285,8 +1285,10 @@
    14 — CATÉGORIE 04 / FORAGB-04
    QUÊTES
    Corrigé :
+   - lastpost à droite
    - sujet/messages sous le lastpost
-   - niveau V à la même hauteur que les autres
+   - niveau V même hauteur que les autres boutons
+   - plus d'absolute qui décale tout
 ========================================================= */
 
 #mib-indexbox .foragb-04{
@@ -1313,19 +1315,24 @@
 	letter-spacing:.16em;
 }
 
-/* Forum */
+/* ===================== FORUM ===================== */
+
 #mib-indexbox .foragb-04 .mib-forum{
 	position:relative;
-	min-height:220px;
-	padding:18px 300px 18px 0; /* réserve la colonne droite */
+	min-height:210px;
+	padding:18px 0;
 	border:0!important;
 	background:transparent!important;
 }
 
 #mib-indexbox .foragb-04 .forum-content{
 	display:grid;
-	grid-template-columns:76px minmax(0,1fr);
-	gap:18px;
+	grid-template-columns:76px minmax(0,1fr) 260px;
+	grid-template-rows:auto auto;
+	grid-template-areas:
+		"icon body last"
+		"icon body stats";
+	gap:14px 20px;
 	align-items:center;
 	margin:0!important;
 	padding:0!important;
@@ -1333,11 +1340,14 @@
 }
 
 #mib-indexbox .foragb-04 .mib-forum-icon{
+	grid-area:icon;
 	align-self:center;
 }
 
 #mib-indexbox .foragb-04 .mib-forum-body{
+	grid-area:body;
 	min-width:0;
+	align-self:center;
 }
 
 #mib-indexbox .foragb-04 .mib-forum-title,
@@ -1376,9 +1386,9 @@
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	min-height:32px;
-	height:32px;
-	padding:0 10px;
+	min-height:32px!important;
+	height:32px!important;
+	padding:0 10px!important;
 	border:1px solid var(--mib-line-strong);
 	background:#171717;
 	color:#d6cbc5!important;
@@ -1392,7 +1402,7 @@
 	white-space:nowrap;
 }
 
-/* Placement */
+/* Placement des niveaux */
 #mib-indexbox .foragb-04 .mib-sub-niveau-ss{
 	grid-column:1;
 	grid-row:1;
@@ -1415,20 +1425,22 @@
 #mib-indexbox .foragb-04 .mib-sub-niveau-d{ grid-column:2; grid-row:2; }
 #mib-indexbox .foragb-04 .mib-sub-niveau-e{ grid-column:3; grid-row:2; }
 
-/* Niveau V = même hauteur que les autres */
+/* Niveau V : même hauteur que les autres, pas de span sur 2 lignes */
 #mib-indexbox .foragb-04 .mib-sub-niveau-v{
 	grid-column:5;
 	grid-row:1;
 	position:relative;
 	min-height:32px!important;
 	height:32px!important;
+	line-height:32px!important;
+	padding:0 10px!important;
 	background:var(--mib-grey)!important;
 	border-color:var(--mib-grey)!important;
 	color:#111!important;
 	overflow:visible;
 }
 
-/* Ligne qui court */
+/* Ligne qui court autour du niveau V */
 #mib-indexbox .foragb-04 .mib-sub-niveau-v .mib-runner{
 	position:absolute;
 	inset:-3px;
@@ -1449,32 +1461,33 @@
 	color:#fff!important;
 }
 
-/* ===================== LASTPOST ===================== */
+#mib-indexbox .foragb-04 .mib-sub-niveau-v:hover .mib-runner{
+	display:none;
+}
+
+/* ===================== LASTPOST À DROITE ===================== */
 
 #mib-indexbox .foragb-04 .mib-lastpost{
-	position:absolute!important;
-	right:0;
-	top:44px;
+	grid-area:last;
 	width:260px!important;
 	min-width:260px;
 	min-height:96px;
 	margin:0!important;
+	align-self:end;
 }
 
 /* ===================== STATS SOUS LASTPOST ===================== */
 
 #mib-indexbox .foragb-04 .mib-stats{
-	position:absolute!important;
-	right:0;
-	top:154px; /* sous le lastpost */
+	grid-area:stats;
 	width:260px!important;
 	display:grid;
 	grid-template-columns:1fr 1fr;
 	gap:8px;
 	text-align:center;
-	align-items:start;
-	padding-top:0!important;
+	align-self:start;
 	margin:0!important;
+	padding:0!important;
 }
 
 #mib-indexbox .foragb-04 .mib-stat{
@@ -1490,13 +1503,16 @@
 /* ===================== RESPONSIVE ===================== */
 
 @media (max-width:1100px){
-	#mib-indexbox .foragb-04 .mib-forum{
-		padding-right:0;
+	#mib-indexbox .foragb-04 .forum-content{
+		grid-template-columns:72px minmax(0,1fr);
+		grid-template-areas:
+			"icon body"
+			"icon last"
+			"icon stats";
 	}
 
 	#mib-indexbox .foragb-04 .mib-lastpost,
 	#mib-indexbox .foragb-04 .mib-stats{
-		position:static!important;
 		width:auto!important;
 		min-width:0;
 		margin-top:14px!important;
@@ -1524,7 +1540,28 @@
 	#mib-indexbox .foragb-04 .mib-sub-niveau-v{
 		grid-column:auto;
 		grid-row:auto;
-		height:auto!important;
+		height:32px!important;
 		min-height:32px!important;
+	}
+}
+
+@media (max-width:620px){
+	#mib-indexbox .foragb-04 .forum-content{
+		display:block;
+		min-height:0;
+	}
+
+	#mib-indexbox .foragb-04 .mib-forum-icon{
+		margin-bottom:12px;
+	}
+
+	#mib-indexbox .foragb-04 .mib-subforums,
+	#mib-indexbox .foragb-04 .subforum-buttons{
+		grid-template-columns:1fr;
+	}
+
+	#mib-indexbox .foragb-04 .mib-stats,
+	#mib-indexbox .foragb-04 .mib-lastpost{
+		margin-top:14px!important;
 	}
 }
