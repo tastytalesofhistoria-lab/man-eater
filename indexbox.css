@@ -107,11 +107,8 @@
 #mib-indexbox .forumtitle:hover{
 	color:var(--mib-red)!important;
 }
-
 /* =========================================================
    02B — MISE EN FORME TYPO
-   Gras rouge sang / italique gris argent / souligné blanc
-   avec soulignement rouge
 ========================================================= */
 
 #mib-indexbox strong,
@@ -133,7 +130,7 @@
 	text-decoration-color:var(--mib-red);
 	text-decoration-thickness:2px;
 	text-underline-offset:3px;
-}
+}  
 /* =========================================================
    03 — BARRES DE LIENS MODERNBB
 ========================================================= */
