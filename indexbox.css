@@ -1104,3 +1104,180 @@
 		margin-top:14px;
 	}
 }
+/* =========================================================
+   13 — CATÉGORIE 03 / FORAGB-03
+   GESTION
+   Organisation :
+   - 4 forums en grille 2x2
+   - chaque carte : icône + contenu en haut
+   - lastpost bas gauche
+   - stats bas droite
+========================================================= */
+
+#mib-indexbox .foragb-03{
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 34%),
+		linear-gradient(180deg,#111,#0d0d0d);
+	border-color:rgba(255,255,255,.13);
+}
+
+#mib-indexbox .foragb-03 .cattitre1::before{
+	content:"REGISTRE DE QUARANTAINE -";
+}
+
+#mib-indexbox .foragb-03 .mib-cat-head::after{
+	content:"DEMANDES / STATUTS  ⊘";
+	position:absolute;
+	right:0;
+	top:6px;
+	color:var(--mib-muted);
+	font-family:var(--mib-font-body);
+	font-size:13px;
+	font-weight:900;
+	text-transform:uppercase;
+	letter-spacing:.16em;
+}
+
+/* Grille 2x2 */
+#mib-indexbox .foragb-03 .mib-forums-list{
+	display:grid;
+	grid-template-columns:repeat(2,minmax(0,1fr));
+	gap:16px;
+}
+
+/* Cartes */
+#mib-indexbox .foragb-03 .mib-forum{
+	position:relative;
+	min-height:240px;
+	padding:16px 20px 16px 16px;
+	border:1px solid rgba(255,255,255,.12)!important;
+	background:
+		linear-gradient(180deg,rgba(255,255,255,.025),transparent 35%),
+		rgba(0,0,0,.18)!important;
+}
+
+/* Structure haute : icône + contenu */
+#mib-indexbox .foragb-03 .forum-content{
+	display:grid;
+	grid-template-columns:74px minmax(0,1fr);
+	grid-template-areas:"icon body";
+	gap:14px 16px;
+	align-items:start;
+	height:100%;
+	min-height:210px;
+	margin:0!important;
+	padding-bottom:110px;
+}
+
+#mib-indexbox .foragb-03 .mib-forum-icon{
+	grid-area:icon;
+	align-self:start;
+}
+
+#mib-indexbox .foragb-03 .mib-forum-body{
+	grid-area:body;
+	min-width:0;
+}
+
+#mib-indexbox .foragb-03 .mib-forum-title,
+#mib-indexbox .foragb-03 .mib-forum-title a.forumtitle{
+	font-size:25px!important;
+	line-height:.95!important;
+}
+
+#mib-indexbox .foragb-03 .descrpfo,
+#mib-indexbox .foragb-03 .mib-forum-desc{
+	margin-top:8px;
+	color:var(--mib-muted)!important;
+	font-size:15px;
+	font-weight:500!important;
+	line-height:1.35;
+}
+
+#mib-indexbox .foragb-03 .mib-subforums,
+#mib-indexbox .foragb-03 .subforum-buttons{
+	margin-top:12px;
+}
+
+/* Lastpost bas gauche */
+#mib-indexbox .foragb-03 .mib-lastpost{
+	position:absolute!important;
+	left:94px;
+	right:170px;
+	bottom:20px;
+	width:auto!important;
+	min-width:0;
+	min-height:96px;
+	margin:0!important;
+}
+
+/* Stats bas droite */
+#mib-indexbox .foragb-03 .mib-stats{
+	position:absolute!important;
+	right:20px;
+	bottom:34px;
+	width:120px!important;
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	gap:8px;
+	text-align:center;
+}
+
+#mib-indexbox .foragb-03 .mib-stat-label{
+	font-size:12px;
+	letter-spacing:.06em;
+	white-space:nowrap;
+}
+
+/* Responsive catégorie 03 */
+@media (max-width:980px){
+	#mib-indexbox .foragb-03 .mib-forums-list{
+		grid-template-columns:1fr;
+	}
+
+	#mib-indexbox .foragb-03 .forum-content{
+		grid-template-columns:72px minmax(0,1fr);
+		grid-template-areas:
+			"icon body"
+			"stats stats"
+			"last last";
+		padding-bottom:0;
+	}
+
+	#mib-indexbox .foragb-03 .mib-stats{
+		position:static!important;
+		grid-area:stats;
+		width:auto!important;
+		grid-template-columns:repeat(2,80px);
+		justify-content:start;
+		margin-top:12px;
+	}
+
+	#mib-indexbox .foragb-03 .mib-lastpost{
+		position:static!important;
+		grid-area:last;
+		width:auto!important;
+		margin:14px 0 0!important;
+	}
+
+	#mib-indexbox .foragb-03 .mib-cat-head::after{
+		position:static;
+		display:block;
+		margin-top:10px;
+	}
+}
+
+@media (max-width:620px){
+	#mib-indexbox .foragb-03 .forum-content{
+		display:block;
+	}
+
+	#mib-indexbox .foragb-03 .mib-forum-icon{
+		margin-bottom:12px;
+	}
+
+	#mib-indexbox .foragb-03 .mib-stats,
+	#mib-indexbox .foragb-03 .mib-lastpost{
+		margin-top:14px;
+	}
+}
