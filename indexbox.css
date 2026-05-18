@@ -1565,3 +1565,28 @@
 		margin-top:14px!important;
 	}
 }
+/* =====================
+   CORRECTION NIVEAU V
+   Texte noir en normal / blanc au hover
+===================== */
+
+#mib-indexbox .foragb-04 .mib-sub-niveau-v,
+#mib-indexbox .foragb-04 .mib-sub-niveau-v:link,
+#mib-indexbox .foragb-04 .mib-sub-niveau-v:visited{
+	color:#111!important;
+	background:var(--mib-grey)!important;
+	border-color:var(--mib-grey)!important;
+}
+
+#mib-indexbox .foragb-04 .mib-sub-niveau-v .mib-sub-label,
+#mib-indexbox .foragb-04 .mib-sub-niveau-v span:not(.mib-runner){
+	color:#111!important;
+}
+
+#mib-indexbox .foragb-04 .mib-sub-niveau-v:hover,
+#mib-indexbox .foragb-04 .mib-sub-niveau-v:hover .mib-sub-label,
+#mib-indexbox .foragb-04 .mib-sub-niveau-v:hover span:not(.mib-runner){
+	color:#fff!important;
+	background:#000!important;
+	border-color:var(--mib-red)!important;
+}
