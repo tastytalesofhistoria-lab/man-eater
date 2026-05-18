@@ -109,20 +109,45 @@
 }
 /* =========================================================
    02B — MISE EN FORME TYPO
+   Le rouge sur le gras est volontairement limité :
+   les descriptions peuvent contenir beaucoup de <b>/<strong>.
 ========================================================= */
 
-#mib-indexbox strong,
-#mib-indexbox b{
+/* Gras rouge uniquement dans les zones d'interface */
+#mib-indexbox .mib-lastpost strong,
+#mib-indexbox .mib-lastpost b,
+#mib-indexbox .mib-subforums strong,
+#mib-indexbox .mib-subforums b,
+#mib-indexbox .subforum-buttons strong,
+#mib-indexbox .subforum-buttons b{
 	color:var(--mib-red);
 	font-weight:900;
 }
 
+/* Description : le gras reste lisible et ne devient pas tout rouge */
+#mib-indexbox .mib-forum-desc strong,
+#mib-indexbox .mib-forum-desc b,
+#mib-indexbox .descrpfo strong,
+#mib-indexbox .descrpfo b{
+	color:inherit;
+	font-weight:800;
+}
+
+/* Pour forcer du rouge dans une description si besoin */
+#mib-indexbox .mib-forum-desc .mib-red,
+#mib-indexbox .descrpfo .mib-red{
+	color:var(--mib-red)!important;
+	font-weight:900;
+}
+
+/* Italique gris argent */
 #mib-indexbox em,
 #mib-indexbox i{
 	color:var(--mib-grey);
 	font-style:italic;
 }
 
+/* Souligné blanc avec ligne rouge */
 #mib-indexbox u,
 #mib-indexbox .bb-underline{
 	color:#fff;
@@ -130,7 +155,8 @@
 	text-decoration-color:var(--mib-red);
 	text-decoration-thickness:2px;
 	text-underline-offset:3px;
-}  
+}
+
 /* =========================================================
    03 — BARRES DE LIENS MODERNBB
 ========================================================= */
@@ -328,7 +354,7 @@
 	color:var(--mib-muted);
 	font-family:var(--mib-font-body);
 	font-size:15px;
-	font-weight:700;
+	font-weight:600;
 	line-height:1.35;
 }
 
@@ -435,7 +461,7 @@
 
 /* =========================================================
    09 — DERNIER MESSAGE
-   Réorganisation propre du bloc last post
+   Le contenu est réorganisé par le script du template.
 ========================================================= */
 
 #mib-indexbox .mib-lastpost{
@@ -462,7 +488,7 @@
 	gap:6px;
 	width:100%;
 	min-height:96px;
-	padding:14px 14px 13px;
+	padding:14px;
 }
 
 #mib-indexbox .mib-lastpost-topic,
@@ -503,12 +529,7 @@
 	font-weight:700;
 }
 
-#mib-indexbox .mib-lastpost-user{
-	font-weight:800;
-}
-
-/* on ne force pas la couleur du pseudo :
-   Forumactif peut injecter sa couleur de groupe */
+#mib-indexbox .mib-lastpost-user,
 #mib-indexbox .mib-lastpost-user a{
 	font-weight:800;
 }
@@ -524,6 +545,15 @@
 	text-transform:uppercase;
 	letter-spacing:.04em;
 	word-break:break-word;
+}
+
+/* Forum sans dernier message */
+#mib-indexbox .mib-lastpost-empty{
+	color:rgba(255,255,255,.28);
+	font-size:12px;
+	font-weight:800;
+	text-transform:uppercase;
+	letter-spacing:.08em;
 }
 
 #mib-indexbox .lastpost-avatar,
