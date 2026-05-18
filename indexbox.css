@@ -767,7 +767,10 @@
 	background:var(--mib-panel);
 	color:var(--mib-text);
 }
-
+/* Sécurité : annule les marges injectées par Forumactif */
+#mib-indexbox .forum-content{
+	margin:0!important;
+}
 
 /* =========================================================
    13 — RESPONSIVE
