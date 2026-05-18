@@ -344,6 +344,9 @@
 	letter-spacing:.18em!important;
 }
 
+/* .mib-cat-real-title est ajouté par le script du template.
+   Il force le vrai nom Forumactif, ex : VIBRISSE, en rouge. */
+#mib-indexbox .foragb .cattitre1 .mib-cat-real-title,
 #mib-indexbox .foragb .cattitre1 a,
 #mib-indexbox .foragb .cattitre1 span,
 #mib-indexbox .foragb .cattitre1 strong{
@@ -354,6 +357,7 @@
 	line-height:1!important;
 	text-transform:uppercase!important;
 	letter-spacing:.18em!important;
+	opacity:1!important;
 }
 
 #mib-indexbox .foragb .cattitre1::before{
@@ -803,7 +807,7 @@
 /* cartes 1 et 2 */
 #mib-indexbox .foragb-02 .mib-forum-01,
 #mib-indexbox .foragb-02 .mib-forum-02{
-	min-height:240px;
+	min-height:250px;
 	padding:16px;
 	border:1px solid rgba(255,255,255,.12)!important;
 	background:
@@ -811,14 +815,16 @@
 		rgba(0,0,0,.18)!important;
 }
 
-/* structure interne des cartes */
+/* structure interne des cartes :
+   aucune marge gauche sur le lastpost ;
+   les stats ont leur propre colonne, donc elles ne recouvrent plus le dernier message. */
 #mib-indexbox .foragb-02 .mib-forum-01 .forum-content,
 #mib-indexbox .foragb-02 .mib-forum-02 .forum-content{
 	display:grid;
-	grid-template-columns:74px minmax(0,1fr);
+	grid-template-columns:74px minmax(0,1fr) 116px;
 	grid-template-areas:
-		"icon body"
-		"last last";
+		"icon body body"
+		". last stats";
 	gap:14px 16px;
 	align-items:start;
 	height:100%;
@@ -855,21 +861,22 @@
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-lastpost,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-lastpost{
 	grid-area:last;
-	width:calc(100% - 128px);
+	width:auto!important;
+	min-width:0;
 	min-height:96px;
-	margin-left:90px;
-	margin-top:6px;
+	margin:0!important;
+	align-self:end;
 }
 
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-stats,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-stats{
-	position:absolute;
-	right:16px;
-	bottom:30px;
-	width:116px;
+	position:static!important;
+	grid-area:stats;
+	width:auto!important;
 	display:grid;
 	grid-template-columns:1fr 1fr;
 	gap:8px;
+	align-self:end;
 	text-align:center;
 }
 
