@@ -108,39 +108,61 @@
 	color:var(--mib-red)!important;
 }
 /* =========================================================
-   02B — MISE EN FORME TYPO
+   02B — MISE EN FORME TYPO DES DESCRIPTIONS
+   Gras rouge / Italique argent non gras / Souligné blanc + underline rouge
 ========================================================= */
 
-/* Dans les descriptions : gras lisible, pas rouge partout */
+/* Description forum : base sans gras forcé */
+#mib-indexbox .mib-forum-desc,
+#mib-indexbox .descrpfo{
+	color:var(--mib-muted);
+	font-weight:500!important;
+}
+
+/* Gras dans les descriptions : rouge sang */
 #mib-indexbox .mib-forum-desc strong,
 #mib-indexbox .mib-forum-desc b,
 #mib-indexbox .descrpfo strong,
 #mib-indexbox .descrpfo b{
-	color:var(--mib-soft);
-	font-weight:900;
-}
-
-/* Rouge uniquement si demandé avec une classe */
-#mib-indexbox .mib-red{
 	color:var(--mib-red)!important;
-	font-weight:900;
+	font-weight:900!important;
 }
 
-/* Italiques gris argent */
-#mib-indexbox em,
-#mib-indexbox i{
-	color:var(--mib-grey);
-	font-style:italic;
+/* Italique dans les descriptions : argenté et PAS gras */
+#mib-indexbox .mib-forum-desc em,
+#mib-indexbox .mib-forum-desc i,
+#mib-indexbox .descrpfo em,
+#mib-indexbox .descrpfo i{
+	color:var(--mib-grey)!important;
+	font-style:italic!important;
+	font-weight:400!important;
 }
 
-/* Soulignés blancs + ligne rouge */
-#mib-indexbox u,
-#mib-indexbox .bb-underline{
-	color:#fff;
-	text-decoration-line:underline;
-	text-decoration-color:var(--mib-red);
-	text-decoration-thickness:2px;
-	text-underline-offset:3px;
+/* Souligné dans les descriptions : texte blanc + underline rouge */
+#mib-indexbox .mib-forum-desc u,
+#mib-indexbox .descrpfo u,
+#mib-indexbox .mib-forum-desc .bb-underline,
+#mib-indexbox .descrpfo .bb-underline{
+	color:#fff!important;
+	font-weight:500!important;
+	text-decoration-line:underline!important;
+	text-decoration-color:var(--mib-red)!important;
+	text-decoration-thickness:2px!important;
+	text-underline-offset:3px!important;
+}
+
+/* Sécurité : si italique + gras ensemble, l’italique reste argenté non gras */
+#mib-indexbox .mib-forum-desc em strong,
+#mib-indexbox .mib-forum-desc strong em,
+#mib-indexbox .mib-forum-desc i b,
+#mib-indexbox .mib-forum-desc b i,
+#mib-indexbox .descrpfo em strong,
+#mib-indexbox .descrpfo strong em,
+#mib-indexbox .descrpfo i b,
+#mib-indexbox .descrpfo b i{
+	color:var(--mib-grey)!important;
+	font-style:italic!important;
+	font-weight:400!important;
 }
 
 /* =========================================================
@@ -340,10 +362,9 @@
 	color:var(--mib-muted);
 	font-family:var(--mib-font-body);
 	font-size:15px;
-	font-weight:600;
+	font-weight:500;
 	line-height:1.35;
 }
-
 
 /* =========================================================
    07 — SOUS-FORUMS / BOUTONS
