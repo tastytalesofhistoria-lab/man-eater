@@ -108,7 +108,32 @@
 	color:var(--mib-red)!important;
 }
 
+/* =========================================================
+   02B — MISE EN FORME TYPO
+   Gras rouge sang / italique gris argent / souligné blanc
+   avec soulignement rouge
+========================================================= */
 
+#mib-indexbox strong,
+#mib-indexbox b{
+	color:var(--mib-red);
+	font-weight:900;
+}
+
+#mib-indexbox em,
+#mib-indexbox i{
+	color:var(--mib-grey);
+	font-style:italic;
+}
+
+#mib-indexbox u,
+#mib-indexbox .bb-underline{
+	color:#fff;
+	text-decoration-line:underline;
+	text-decoration-color:var(--mib-red);
+	text-decoration-thickness:2px;
+	text-underline-offset:3px;
+}
 /* =========================================================
    03 — BARRES DE LIENS MODERNBB
 ========================================================= */
@@ -413,38 +438,95 @@
 
 /* =========================================================
    09 — DERNIER MESSAGE
+   Réorganisation propre du bloc last post
 ========================================================= */
 
 #mib-indexbox .mib-lastpost{
 	grid-area:last;
 	min-height:96px;
-	display:flex;
-	align-items:center;
-	justify-content:flex-start;
-	padding:12px;
+	display:block;
+	padding:0;
 	border:1px solid var(--mib-line);
 	background:rgba(0,0,0,.30);
 	color:var(--mib-muted);
 	font-family:var(--mib-font-body);
 	font-size:13px;
-	font-weight:600;
 	line-height:1.35;
 	text-align:left;
+	overflow:hidden;
 }
 
 #mib-indexbox .mib-lastpost-content,
 #mib-indexbox .lastpost-infos{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:flex-start;
+	gap:6px;
+	width:100%;
+	min-height:96px;
+	padding:14px 14px 13px;
+}
+
+#mib-indexbox .mib-lastpost-topic,
+#mib-indexbox .mib-lastpost .lastpost_link{
 	display:block;
-	min-width:0;
-}
-
-#mib-indexbox .mib-lastpost a{
+	width:100%;
+	margin:0;
+	color:#fff!important;
+	font-family:var(--mib-font-body);
+	font-size:13px;
 	font-weight:900;
+	line-height:1.15;
 	text-transform:uppercase;
+	word-break:break-word;
 }
 
-#mib-indexbox .mib-lastpost a:hover{
+#mib-indexbox .mib-lastpost-topic a{
+	color:#fff!important;
+}
+
+#mib-indexbox .mib-lastpost-topic a:hover{
 	color:var(--mib-red)!important;
+}
+
+#mib-indexbox .mib-lastpost-author{
+	display:block;
+	width:100%;
+	margin:0;
+	color:var(--mib-soft);
+	font-size:12px;
+	font-weight:700;
+	line-height:1.2;
+	word-break:break-word;
+}
+
+#mib-indexbox .mib-lastpost-author-label{
+	color:var(--mib-soft);
+	font-weight:700;
+}
+
+#mib-indexbox .mib-lastpost-user{
+	font-weight:800;
+}
+
+/* on ne force pas la couleur du pseudo :
+   Forumactif peut injecter sa couleur de groupe */
+#mib-indexbox .mib-lastpost-user a{
+	font-weight:800;
+}
+
+#mib-indexbox .mib-lastpost-date{
+	display:block;
+	width:100%;
+	margin:0;
+	color:var(--mib-red);
+	font-size:12px;
+	font-weight:900;
+	line-height:1.15;
+	text-transform:uppercase;
+	letter-spacing:.04em;
+	word-break:break-word;
 }
 
 #mib-indexbox .lastpost-avatar,
@@ -452,7 +534,6 @@
 #mib-indexbox .mib-lastpost img{
 	display:none!important;
 }
-
 
 /* =========================================================
    10 — NIVEAUX / QUÊTES
