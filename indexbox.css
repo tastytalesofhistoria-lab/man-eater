@@ -824,13 +824,16 @@
 }
 /* =========================================================
    14 — CATÉGORIE 02 / FORAGB-02
-   Un Avant Goût
+   UN AVANT GOUT
    Organisation :
-   - Forum 01 + Forum 02 : cartes 50% / 50%
-   - Forum 03 : pleine largeur, style ligne
+   - Forum 01 + 02 = cartes 50/50
+   - Forum 03 = ligne pleine largeur
 ========================================================= */
 
-/* Bloc catégorie */
+/* =========================
+   BLOC CATÉGORIE
+========================= */
+
 #mib-indexbox .foragb-02{
 	background:
 		radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 34%),
@@ -838,7 +841,6 @@
 	border-color:rgba(255,255,255,.13);
 }
 
-/* Titre catégorie */
 #mib-indexbox .foragb-02 .cattitre1{
 	display:flex;
 	flex-wrap:wrap;
@@ -855,6 +857,9 @@
 
 #mib-indexbox .foragb-02 .mib-cat-head{
 	position:relative;
+	margin-bottom:18px!important;
+	padding-bottom:18px!important;
+	border-bottom:1px solid var(--mib-line)!important;
 }
 
 #mib-indexbox .foragb-02 .mib-cat-head::after{
@@ -870,46 +875,55 @@
 	letter-spacing:.16em;
 }
 
-/* Grille de la catégorie */
+/* =========================
+   GRILLE GLOBALE DE LA CAT 2
+========================= */
+
 #mib-indexbox .foragb-02 .mib-forums-list{
 	display:grid;
 	grid-template-columns:repeat(2,minmax(0,1fr));
 	gap:16px;
 }
 
-/* Cartes de base : Pré-liens + Prédéfinis */
+/* =========================
+   CARTES : PRÉ-LIENS / PRÉDÉFINIS
+========================= */
+
 #mib-indexbox .foragb-02 .mib-forum{
-	min-height:238px;
-	padding:16px;
+	min-height:256px;
+	padding:18px;
 	border:1px solid rgba(255,255,255,.12)!important;
 	background:
 		linear-gradient(180deg,rgba(255,255,255,.025),transparent 35%),
 		rgba(0,0,0,.18)!important;
 }
 
-/* On retire les séparateurs hérités de la cat 1 */
 #mib-indexbox .foragb-02 .mib-forum:first-of-type,
 #mib-indexbox .foragb-02 .mib-forum{
 	border-top:1px solid rgba(255,255,255,.12)!important;
 }
 
-/* Structure interne des cartes */
-#mib-indexbox .foragb-02 .forum-content{
+/* structure interne des 2 cartes */
+#mib-indexbox .foragb-02 .mib-forum-01 .forum-content,
+#mib-indexbox .foragb-02 .mib-forum-02 .forum-content{
 	display:grid;
-	grid-template-columns:66px minmax(0,1fr);
+	grid-template-columns:72px minmax(0,1fr) 132px;
 	grid-template-areas:
-		"icon body"
-		"icon body";
-	gap:16px;
+		"icon body body"
+		"icon last stats";
+	gap:16px 18px;
 	align-items:start;
-	height:100%;
+	min-height:220px;
 }
 
-/* Icône */
+/* icône */
 #mib-indexbox .foragb-02 .mib-forum-icon{
 	grid-area:icon;
+	align-self:start;
+	width:66px;
+	height:66px;
 	background:#050505!important;
-	border-color:rgba(255,255,255,.12);
+	border:1px solid rgba(255,255,255,.12);
 }
 
 #mib-indexbox .foragb-02 .mib-forum-icon img{
@@ -932,10 +946,12 @@
 	-webkit-mask-size:contain;
 }
 
-/* Corps de carte */
-#mib-indexbox .foragb-02 .mib-forum-body{
+/* corps */
+#mib-indexbox .foragb-02 .mib-forum-01 .mib-forum-body,
+#mib-indexbox .foragb-02 .mib-forum-02 .mib-forum-body{
 	grid-area:body;
 	min-width:0;
+	align-self:start;
 }
 
 #mib-indexbox .foragb-02 .mib-forum-title,
@@ -944,7 +960,6 @@
 	line-height:.95!important;
 }
 
-/* Description */
 #mib-indexbox .foragb-02 .descrpfo,
 #mib-indexbox .foragb-02 .mib-forum-desc{
 	margin-top:8px;
@@ -954,53 +969,51 @@
 	line-height:1.35;
 }
 
-/* Boutons */
+/* sous-forums / boutons */
 #mib-indexbox .foragb-02 .mib-subforums,
 #mib-indexbox .foragb-02 .subforum-buttons{
-	margin-top:12px;
+	display:flex;
+	flex-wrap:wrap;
+	gap:8px;
+	margin-top:14px;
+	padding-top:0;
 }
 
-/* Zone basse : last post + stats */
-#mib-indexbox .foragb-02 .mib-stats{
-	grid-area:auto;
-	position:absolute;
-	right:16px;
-	bottom:17px;
+/* last post dans les cartes */
+#mib-indexbox .foragb-02 .mib-forum-01 .mib-lastpost,
+#mib-indexbox .foragb-02 .mib-forum-02 .mib-lastpost{
+	grid-area:last;
+	align-self:end;
+	min-height:96px;
+	margin-top:0;
+}
+
+/* stats dans les cartes */
+#mib-indexbox .foragb-02 .mib-forum-01 .mib-stats,
+#mib-indexbox .foragb-02 .mib-forum-02 .mib-stats{
+	grid-area:stats;
+	align-self:end;
 	display:grid;
-	grid-template-columns:repeat(2,70px);
-	gap:10px;
+	grid-template-columns:1fr 1fr;
+	gap:8px;
 	text-align:center;
 }
 
-#mib-indexbox .foragb-02 .mib-lastpost{
-	position:absolute;
-	left:94px;
-	right:150px;
-	bottom:16px;
-	min-height:96px;
-}
-
-/* Empêche le contenu de chevaucher la zone basse */
-#mib-indexbox .foragb-02 .mib-forum-body{
-	padding-bottom:120px;
-}
-
-/* =========================================================
-   CATÉGORIE 02 — FORUM 03 / PRÉSENTATION
-   Pleine largeur, organisation façon ligne
-========================================================= */
+/* =========================
+   PRÉSENTATION = PLEINE LARGEUR
+========================= */
 
 #mib-indexbox .foragb-02 .mib-forum-03,
 #mib-indexbox .foragb-02 .mib-forum-fullrow{
 	grid-column:1 / -1;
 	min-height:170px;
 	padding:20px 0;
-	border-width:0!important;
+	border:0!important;
 	border-top:1px solid rgba(255,255,255,.10)!important;
 	background:transparent!important;
 }
 
-/* Présentation : retour à une grille horizontale */
+/* grille ligne */
 #mib-indexbox .foragb-02 .mib-forum-03 .forum-content,
 #mib-indexbox .foragb-02 .mib-forum-fullrow .forum-content{
 	display:grid;
@@ -1008,73 +1021,73 @@
 	grid-template-areas:"icon body stats last";
 	gap:20px;
 	align-items:center;
+	min-height:0;
 }
 
-/* Présentation : corps normal */
+/* corps présentation */
 #mib-indexbox .foragb-02 .mib-forum-03 .mib-forum-body,
 #mib-indexbox .foragb-02 .mib-forum-fullrow .mib-forum-body{
-	padding-bottom:0;
+	grid-area:body;
+	min-width:0;
 }
 
-/* Présentation : last post redevient dans la grille */
-#mib-indexbox .foragb-02 .mib-forum-03 .mib-lastpost,
-#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-lastpost{
-	position:static;
-	grid-area:last;
-	min-height:96px;
+#mib-indexbox .foragb-02 .mib-forum-03 .descrpfo,
+#mib-indexbox .foragb-02 .mib-forum-fullrow .descrpfo,
+#mib-indexbox .foragb-02 .mib-forum-03 .mib-forum-desc,
+#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-forum-desc{
+	margin-top:8px;
 }
 
-/* Présentation : stats redeviennent dans la grille */
+#mib-indexbox .foragb-02 .mib-forum-03 .mib-subforums,
+#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-subforums,
+#mib-indexbox .foragb-02 .mib-forum-03 .subforum-buttons,
+#mib-indexbox .foragb-02 .mib-forum-fullrow .subforum-buttons{
+	margin-top:12px;
+}
+
+/* stats présentation */
 #mib-indexbox .foragb-02 .mib-forum-03 .mib-stats,
 #mib-indexbox .foragb-02 .mib-forum-fullrow .mib-stats{
-	position:static;
 	grid-area:stats;
 	display:grid;
-	grid-template-columns:repeat(2,70px);
+	grid-template-columns:1fr 1fr;
 	gap:10px;
 	text-align:center;
+	align-self:center;
 }
 
-/* =========================================================
-   RESPONSIVE CATÉGORIE 02
-========================================================= */
+/* lastpost présentation */
+#mib-indexbox .foragb-02 .mib-forum-03 .mib-lastpost,
+#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-lastpost{
+	grid-area:last;
+	min-height:96px;
+	align-self:center;
+	margin-top:0;
+}
+
+/* =========================
+   RESPONSIVE CAT 2
+========================= */
 
 @media (max-width:980px){
 	#mib-indexbox .foragb-02 .mib-forums-list{
 		grid-template-columns:1fr;
 	}
 
-	#mib-indexbox .foragb-02 .mib-forum{
-		min-height:auto;
-	}
-
-	#mib-indexbox .foragb-02 .forum-content,
+	#mib-indexbox .foragb-02 .mib-forum-01 .forum-content,
+	#mib-indexbox .foragb-02 .mib-forum-02 .forum-content,
 	#mib-indexbox .foragb-02 .mib-forum-03 .forum-content,
 	#mib-indexbox .foragb-02 .mib-forum-fullrow .forum-content{
-		display:grid;
-		grid-template-columns:66px minmax(0,1fr);
+		grid-template-columns:72px minmax(0,1fr);
 		grid-template-areas:
 			"icon body"
 			"icon stats"
 			"last last";
 	}
 
-	#mib-indexbox .foragb-02 .mib-forum-body{
-		padding-bottom:0;
-	}
-
-	#mib-indexbox .foragb-02 .mib-stats,
-	#mib-indexbox .foragb-02 .mib-lastpost,
-	#mib-indexbox .foragb-02 .mib-forum-03 .mib-stats,
-	#mib-indexbox .foragb-02 .mib-forum-03 .mib-lastpost,
-	#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-stats,
-	#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-lastpost{
-		position:static;
-	}
-
 	#mib-indexbox .foragb-02 .mib-stats{
 		grid-area:stats;
-		grid-template-columns:repeat(2,80px);
+		grid-template-columns:repeat(2,80px)!important;
 		justify-content:start;
 		margin-top:12px;
 	}
@@ -1092,7 +1105,8 @@
 }
 
 @media (max-width:620px){
-	#mib-indexbox .foragb-02 .forum-content,
+	#mib-indexbox .foragb-02 .mib-forum-01 .forum-content,
+	#mib-indexbox .foragb-02 .mib-forum-02 .forum-content,
 	#mib-indexbox .foragb-02 .mib-forum-03 .forum-content,
 	#mib-indexbox .foragb-02 .mib-forum-fullrow .forum-content{
 		display:block;
