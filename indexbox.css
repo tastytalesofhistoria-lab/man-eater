@@ -872,11 +872,14 @@
    - lastpost plus bas
    - stats plus à gauche
    - 20px de marge à droite */
+/* Bas de carte :
+   lastpost agrandi, il commence sous l'icône feuille
+   et garde une zone stats propre à droite */
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-lastpost,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-lastpost{
 	position:absolute!important;
-	left:124px;
-	right:190px;
+	left:16px;        /* commence sous la zone de l'icône */
+	right:152px;      /* réserve l'espace stats + marge */
 	bottom:18px;
 	width:auto!important;
 	min-width:0;
@@ -887,7 +890,7 @@
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-stats,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-stats{
 	position:absolute!important;
-	right:20px;
+	right:20px;       /* 20px de sécurité avec le bord droit */
 	bottom:34px;
 	width:112px!important;
 	display:grid;
@@ -896,13 +899,13 @@
 	text-align:center;
 }
 
-/* Sécurité : réduit légèrement les labels pour éviter que MESSAGES touche le bord */
+/* Sécurité : évite que MESSAGES touche le bord */
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-stat-label,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-stat-label{
 	font-size:12px;
-	letter-spacing:.06em;
+	letter-spacing:.04em;
 	white-space:nowrap;
-}
+} 
 
 /* Présentation pleine largeur */
 #mib-indexbox .foragb-02 .mib-forum-03,
