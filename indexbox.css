@@ -1862,3 +1862,187 @@
 		margin-top:10px;
 	}
 }
+/* =========================================================
+   16 — CATÉGORIE 06 / FORAGB-06
+   ZONE INVITÉS
+   Organisation :
+   - 4 forums en grille 2x2
+   - Questions avec icône bulle
+   - autres forums avec icône feuille
+   - lastpost bas gauche
+   - stats bas droite
+========================================================= */
+
+#mib-indexbox .foragb-06{
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 34%),
+		linear-gradient(180deg,#111,#0d0d0d);
+	border-color:rgba(255,255,255,.13);
+}
+
+#mib-indexbox .foragb-06 .cattitre1::before{
+	content:"POSTE DE CONTRÔLE -";
+}
+
+#mib-indexbox .foragb-06 .mib-cat-head::after{
+	content:"INVITÉS / PARTENAIRES  ⊘";
+	position:absolute;
+	right:0;
+	top:6px;
+	color:var(--mib-muted);
+	font-family:var(--mib-font-body);
+	font-size:13px;
+	font-weight:900;
+	text-transform:uppercase;
+	letter-spacing:.16em;
+}
+
+/* Grille 2x2 */
+#mib-indexbox .foragb-06 .mib-forums-list{
+	display:grid;
+	grid-template-columns:repeat(2,minmax(0,1fr));
+	gap:16px;
+}
+
+/* Cartes */
+#mib-indexbox .foragb-06 .mib-forum{
+	position:relative;
+	min-height:258px;
+	padding:16px 20px 16px 16px;
+	border:1px solid rgba(255,255,255,.12)!important;
+	background:
+		linear-gradient(180deg,rgba(255,255,255,.025),transparent 35%),
+		rgba(0,0,0,.18)!important;
+}
+
+/* Haut de carte */
+#mib-indexbox .foragb-06 .forum-content{
+	display:grid;
+	grid-template-columns:74px minmax(0,1fr);
+	grid-template-areas:"icon body";
+	gap:14px 16px;
+	align-items:start;
+	height:100%;
+	min-height:225px;
+	margin:0!important;
+	padding-bottom:118px;
+}
+
+#mib-indexbox .foragb-06 .mib-forum-icon{
+	grid-area:icon;
+	align-self:start;
+}
+
+#mib-indexbox .foragb-06 .mib-forum-body{
+	grid-area:body;
+	min-width:0;
+}
+
+#mib-indexbox .foragb-06 .mib-forum-title,
+#mib-indexbox .foragb-06 .mib-forum-title a.forumtitle{
+	font-size:25px!important;
+	line-height:.95!important;
+}
+
+#mib-indexbox .foragb-06 .descrpfo,
+#mib-indexbox .foragb-06 .mib-forum-desc{
+	margin-top:8px;
+	color:var(--mib-muted)!important;
+	font-size:15px;
+	font-weight:600!important;
+	line-height:1.35;
+}
+
+#mib-indexbox .foragb-06 .mib-subforums,
+#mib-indexbox .foragb-06 .subforum-buttons{
+	margin-top:12px;
+}
+
+/* Questions : icône bulle uniquement pour le premier forum */
+#mib-indexbox .foragb-06 .mib-forum-01 .mib-forum-icon::before{
+	mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 3C6.5 3 2 6.9 2 11.7c0 2.7 1.4 5.1 3.6 6.7L5 22l3.8-1.9c1 .3 2.1.4 3.2.4 5.5 0 10-3.9 10-8.8S17.5 3 12 3Zm0 15.5c-1.1 0-2.1-.2-3-.5l-.4-.1-1.5.8.2-1.5-.5-.4C5 15.5 4 13.7 4 11.7 4 8 7.6 5 12 5s8 3 8 6.7-3.6 6.8-8 6.8Z'/%3E%3C/svg%3E");
+	-webkit-mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 3C6.5 3 2 6.9 2 11.7c0 2.7 1.4 5.1 3.6 6.7L5 22l3.8-1.9c1 .3 2.1.4 3.2.4 5.5 0 10-3.9 10-8.8S17.5 3 12 3Zm0 15.5c-1.1 0-2.1-.2-3-.5l-.4-.1-1.5.8.2-1.5-.5-.4C5 15.5 4 13.7 4 11.7 4 8 7.6 5 12 5s8 3 8 6.7-3.6 6.8-8 6.8Z'/%3E%3C/svg%3E");
+}
+
+/* Lastpost bas gauche */
+#mib-indexbox .foragb-06 .mib-lastpost{
+	position:absolute!important;
+	left:94px;
+	right:170px;
+	bottom:20px;
+	width:auto!important;
+	min-width:0;
+	min-height:96px;
+	margin:0!important;
+}
+
+/* Stats bas droite */
+#mib-indexbox .foragb-06 .mib-stats{
+	position:absolute!important;
+	right:20px;
+	bottom:34px;
+	width:120px!important;
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	gap:8px;
+	text-align:center;
+}
+
+#mib-indexbox .foragb-06 .mib-stat-label{
+	font-size:12px;
+	letter-spacing:.06em;
+	white-space:nowrap;
+}
+
+/* Responsive catégorie 06 */
+@media (max-width:980px){
+	#mib-indexbox .foragb-06 .mib-forums-list{
+		grid-template-columns:1fr;
+	}
+
+	#mib-indexbox .foragb-06 .forum-content{
+		grid-template-columns:72px minmax(0,1fr);
+		grid-template-areas:
+			"icon body"
+			"stats stats"
+			"last last";
+		padding-bottom:0;
+	}
+
+	#mib-indexbox .foragb-06 .mib-stats{
+		position:static!important;
+		grid-area:stats;
+		width:auto!important;
+		grid-template-columns:repeat(2,80px);
+		justify-content:start;
+		margin-top:12px;
+	}
+
+	#mib-indexbox .foragb-06 .mib-lastpost{
+		position:static!important;
+		grid-area:last;
+		width:auto!important;
+		margin:14px 0 0!important;
+	}
+
+	#mib-indexbox .foragb-06 .mib-cat-head::after{
+		position:static;
+		display:block;
+		margin-top:10px;
+	}
+}
+
+@media (max-width:620px){
+	#mib-indexbox .foragb-06 .forum-content{
+		display:block;
+	}
+
+	#mib-indexbox .foragb-06 .mib-forum-icon{
+		margin-bottom:12px;
+	}
+
+	#mib-indexbox .foragb-06 .mib-stats,
+	#mib-indexbox .foragb-06 .mib-lastpost{
+		margin-top:14px;
+	}
+}
