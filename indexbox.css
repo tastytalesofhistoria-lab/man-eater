@@ -109,26 +109,18 @@
 }
 /* =========================================================
    02B — MISE EN FORME TYPO
-   Rouge/gris/souligné sans massacrer les descriptions.
 ========================================================= */
 
-/* Dans les descriptions : le gras reste clair, pas rouge partout */
+/* Dans les descriptions : gras lisible, pas rouge partout */
 #mib-indexbox .mib-forum-desc strong,
 #mib-indexbox .mib-forum-desc b,
 #mib-indexbox .descrpfo strong,
 #mib-indexbox .descrpfo b{
 	color:var(--mib-soft);
-	font-weight:800;
-}
-
-/* Gras rouge uniquement hors descriptions */
-#mib-indexbox :not(.mib-forum-desc):not(.descrpfo) > strong,
-#mib-indexbox :not(.mib-forum-desc):not(.descrpfo) > b{
-	color:var(--mib-red);
 	font-weight:900;
 }
 
-/* Classe volontaire pour mettre un morceau en rouge */
+/* Rouge uniquement si demandé avec une classe */
 #mib-indexbox .mib-red{
 	color:var(--mib-red)!important;
 	font-weight:900;
@@ -141,7 +133,7 @@
 	font-style:italic;
 }
 
-/* Soulignés blancs avec soulignement rouge */
+/* Soulignés blancs + ligne rouge */
 #mib-indexbox u,
 #mib-indexbox .bb-underline{
 	color:#fff;
@@ -455,13 +447,14 @@
 
 /* =========================================================
    09 — DERNIER MESSAGE
-   Le contenu est réorganisé par le script du template.
+   Version stable : on ne casse pas USER_LAST_POST
 ========================================================= */
 
 #mib-indexbox .mib-lastpost{
 	grid-area:last;
 	min-height:96px;
-	display:block;
+	display:flex;
+	align-items:center;
 	padding:0;
 	border:1px solid var(--mib-line);
 	background:rgba(0,0,0,.30);
@@ -485,11 +478,14 @@
 	padding:14px;
 }
 
-#mib-indexbox .mib-lastpost-topic,
-#mib-indexbox .mib-lastpost .lastpost_link{
+#mib-indexbox .mib-lastpost-topic{
 	display:block;
 	width:100%;
-	margin:0;
+}
+
+#mib-indexbox .mib-lastpost-topic a,
+#mib-indexbox .mib-lastpost .lastpost_link{
+	display:block;
 	color:#fff!important;
 	font-family:var(--mib-font-body);
 	font-size:13px;
@@ -499,57 +495,35 @@
 	word-break:break-word;
 }
 
-#mib-indexbox .mib-lastpost-topic a{
-	color:#fff!important;
-}
-
-#mib-indexbox .mib-lastpost-topic a:hover{
+#mib-indexbox .mib-lastpost-topic a:hover,
+#mib-indexbox .mib-lastpost .lastpost_link:hover{
 	color:var(--mib-red)!important;
 }
 
-#mib-indexbox .mib-lastpost-author{
+#mib-indexbox .mib-lastpost-meta{
 	display:block;
 	width:100%;
-	margin:0;
 	color:var(--mib-soft);
 	font-size:12px;
 	font-weight:700;
-	line-height:1.2;
+	line-height:1.25;
 	word-break:break-word;
 }
 
-#mib-indexbox .mib-lastpost-author-label{
-	color:var(--mib-soft);
-	font-weight:700;
-}
-
-#mib-indexbox .mib-lastpost-user,
-#mib-indexbox .mib-lastpost-user a{
+/* Les liens/pseudos Forumactif restent gérés par Forumactif */
+#mib-indexbox .mib-lastpost-meta a{
 	font-weight:800;
+	text-transform:none;
 }
 
-#mib-indexbox .mib-lastpost-date{
-	display:block;
-	width:100%;
-	margin:0;
-	color:var(--mib-red);
-	font-size:12px;
-	font-weight:900;
-	line-height:1.15;
-	text-transform:uppercase;
-	letter-spacing:.04em;
-	word-break:break-word;
+/* On masque les icônes parasites si Forumactif les injecte */
+#mib-indexbox .mib-lastpost .material-icons,
+#mib-indexbox .mib-lastpost .material-symbols-outlined,
+#mib-indexbox .mib-lastpost i{
+	display:none!important;
 }
 
-/* Forum sans dernier message */
-#mib-indexbox .mib-lastpost-empty{
-	color:rgba(255,255,255,.28);
-	font-size:12px;
-	font-weight:800;
-	text-transform:uppercase;
-	letter-spacing:.08em;
-}
-
+/* Avatar/images retirés */
 #mib-indexbox .lastpost-avatar,
 #mib-indexbox .mib-lastpost-avatar,
 #mib-indexbox .mib-lastpost img{
