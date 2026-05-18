@@ -779,8 +779,11 @@
 
 /* =========================================================
    12 — CATÉGORIE 02 / FORAGB-02
-   Version stable : lastpost + stats en position basse,
-   sans grille fantôme.
+   Version stable corrigée :
+   - lastpost + stats en position basse
+   - 20px de sécurité à droite
+   - sujets/messages reculés vers la gauche
+   - aucun chevauchement du mot MESSAGES sur le bord
 ========================================================= */
 
 #mib-indexbox .foragb-02{
@@ -816,8 +819,8 @@
 #mib-indexbox .foragb-02 .mib-forum-01,
 #mib-indexbox .foragb-02 .mib-forum-02{
 	position:relative;
-	min-height:255px;
-	padding:16px;
+	min-height:265px;
+	padding:16px 20px 16px 16px;
 	border:1px solid rgba(255,255,255,.12)!important;
 	background:
 		linear-gradient(180deg,rgba(255,255,255,.025),transparent 35%),
@@ -834,9 +837,9 @@
 	gap:14px 16px;
 	align-items:start;
 	height:100%;
-	min-height:215px;
+	min-height:225px;
 	margin:0!important;
-	padding-bottom:112px;
+	padding-bottom:120px;
 }
 
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-forum-body,
@@ -865,13 +868,16 @@
 	margin-top:12px;
 }
 
-/* Bas de carte */
+/* Bas de carte :
+   - lastpost plus bas
+   - stats plus à gauche
+   - 20px de marge à droite */
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-lastpost,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-lastpost{
 	position:absolute!important;
-	left:106px;
-	right:132px;
-	bottom:16px;
+	left:124px;
+	right:190px;
+	bottom:18px;
 	width:auto!important;
 	min-width:0;
 	min-height:96px;
@@ -881,13 +887,21 @@
 #mib-indexbox .foragb-02 .mib-forum-01 .mib-stats,
 #mib-indexbox .foragb-02 .mib-forum-02 .mib-stats{
 	position:absolute!important;
-	right:16px;
-	bottom:30px;
+	right:20px;
+	bottom:34px;
 	width:112px!important;
 	display:grid;
 	grid-template-columns:1fr 1fr;
-	gap:8px;
+	gap:6px;
 	text-align:center;
+}
+
+/* Sécurité : réduit légèrement les labels pour éviter que MESSAGES touche le bord */
+#mib-indexbox .foragb-02 .mib-forum-01 .mib-stat-label,
+#mib-indexbox .foragb-02 .mib-forum-02 .mib-stat-label{
+	font-size:12px;
+	letter-spacing:.06em;
+	white-space:nowrap;
 }
 
 /* Présentation pleine largeur */
@@ -895,7 +909,7 @@
 #mib-indexbox .foragb-02 .mib-forum-fullrow{
 	grid-column:1 / -1;
 	min-height:170px;
-	padding:20px 0;
+	padding:20px 20px 20px 0;
 	border:0!important;
 	border-top:1px solid rgba(255,255,255,.10)!important;
 	background:transparent!important;
@@ -904,11 +918,12 @@
 #mib-indexbox .foragb-02 .mib-forum-03 .forum-content,
 #mib-indexbox .foragb-02 .mib-forum-fullrow .forum-content{
 	display:grid;
-	grid-template-columns:76px minmax(0,1fr) 140px 260px;
+	grid-template-columns:76px minmax(0,1fr) 118px 250px;
 	grid-template-areas:"icon body stats last";
 	gap:20px;
 	align-items:center;
 	margin:0!important;
+	padding-right:20px;
 	padding-bottom:0;
 }
 
@@ -916,11 +931,19 @@
 #mib-indexbox .foragb-02 .mib-forum-fullrow .mib-stats{
 	position:static!important;
 	grid-area:stats;
-	width:auto!important;
+	width:112px!important;
 	display:grid;
 	grid-template-columns:1fr 1fr;
-	gap:10px;
+	gap:6px;
 	text-align:center;
+	justify-self:end;
+}
+
+#mib-indexbox .foragb-02 .mib-forum-03 .mib-stat-label,
+#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-stat-label{
+	font-size:12px;
+	letter-spacing:.06em;
+	white-space:nowrap;
 }
 
 #mib-indexbox .foragb-02 .mib-forum-03 .mib-lastpost,
@@ -931,6 +954,62 @@
 	min-height:96px;
 	margin:0!important;
 }
+
+/* Responsive cat 2 */
+@media (max-width:980px){
+	#mib-indexbox .foragb-02 .mib-forums-list{
+		grid-template-columns:1fr;
+	}
+
+	#mib-indexbox .foragb-02 .mib-forum-01,
+	#mib-indexbox .foragb-02 .mib-forum-02{
+		min-height:auto;
+		padding:16px;
+	}
+
+	#mib-indexbox .foragb-02 .mib-forum-01 .forum-content,
+	#mib-indexbox .foragb-02 .mib-forum-02 .forum-content,
+	#mib-indexbox .foragb-02 .mib-forum-03 .forum-content,
+	#mib-indexbox .foragb-02 .mib-forum-fullrow .forum-content{
+		grid-template-columns:72px minmax(0,1fr);
+		grid-template-areas:
+			"icon body"
+			"stats stats"
+			"last last";
+		padding-right:0;
+		padding-bottom:0;
+	}
+
+	#mib-indexbox .foragb-02 .mib-forum-01 .mib-stats,
+	#mib-indexbox .foragb-02 .mib-forum-02 .mib-stats,
+	#mib-indexbox .foragb-02 .mib-forum-03 .mib-stats,
+	#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-stats{
+		position:static!important;
+		grid-area:stats;
+		width:auto!important;
+		grid-template-columns:repeat(2,80px);
+		justify-content:start;
+		margin-top:12px;
+	}
+
+	#mib-indexbox .foragb-02 .mib-forum-01 .mib-lastpost,
+	#mib-indexbox .foragb-02 .mib-forum-02 .mib-lastpost,
+	#mib-indexbox .foragb-02 .mib-forum-03 .mib-lastpost,
+	#mib-indexbox .foragb-02 .mib-forum-fullrow .mib-lastpost{
+		position:static!important;
+		grid-area:last;
+		width:auto!important;
+		margin:14px 0 0!important;
+	}
+
+	#mib-indexbox .foragb-02 .mib-cat-head::after{
+		position:static;
+		display:block;
+		margin-top:10px;
+	}
+}
+
+
 
 
 /* =========================================================
@@ -1006,16 +1085,6 @@
 }
 
 @media (max-width:620px){
-	#mib-indexbox .mib-forabg{
-		width:calc(100% - 20px);
-		padding:14px;
-	}
-
-	#mib-indexbox .foragb .cattitre1::before{
-		font-size:24px!important;
-	}
-
-	#mib-indexbox .forum-content,
 	#mib-indexbox .foragb-02 .mib-forum-01 .forum-content,
 	#mib-indexbox .foragb-02 .mib-forum-02 .forum-content,
 	#mib-indexbox .foragb-02 .mib-forum-03 .forum-content,
@@ -1023,12 +1092,12 @@
 		display:block;
 	}
 
-	#mib-indexbox .mib-forum-icon{
+	#mib-indexbox .foragb-02 .mib-forum-icon{
 		margin-bottom:12px;
 	}
 
-	#mib-indexbox .mib-stats,
-	#mib-indexbox .mib-lastpost{
+	#mib-indexbox .foragb-02 .mib-stats,
+	#mib-indexbox .foragb-02 .mib-lastpost{
 		margin-top:14px;
 	}
 }
