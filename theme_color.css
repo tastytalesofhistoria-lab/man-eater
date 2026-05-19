@@ -1,1 +1,473 @@
 
+/* =========================================================
+   MAN EATER — BASE THEME GLOBAL FORUMACTIF MODERNBB
+   Objectif : remplacer les couleurs natives bleues/blanches
+   par la base noire / rouge / ivoire du thème.
+========================================================= */
+
+/* ===================== VARIABLES GLOBALES ===================== */
+
+:root{
+	--me-red:#c6262d;
+	--me-red-hot:#ff333d;
+	--me-red-dark:#7d151b;
+
+	--me-bg:#080808;
+	--me-bg-deep:#050505;
+	--me-panel:#101010;
+	--me-card:#111111;
+	--me-card-soft:#171717;
+
+	--me-line:rgba(255,255,255,.10);
+	--me-line-soft:rgba(255,255,255,.07);
+	--me-line-strong:rgba(255,255,255,.17);
+
+	--me-text:#f4ece7;
+	--me-soft:#d8c8bf;
+	--me-muted:#b7aaa4;
+	--me-dim:#8f8580;
+	--me-grey:#b9b9b9;
+
+	--me-font-title:"Cinzel Decorative",Cinzel,"Cormorant Garamond",Georgia,serif;
+	--me-font-body:Inter,Arial,Helvetica,sans-serif;
+}
+
+
+/* ===================== BASE PAGE ===================== */
+
+html,
+body{
+	background:#e5e5e5!important;
+	color:var(--me-text)!important;
+	font-family:var(--me-font-body)!important;
+}
+
+body{
+	background:
+		linear-gradient(180deg,#e5e5e5,#d8d8d8)!important;
+}
+
+/* Zone générale forum */
+#wrap,
+#page-body,
+#content-container,
+#container,
+#main-content{
+	background:transparent!important;
+	color:var(--me-text)!important;
+}
+
+/* Grand conteneur central si ModernBB le crée */
+#wrap{
+	max-width:1220px;
+	margin:0 auto!important;
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.08),transparent 28%),
+		linear-gradient(90deg,var(--me-bg-deep),var(--me-bg),var(--me-bg-deep))!important;
+	border-left:1px solid var(--me-line);
+	border-right:1px solid var(--me-line);
+}
+
+
+/* ===================== HEADER NATIF ===================== */
+
+#page-header,
+.headerbar,
+#logo-desc,
+#site-desc{
+	background:
+		linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.35),rgba(0,0,0,.75)),
+		#111!important;
+	color:var(--me-text)!important;
+	border:0!important;
+}
+
+.headerbar{
+	min-height:260px;
+	border-bottom:1px solid var(--me-line)!important;
+}
+
+#site-title,
+#site-title h1,
+#logo-desc h1,
+#logo-desc .sitename,
+#logo-desc a{
+	color:var(--me-text)!important;
+	font-family:var(--me-font-title)!important;
+	font-weight:900!important;
+	text-shadow:none!important;
+}
+
+#site-desc,
+#logo-desc p,
+.site-description{
+	color:var(--me-soft)!important;
+	font-family:var(--me-font-body)!important;
+	font-weight:600!important;
+	text-shadow:none!important;
+}
+
+
+/* ===================== NAVBAR NATIVE ===================== */
+
+.navbar,
+.navbar ul,
+.navbar .linklist,
+ul.linklist{
+	background:#0c0c0c!important;
+	border:0!important;
+	color:var(--me-text)!important;
+}
+
+.navbar{
+	border-bottom:1px solid var(--me-line)!important;
+}
+
+.navbar a,
+ul.linklist a,
+.linklist a,
+.mainmenu a,
+a.mainmenu{
+	color:#fff!important;
+	font-family:var(--me-font-body)!important;
+	font-weight:800!important;
+	text-transform:uppercase;
+	letter-spacing:.04em;
+	text-decoration:none!important;
+	text-shadow:none!important;
+}
+
+.navbar a:hover,
+ul.linklist a:hover,
+.linklist a:hover,
+.mainmenu a:hover,
+a.mainmenu:hover{
+	color:var(--me-red)!important;
+}
+
+
+/* ===================== BARRE LIENS HAUT / BAS ===================== */
+
+.linklist.top,
+.linklist.bottom,
+ul.linklist.top,
+ul.linklist.bottom{
+	background:#0c0c0c!important;
+	border:0!important;
+	border-bottom:1px solid var(--me-line)!important;
+	color:var(--me-text)!important;
+	padding:10px 18px!important;
+}
+
+.linklist.top a,
+.linklist.bottom a{
+	color:#fff!important;
+}
+
+.linklist.top a:hover,
+.linklist.bottom a:hover{
+	color:var(--me-red)!important;
+}
+
+
+/* ===================== BLOCS NATIFS FORUMACTIF ===================== */
+
+.forabg,
+.forumbg,
+.panel,
+.post,
+.module,
+.block,
+.content-block{
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.08),transparent 34%),
+		linear-gradient(180deg,#111,#0d0d0d)!important;
+	border:1px solid var(--me-line)!important;
+	color:var(--me-text)!important;
+	box-shadow:none!important;
+}
+
+.forabg .header,
+.forumbg .header,
+.topiclist .header,
+li.header{
+	background:transparent!important;
+	color:var(--me-soft)!important;
+	border:0!important;
+	text-shadow:none!important;
+}
+
+
+/* ===================== TITRES NATIFS ===================== */
+
+h1,
+h2,
+h3,
+h4,
+.forumtitle,
+.topictitle,
+a.forumtitle,
+a.topictitle,
+.table-title,
+.hierarchy{
+	color:#fff!important;
+	font-family:var(--me-font-title)!important;
+	font-weight:900!important;
+	text-shadow:none!important;
+}
+
+a.forumtitle:hover,
+a.topictitle:hover,
+.hierarchy a:hover{
+	color:var(--me-red)!important;
+}
+
+
+/* ===================== LIENS GÉNÉRAUX ===================== */
+
+a{
+	color:#fff;
+	text-decoration:none;
+}
+
+a:hover{
+	color:var(--me-red);
+	text-decoration:none;
+}
+
+/* Attention : ne pas forcer les couleurs des pseudos de groupe */
+.username,
+.username a,
+a[href^="/u"],
+span[style*="color"],
+font[color]{
+	text-decoration:none!important;
+}
+
+
+/* ===================== BOUTONS / INPUTS ===================== */
+
+.button,
+.button1,
+.button2,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+a.button1,
+a.button2,
+.btn,
+.btn-default{
+	background:var(--me-red)!important;
+	border:1px solid var(--me-red)!important;
+	color:#fff!important;
+	font-family:var(--me-font-body)!important;
+	font-weight:900!important;
+	text-transform:uppercase;
+	letter-spacing:.05em;
+	box-shadow:none!important;
+	text-shadow:none!important;
+}
+
+.button:hover,
+.button1:hover,
+.button2:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+a.button1:hover,
+a.button2:hover,
+.btn:hover,
+.btn-default:hover{
+	background:#000!important;
+	border-color:var(--me-red)!important;
+	color:#fff!important;
+}
+
+
+/* Champs */
+input,
+textarea,
+select,
+.sceditor-container,
+.sceditor-container textarea{
+	background:#0b0b0b!important;
+	border:1px solid var(--me-line-strong)!important;
+	color:var(--me-text)!important;
+	box-shadow:none!important;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+	border-color:var(--me-red)!important;
+	outline:none!important;
+}
+
+
+/* ===================== TABLES / LISTES NATIVES ===================== */
+
+table,
+.table1,
+table.table1,
+.forumline{
+	background:var(--me-panel)!important;
+	border-color:var(--me-line)!important;
+	color:var(--me-text)!important;
+}
+
+th{
+	background:#0c0c0c!important;
+	color:var(--me-soft)!important;
+	border-color:var(--me-line)!important;
+}
+
+td,
+.row1,
+.row2,
+.row3{
+	background:transparent!important;
+	color:var(--me-text)!important;
+	border-color:var(--me-line-soft)!important;
+}
+
+
+/* ===================== POSTS ===================== */
+
+.post{
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.06),transparent 34%),
+		linear-gradient(180deg,#111,#0d0d0d)!important;
+	border:1px solid var(--me-line)!important;
+}
+
+.postbody,
+.postbody .content,
+.postprofile,
+.postprofile dd,
+.postprofile dt{
+	color:var(--me-text)!important;
+}
+
+.postprofile{
+	border-color:var(--me-line)!important;
+}
+
+.postbody a{
+	color:#fff;
+}
+
+.postbody a:hover{
+	color:var(--me-red);
+}
+
+
+/* ===================== BBCODE GLOBAL ===================== */
+
+.postbody .content strong,
+.postbody .content b,
+.content strong,
+.content b{
+	color:var(--me-red)!important;
+	font-weight:900!important;
+}
+
+.postbody .content em,
+.postbody .content i,
+.content em,
+.content i{
+	color:var(--me-grey)!important;
+	font-style:italic!important;
+	font-weight:400!important;
+}
+
+.postbody .content u,
+.content u{
+	color:#fff!important;
+	text-decoration-line:underline!important;
+	text-decoration-color:var(--me-red)!important;
+	text-decoration-thickness:2px!important;
+	text-underline-offset:3px!important;
+}
+
+
+/* ===================== PAGINATION ===================== */
+
+.pagination span,
+.pagination a,
+.pagination strong,
+.pagination .page-sep{
+	background:#171717!important;
+	border:1px solid var(--me-line-strong)!important;
+	color:#fff!important;
+}
+
+.pagination a:hover,
+.pagination strong{
+	background:var(--me-red)!important;
+	border-color:var(--me-red)!important;
+	color:#fff!important;
+}
+
+
+/* ===================== FOOTER ===================== */
+
+#page-footer,
+#footer,
+.copyright{
+	background:#0c0c0c!important;
+	color:var(--me-dim)!important;
+	border-top:1px solid var(--me-line)!important;
+	text-shadow:none!important;
+}
+
+#page-footer a,
+#footer a,
+.copyright a{
+	color:var(--me-soft)!important;
+}
+
+#page-footer a:hover,
+#footer a:hover,
+.copyright a:hover{
+	color:var(--me-red)!important;
+}
+
+
+/* ===================== SUPPRESSION BLEUS NATIFS COURANTS ===================== */
+
+.bg1,
+.bg2,
+.bg3,
+.panel.bg1,
+.panel.bg2,
+.panel.bg3{
+	background:var(--me-panel)!important;
+	color:var(--me-text)!important;
+}
+
+li.row,
+li.row:hover,
+.row,
+.row:hover{
+	background:transparent!important;
+}
+
+li.row:hover{
+	background:rgba(198,38,45,.035)!important;
+}
+
+blockquote,
+.codebox{
+	background:#0b0b0b!important;
+	border:1px solid var(--me-line-strong)!important;
+	color:var(--me-text)!important;
+}
+
+.codebox dt{
+	color:var(--me-soft)!important;
+	border-bottom:1px solid var(--me-line)!important;
+}
+
+.codebox code{
+	color:var(--me-text)!important;
+}
