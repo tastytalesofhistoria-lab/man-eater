@@ -703,3 +703,26 @@
 		grid-template-columns:1fr;
 	}
 }
+.me-qeel-last-user strong{
+	display:block!important;
+	width:100%!important;
+	max-width:100%!important;
+	overflow:hidden!important;
+	white-space:nowrap!important;
+	text-overflow:ellipsis!important;
+	word-break:normal!important;
+	line-height:.95!important;
+}
+
+.me-qeel-users-source,
+.me-qeel-native-data{
+	display:none!important;
+}
+
+.me-qeel-user strong{
+	color:inherit;
+}
+
+.me-qeel-group-icon strong{
+	pointer-events:none;
+}
