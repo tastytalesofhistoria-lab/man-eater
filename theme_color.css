@@ -673,3 +673,107 @@ blockquote,
 		padding:6px!important;
 	}
 }
+/* =========================================================
+   MAN EATER — CORRECTION LIENS BLEUS / GROUPES
+   À placer tout à la fin du CSS global
+========================================================= */
+
+/* =====================
+   LIENS NATIFS BLEUS
+   On recolore les liens généraux, sauf les pseudos colorés.
+===================== */
+
+a:not([style*="color"]):not(.gensmall a):not(.username):not([href^="/u"]),
+a:link:not([style*="color"]):not(.username):not([href^="/u"]),
+a:visited:not([style*="color"]):not(.username):not([href^="/u"]){
+	color:#fff!important;
+	text-decoration:none!important;
+}
+
+a:hover:not([style*="color"]):not(.username):not([href^="/u"]){
+	color:var(--me-red)!important;
+	text-decoration:none!important;
+}
+
+/* =====================
+   PSEUDOS FORUMACTIF
+   On ne force PAS leur couleur.
+   La couleur de groupe doit venir de Forumactif.
+===================== */
+
+a[href^="/u"],
+.username,
+.username a,
+span[style*="color"],
+a[style*="color"],
+strong[style*="color"],
+font[color]{
+	text-decoration:none!important;
+}
+
+/* Important :
+   si Forumactif met une couleur inline, on la laisse gagner. */
+a[href^="/u"][style*="color"],
+.username[style*="color"],
+.username a[style*="color"],
+span[style*="color"],
+a[style*="color"],
+strong[style*="color"],
+font[color]{
+	color:revert!important;
+}
+
+/* Les enfants héritent de la couleur du groupe */
+a[href^="/u"][style*="color"] *,
+.username[style*="color"] *,
+.username a[style*="color"] *,
+span[style*="color"] *,
+a[style*="color"] *,
+strong[style*="color"] *,
+font[color] *{
+	color:inherit!important;
+}
+
+/* =====================
+   LÉGENDE DES GROUPES
+   On garde la couleur native du groupe,
+   mais on retire le bleu des crochets / séparateurs si possible.
+===================== */
+
+.legend,
+.legend *,
+#page-body .gensmall,
+#page-body .gensmall a{
+	text-decoration:none!important;
+}
+
+/* Si un lien de groupe n’a pas de couleur inline,
+   il prend la couleur du thème au lieu du bleu natif. */
+.legend a:not([style*="color"]),
+#page-body .gensmall a:not([style*="color"]):not([href^="/u"]){
+	color:#fff!important;
+}
+
+.legend a:not([style*="color"]):hover,
+#page-body .gensmall a:not([style*="color"]):not([href^="/u"]):hover{
+	color:var(--me-red)!important;
+}
+
+/* =====================
+   FOOTER FORUMACTIF
+   Les liens phpBB / Forum gratuit / stats ne doivent plus être bleus.
+===================== */
+
+#page-footer a:not([style*="color"]),
+#footer a:not([style*="color"]),
+.copyright a:not([style*="color"]),
+.statistics a:not([style*="color"]){
+	color:var(--me-soft)!important;
+}
+
+#page-footer a:not([style*="color"]):hover,
+#footer a:not([style*="color"]):hover,
+.copyright a:not([style*="color"]):hover,
+.statistics a:not([style*="color"]):hover{
+	color:var(--me-red)!important;
+}
