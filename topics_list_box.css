@@ -804,3 +804,146 @@ a.topictitle{
 		margin-top:14px!important;
 	}
 }
+/* =========================================================
+   TOPICLISTBOX — CORRECTION ZONE GAUCHE
+   Empêche le titre de passer sous l'icône
+========================================================= */
+
+/* La colonne titre devient une vraie grille interne :
+   icône ronde à gauche / contenu texte à droite */
+.mtb-topic-main{
+	display:grid!important;
+	grid-template-columns:66px minmax(0,1fr)!important;
+	grid-template-areas:"mtbicon mtbcontent"!important;
+	gap:18px!important;
+	align-items:center!important;
+	padding-left:0!important;
+	overflow:visible!important;
+}
+
+/* Icône ronde */
+.mtb-topic-main::before{
+	position:static!important;
+	grid-area:mtbicon!important;
+	width:66px!important;
+	height:66px!important;
+	transform:none!important;
+	align-self:center!important;
+}
+
+/* Pictogramme feuille centré dans l’icône */
+.mtb-topic-main::after{
+	left:19px!important;
+	top:50%!important;
+	transform:translateY(-50%)!important;
+}
+
+/* On remet le pictogramme en position absolue par rapport à la colonne */
+.mtb-topic-main{
+	position:relative!important;
+}
+
+.mtb-topic-main::after{
+	position:absolute!important;
+}
+
+/* Tout le contenu texte doit être dans la colonne droite */
+.mtb-title-wrap,
+.mtb-topic-desc,
+.mtb-topic-author,
+.mtb-topic-pages{
+	grid-column:2!important;
+	min-width:0!important;
+	max-width:100%!important;
+	margin-left:0!important;
+	padding-left:0!important;
+}
+
+/* Reset des marges natives qui coupent le titre */
+.mtb-title-wrap,
+.topic-title-container{
+	position:relative!important;
+	left:auto!important;
+	right:auto!important;
+	width:100%!important;
+	max-width:100%!important;
+	margin:0!important;
+	padding:0!important;
+	overflow:visible!important;
+}
+
+/* Le h2 ne doit pas avoir de retrait natif */
+.mtb-topic-title,
+.topic-title,
+.topic-title.hierarchy{
+	display:block!important;
+	width:100%!important;
+	max-width:100%!important;
+	margin:0!important;
+	padding:0!important;
+	overflow:visible!important;
+}
+
+/* Le lien du titre ne doit plus être coupé */
+.mtb-topic-title .topictitle,
+.mtb-topic-title a.topictitle,
+.topic-title .topictitle,
+.topic-title a.topictitle,
+a.topictitle{
+	display:inline!important;
+	width:auto!important;
+	max-width:100%!important;
+	margin:0!important;
+	padding:0!important;
+	white-space:normal!important;
+	overflow:visible!important;
+	text-indent:0!important;
+}
+
+/* Sécurité : les images new/participation ne prennent aucune place */
+.mtb-topic-icons,
+.mtb-topic-icons *,
+.topic-title-container > img,
+.topic-title-container > a > img{
+	display:none!important;
+	width:0!important;
+	height:0!important;
+	margin:0!important;
+	padding:0!important;
+}
+
+/* ModernBB met parfois une image de dossier en background sur le dl */
+.mtb-topic-dl,
+.mtb-topic-dl[style],
+.mtb-topicbox dl.icon[style]{
+	background-image:none!important;
+	background-position:0 0!important;
+	padding-left:0!important;
+}
+
+/* Version mobile : on garde l’icône au-dessus */
+@media (max-width:620px){
+	.mtb-topic-main{
+		display:block!important;
+		padding-top:84px!important;
+	}
+
+	.mtb-topic-main::before{
+		position:absolute!important;
+		left:0!important;
+		top:0!important;
+	}
+
+	.mtb-topic-main::after{
+		left:19px!important;
+		top:19px!important;
+		transform:none!important;
+	}
+
+	.mtb-title-wrap,
+	.mtb-topic-desc,
+	.mtb-topic-author,
+	.mtb-topic-pages{
+		grid-column:auto!important;
+	}
+}
