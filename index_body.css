@@ -524,7 +524,6 @@
 	scrollbar-width:thin;
 	scrollbar-color:var(--me-red,#c6262d) rgba(0,0,0,.35);
 }
-
 .me-qeel-user{
 	display:grid;
 	grid-template-columns:42px minmax(0,1fr) 20px;
@@ -535,20 +534,6 @@
 	margin-bottom:8px;
 	border-bottom:1px solid var(--me-line,rgba(255,255,255,.10));
 	text-decoration:none!important;
-}
-
-.me-qeel-user span{
-	width:40px;
-	height:40px;
-	display:grid;
-	place-items:center;
-	border:1px solid var(--me-line,rgba(255,255,255,.10));
-	border-radius:50%;
-	background:rgba(0,0,0,.40);
-	color:var(--me-red,#c6262d);
-	font-family:var(--me-font-title,"Cinzel Decorative",Cinzel,Georgia,serif);
-	font-size:13px;
-	font-weight:900;
 }
 
 .me-qeel-user strong{
@@ -565,18 +550,24 @@
 }
 
 .me-qeel-user em{
-	display:block;
-	margin-top:3px;
-	overflow:hidden;
-	color:var(--me-dim,#8f8580);
-	font-size:10px;
-	font-style:normal;
-	font-weight:900;
-	text-transform:uppercase;
-	letter-spacing:.12em;
-	white-space:nowrap;
-	text-overflow:ellipsis;
+	display:none!important;
 }
+ 
+.me-qeel-user span{
+	width:40px;
+	height:40px;
+	display:grid;
+	place-items:center;
+	border:1px solid var(--me-line,rgba(255,255,255,.10));
+	border-radius:50%;
+	background:rgba(0,0,0,.40);
+	color:var(--me-red,#c6262d);
+	font-family:var(--me-font-title,"Cinzel Decorative",Cinzel,Georgia,serif);
+	font-size:13px;
+	font-weight:900;
+}
+
+ 
 
 .me-qeel-user i{
 	color:var(--me-red-hot,#ff333d);
