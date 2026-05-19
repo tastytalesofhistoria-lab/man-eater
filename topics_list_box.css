@@ -1,10 +1,11 @@
-
 /* =========================================================
    MAN EATER — TOPIC LIST BOX / MODERNBB
    Fichier : topiclistbox.css
    Template : topics_list_box
    Préfixe : mtb-
+   Version corrigée / conflits nettoyés / doublons fusionnés
 ========================================================= */
+
 
 /* ===================== VARIABLES ===================== */
 
@@ -31,6 +32,7 @@
 
 	--mtb-speed:.22s;
 }
+
 
 /* ===================== WRAPPER ===================== */
 
@@ -62,8 +64,7 @@
 	inset:0;
 	z-index:0;
 	pointer-events:none;
-	background:
-		linear-gradient(180deg,rgba(255,255,255,.025),transparent 28%);
+	background:linear-gradient(180deg,rgba(255,255,255,.025),transparent 28%);
 }
 
 .mtb-topicbox > *{
@@ -91,6 +92,34 @@
 	border:0;
 }
 
+
+/* ===================== RESET MODERNBB ===================== */
+
+.mtb-topicbox .topiclist dl.icon,
+.mtb-topicbox .topiclist dl.icon dt,
+.mtb-topicbox .topiclist dl.icon dd,
+.mtb-topicbox .topiclist dd.dterm,
+.mtb-topicbox .topiclist dd.posts,
+.mtb-topicbox .topiclist dd.views,
+.mtb-topicbox .topiclist dd.lastpost{
+	float:none!important;
+	clear:none!important;
+	width:auto!important;
+	max-width:none!important;
+	min-width:0!important;
+	margin:0!important;
+	padding:0!important;
+	overflow:visible!important;
+}
+
+.mtb-topicbox .topiclist dl.icon[style],
+.mtb-topicbox .mtb-topic-dl[style]{
+	background-image:none!important;
+	background-position:0 0!important;
+	padding-left:0!important;
+}
+
+
 /* ===================== HEADER ===================== */
 
 .mtb-topic-head{
@@ -109,11 +138,12 @@
 
 .mtb-topic-head dl.icon{
 	display:grid!important;
-	grid-template-columns:minmax(0,1fr) 74px 74px 260px;
-	gap:18px;
-	align-items:center;
-	background:none!important;
+	grid-template-columns:minmax(0,1fr) 74px 74px 260px!important;
+	gap:18px!important;
+	align-items:center!important;
+	width:100%!important;
 	min-height:0!important;
+	background:none!important;
 }
 
 .mtb-head-title{
@@ -136,11 +166,13 @@
 }
 
 .mtb-head-last{
-	justify-content:flex-end;
+	justify-content:flex-end!important;
 	color:var(--mtb-muted)!important;
 	font-family:var(--mtb-font-body);
 	font-size:12px!important;
 	font-weight:900!important;
+	line-height:1.1;
+	text-align:right;
 	text-transform:uppercase;
 	letter-spacing:.16em;
 }
@@ -148,6 +180,7 @@
 .mtb-head-stat i{
 	color:var(--mtb-red)!important;
 }
+
 
 /* ===================== LIGNES TOPIC ===================== */
 
@@ -176,46 +209,53 @@
 
 .mtb-topic-dl{
 	display:grid!important;
-	grid-template-columns:minmax(0,1fr) 74px 74px 260px;
-	gap:18px;
-	align-items:center;
-	min-height:96px!important;
+	grid-template-columns:minmax(0,1fr) 74px 74px 260px!important;
+	gap:18px!important;
+	align-items:center!important;
+	width:100%!important;
+	min-height:112px!important;
 	background:none!important;
 }
 
-/* ===================== TITRE + ICÔNE ===================== */
+
+/* ===================== ZONE TITRE + ICÔNE ===================== */
 
 .mtb-topic-main{
-	position:relative;
-	min-width:0;
-	min-height:96px;
-	padding-left:88px!important;
-	display:flex!important;
-	flex-direction:column;
-	justify-content:center;
+	position:relative!important;
+	grid-column:1!important;
+	display:grid!important;
+	grid-template-columns:66px minmax(0,1fr)!important;
+	grid-template-areas:"mtbicon mtbcontent"!important;
+	gap:18px!important;
+	align-items:center!important;
+	width:auto!important;
+	min-width:0!important;
+	min-height:96px!important;
+	padding-left:0!important;
+	overflow:visible!important;
 }
 
 .mtb-topic-main::before{
 	content:"";
-	position:absolute;
-	left:0;
-	top:50%;
-	width:66px;
-	height:66px;
-	transform:translateY(-50%);
+	position:static!important;
+	grid-area:mtbicon!important;
+	width:66px!important;
+	height:66px!important;
+	align-self:center!important;
 	border-radius:50%;
 	border:1px solid var(--mtb-line);
 	background:#050505;
+	transform:none!important;
 }
 
 .mtb-topic-main::after{
 	content:"";
-	position:absolute;
-	left:19px;
-	top:50%;
+	position:absolute!important;
+	left:19px!important;
+	top:50%!important;
 	width:28px;
 	height:28px;
-	transform:translateY(-50%);
+	transform:translateY(-50%)!important;
 	background:var(--mtb-red);
 	mask-position:center;
 	mask-repeat:no-repeat;
@@ -227,18 +267,42 @@
 	-webkit-mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 2.8h8.8L20 8v13.2H6V2.8Zm8 1.8V9h4.4L14 4.6ZM8 4.5v15h10v-9h-5.8v-6H8Zm2 8h6v1.6h-6V12.5Zm0 3h6v1.6h-6v-1.6Z'/%3E%3C/svg%3E");
 }
 
-.mtb-title-wrap{
+.mtb-title-wrap,
+.mtb-topic-desc,
+.mtb-topic-author,
+.mtb-topic-pages{
+	grid-column:2!important;
+	min-width:0!important;
+	max-width:100%!important;
+	margin-left:0!important;
+	padding-left:0!important;
+}
+
+.mtb-title-wrap,
+.topic-title-container{
+	position:relative!important;
+	left:auto!important;
+	right:auto!important;
 	display:flex!important;
 	flex-wrap:wrap;
 	align-items:center;
 	gap:8px;
-	min-width:0;
+	width:100%!important;
+	max-width:100%!important;
+	margin:0!important;
+	padding:0!important;
+	overflow:visible!important;
 }
 
 .mtb-topic-icons,
-.mtb-topic-icons img,
-.mtb-topic-icons a img{
+.mtb-topic-icons *,
+.topic-title-container > img,
+.topic-title-container > a > img{
 	display:none!important;
+	width:0!important;
+	height:0!important;
+	margin:0!important;
+	padding:0!important;
 }
 
 .mtb-topic-type{
@@ -261,16 +325,27 @@
 }
 
 .mtb-topic-title,
-.mtb-topic-title.hierarchy{
+.topic-title,
+.topic-title.hierarchy{
+	display:block!important;
+	width:100%!important;
+	max-width:100%!important;
+	min-width:0;
 	margin:0!important;
 	padding:0!important;
-	min-width:0;
+	overflow:visible!important;
 }
 
 .mtb-topic-title .topictitle,
 .mtb-topic-title a.topictitle,
+.topic-title .topictitle,
+.topic-title a.topictitle,
 a.topictitle{
-	display:inline-block;
+	display:inline!important;
+	width:auto!important;
+	max-width:100%!important;
+	margin:0!important;
+	padding:0!important;
 	color:#fff!important;
 	font-family:var(--mtb-font-title)!important;
 	font-size:25px!important;
@@ -279,19 +354,27 @@ a.topictitle{
 	text-transform:uppercase!important;
 	letter-spacing:-.04em!important;
 	text-decoration:none!important;
+	white-space:normal!important;
+	word-break:normal!important;
+	overflow-wrap:break-word!important;
+	overflow:visible!important;
+	text-indent:0!important;
 }
 
 .mtb-topic-title .topictitle:hover,
 .mtb-topic-title a.topictitle:hover,
+.topic-title .topictitle:hover,
+.topic-title a.topictitle:hover,
 a.topictitle:hover{
 	color:var(--mtb-red)!important;
 }
+
 
 /* ===================== DESCRIPTION / AUTEUR ===================== */
 
 .mtb-topic-desc{
 	display:block;
-	margin-top:8px;
+	margin-top:8px!important;
 	color:var(--mtb-muted)!important;
 	font-family:var(--mtb-font-body);
 	font-size:14px;
@@ -301,7 +384,7 @@ a.topictitle:hover{
 
 .mtb-topic-author{
 	display:block;
-	margin-top:8px;
+	margin-top:8px!important;
 	color:var(--mtb-dim)!important;
 	font-family:var(--mtb-font-body);
 	font-size:12px;
@@ -310,21 +393,36 @@ a.topictitle:hover{
 	letter-spacing:.04em;
 }
 
-.mtb-topic-author a{
-	color:var(--mtb-red)!important;
-	font-weight:900;
+/* Pseudos : laisser Forumactif appliquer la couleur native des groupes */
+.mtb-topic-author a,
+.mtb-topic-author span,
+.mtb-topic-author strong,
+.mtb-topic-author font,
+.mtb-lastpost-author a,
+.mtb-lastpost-author span,
+.mtb-lastpost-author strong,
+.mtb-lastpost-author font,
+.mtb-topic-lastpost .lastpost-infos a,
+.mtb-topic-lastpost .lastpost-infos span,
+.mtb-topic-lastpost .lastpost-infos strong,
+.mtb-topic-lastpost .lastpost-infos font{
+	color:inherit!important;
 	text-decoration:none!important;
 }
 
-.mtb-topic-author a:hover{
-	color:#fff!important;
+.mtb-topicbox span[style*="color"] *,
+.mtb-topicbox font[color] *,
+.mtb-topicbox a[style*="color"] *,
+.mtb-topicbox strong[style*="color"] *{
+	color:inherit!important;
 }
+
 
 /* ===================== PAGINATION TOPIC ===================== */
 
 .mtb-topic-pages{
 	display:block;
-	margin-top:8px;
+	margin-top:8px!important;
 	color:var(--mtb-muted)!important;
 	font-size:12px!important;
 }
@@ -352,7 +450,16 @@ a.topictitle:hover{
 	color:#fff!important;
 }
 
+
 /* ===================== STATS ===================== */
+
+.mtb-topic-posts{
+	grid-column:2!important;
+}
+
+.mtb-topic-views{
+	grid-column:3!important;
+}
 
 .mtb-topic-posts,
 .mtb-topic-views{
@@ -360,6 +467,10 @@ a.topictitle:hover{
 	flex-direction:column;
 	align-items:center;
 	justify-content:center;
+	width:74px!important;
+	min-width:74px!important;
+	max-width:74px!important;
+	overflow:hidden!important;
 	color:#e8ded3!important;
 	font-family:var(--mtb-font-body);
 	text-align:center;
@@ -388,10 +499,15 @@ a.topictitle:hover{
 	letter-spacing:.07em!important;
 }
 
+
 /* ===================== LASTPOST ===================== */
 
 .mtb-topic-lastpost{
-	min-height:96px;
+	grid-column:4!important;
+	width:260px!important;
+	min-width:260px!important;
+	max-width:260px!important;
+	min-height:96px!important;
 	display:flex!important;
 	align-items:center;
 	padding:0!important;
@@ -402,54 +518,63 @@ a.topictitle:hover{
 	font-size:13px;
 	line-height:1.35;
 	text-align:left;
-	overflow:hidden;
+	overflow:hidden!important;
 }
 
 .mtb-lastpost-avatar,
 .mtb-lastpost-avatar img,
+.mtb-topic-lastpost img,
 .mtb-topic-lastpost .lastpost-avatar,
 .mtb-topic-lastpost .lastpost-avatar img{
 	display:none!important;
 }
 
-.mtb-lastpost-infos{
+.mtb-lastpost-infos,
+.mtb-topic-lastpost .lastpost-infos{
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
 	align-items:flex-start;
 	gap:5px;
-	width:100%;
+	width:100%!important;
+	min-width:0!important;
+	max-width:100%!important;
 	min-height:96px;
 	padding:14px;
 	color:var(--mtb-muted)!important;
-	word-break:break-word;
+	word-break:normal!important;
+	overflow-wrap:break-word!important;
+	white-space:normal!important;
+	overflow:hidden!important;
 }
 
 .mtb-lastpost-author{
 	display:block;
-	color:var(--mtb-muted);
+	max-width:100%!important;
+	color:inherit!important;
 	font-size:13px;
 	font-weight:700;
 	line-height:1.25;
-}
-
-.mtb-lastpost-author a{
-	color:var(--mtb-red)!important;
-	font-weight:900!important;
-	text-decoration:none!important;
+	word-break:normal!important;
+	overflow-wrap:break-word!important;
+	white-space:normal!important;
 }
 
 .mtb-lastpost-date{
 	display:block;
+	max-width:100%!important;
 	color:var(--mtb-red)!important;
-	font-size:13px;
-	font-weight:900;
-	line-height:1.25;
-	text-transform:uppercase;
+	font-size:13px!important;
+	font-weight:900!important;
+	line-height:1.25!important;
+	text-transform:uppercase!important;
+	word-break:normal!important;
+	overflow-wrap:break-word!important;
+	white-space:normal!important;
 }
 
 .mtb-topic-lastpost a{
-	color:#fff!important;
+	color:inherit!important;
 	font-weight:900!important;
 	text-decoration:none!important;
 }
@@ -461,6 +586,7 @@ a.topictitle:hover{
 .mtb-topic-lastpost dfn{
 	display:none!important;
 }
+
 
 /* ===================== SÉLECTION / MODÉRATION ===================== */
 
@@ -475,6 +601,7 @@ a.topictitle:hover{
 	right:8px;
 	top:8px;
 }
+
 
 /* ===================== NO TOPICS ===================== */
 
@@ -492,22 +619,23 @@ a.topictitle:hover{
 	font-weight:800;
 }
 
-/* ===================== BBCODE GLOBAL DANS DESCRIPTIONS ===================== */
 
-.mtb-topicbox strong,
-.mtb-topicbox b{
+/* ===================== BBCODE DANS DESCRIPTION ===================== */
+
+.mtb-topic-desc strong,
+.mtb-topic-desc b{
 	color:var(--mtb-red)!important;
 	font-weight:900!important;
 }
 
-.mtb-topicbox em,
-.mtb-topicbox i{
+.mtb-topic-desc em,
+.mtb-topic-desc i{
 	color:var(--mtb-grey)!important;
 	font-style:italic!important;
 	font-weight:400!important;
 }
 
-.mtb-topicbox u{
+.mtb-topic-desc u{
 	color:#fff!important;
 	font-weight:500!important;
 	text-decoration-line:underline!important;
@@ -515,6 +643,7 @@ a.topictitle:hover{
 	text-decoration-thickness:2px!important;
 	text-underline-offset:3px!important;
 }
+
 
 /* ===================== RESPONSIVE ===================== */
 
@@ -524,229 +653,11 @@ a.topictitle:hover{
 	}
 
 	.mtb-topic-head dl.icon{
-		grid-template-columns:minmax(0,1fr) 60px 60px;
-	}
-
-	.mtb-head-last{
-		display:none!important;
-	}
-
-	.mtb-topic-dl{
-		grid-template-columns:minmax(0,1fr) 70px 70px;
-		grid-template-areas:
-			"title posts views"
-			"last last last";
-	}
-
-	.mtb-topic-main{
-		grid-area:title;
-	}
-
-	.mtb-topic-posts{
-		grid-area:posts;
-	}
-
-	.mtb-topic-views{
-		grid-area:views;
-	}
-
-	.mtb-topic-lastpost{
-		grid-area:last;
-		margin-top:14px!important;
-	}
-}
-
-@media (max-width:620px){
-	.mtb-topicbox{
-		width:calc(100% - 20px);
-		padding:14px!important;
-	}
-
-	.mtb-topic-head dl.icon{
-		display:block!important;
-	}
-
-	.mtb-head-stat,
-	.mtb-head-last{
-		display:none!important;
-	}
-
-	.mtb-topic-dl{
-		display:block!important;
-	}
-
-	.mtb-topic-main{
-		padding-left:0!important;
-		padding-top:84px!important;
-	}
-
-	.mtb-topic-main::before{
-		left:0;
-		top:0;
-		transform:none;
-	}
-
-	.mtb-topic-main::after{
-		left:19px;
-		top:19px;
-		transform:none;
-	}
-
-	.mtb-topic-posts,
-	.mtb-topic-views,
-	.mtb-topic-lastpost{
-		margin-top:14px!important;
-	}
-
-	.mtb-topic-title .topictitle,
-	.mtb-topic-title a.topictitle,
-	a.topictitle{
-		font-size:22px!important;
-	}
-}
-/* =========================================================
-   TOPICLISTBOX — CORRECTION MODERNBB
-   Corrige les floats / widths natifs qui cassent la grille
-========================================================= */
-
-/* Reset complet des dd/dt dans la liste de sujets */
-.mtb-topicbox .topiclist dl.icon,
-.mtb-topicbox .topiclist dl.icon dt,
-.mtb-topicbox .topiclist dl.icon dd,
-.mtb-topicbox .topiclist dd.dterm,
-.mtb-topicbox .topiclist dd.posts,
-.mtb-topicbox .topiclist dd.views,
-.mtb-topicbox .topiclist dd.lastpost{
-	float:none!important;
-	clear:none!important;
-	width:auto!important;
-	max-width:none!important;
-	min-width:0!important;
-	margin:0!important;
-	padding:0!important;
-	overflow:visible!important;
-}
-
-/* Header : grille stable */
-.mtb-topic-head dl.icon{
-	display:grid!important;
-	grid-template-columns:minmax(0,1fr) 74px 74px 260px!important;
-	gap:18px!important;
-	align-items:center!important;
-	width:100%!important;
-}
-
-/* Lignes : grille stable */
-.mtb-topic-dl{
-	display:grid!important;
-	grid-template-columns:minmax(0,1fr) 74px 74px 260px!important;
-	gap:18px!important;
-	align-items:center!important;
-	width:100%!important;
-	min-height:112px!important;
-	background:none!important;
-}
-
-/* Zone titre : pas de débordement à gauche */
-.mtb-topic-main{
-	position:relative!important;
-	grid-column:1!important;
-	width:auto!important;
-	min-width:0!important;
-	min-height:96px!important;
-	padding-left:88px!important;
-	display:flex!important;
-	flex-direction:column!important;
-	justify-content:center!important;
-	overflow:hidden!important;
-}
-
-/* Le titre ne doit jamais sortir de sa colonne */
-.mtb-topic-title,
-.mtb-topic-title.hierarchy,
-.mtb-topic-title .topictitle,
-.mtb-topic-title a.topictitle,
-a.topictitle{
-	max-width:100%!important;
-	white-space:normal!important;
-	overflow-wrap:break-word!important;
-	word-break:normal!important;
-}
-
-/* Stats : colonnes fixes */
-.mtb-topic-posts{
-	grid-column:2!important;
-}
-
-.mtb-topic-views{
-	grid-column:3!important;
-}
-
-.mtb-topic-posts,
-.mtb-topic-views{
-	width:74px!important;
-	min-width:74px!important;
-	max-width:74px!important;
-	overflow:hidden!important;
-}
-
-/* Lastpost : vraie largeur de 260px */
-.mtb-topic-lastpost{
-	grid-column:4!important;
-	width:260px!important;
-	min-width:260px!important;
-	max-width:260px!important;
-	min-height:96px!important;
-	overflow:hidden!important;
-}
-
-/* Texte du lastpost : ne plus casser lettre par lettre */
-.mtb-lastpost-infos,
-.mtb-topic-lastpost .lastpost-infos{
-	width:100%!important;
-	min-width:0!important;
-	max-width:100%!important;
-	overflow:hidden!important;
-	word-break:normal!important;
-	overflow-wrap:break-word!important;
-	white-space:normal!important;
-}
-
-.mtb-lastpost-author,
-.mtb-lastpost-date,
-.mtb-topic-lastpost a,
-.mtb-topic-lastpost span{
-	max-width:100%!important;
-	word-break:normal!important;
-	overflow-wrap:break-word!important;
-	white-space:normal!important;
-}
-
-/* Date en rouge, mais lisible */
-.mtb-lastpost-date{
-	color:var(--mtb-red)!important;
-	font-size:13px!important;
-	font-weight:900!important;
-	line-height:1.25!important;
-	text-transform:uppercase!important;
-}
-
-/* Images/icônes parasites du dernier message */
-.mtb-topic-lastpost img,
-.mtb-topic-lastpost .lastpost-avatar,
-.mtb-topic-lastpost .lastpost-avatar img{
-	display:none!important;
-}
-
-/* Sécurité : si Forumactif injecte un style background image */
-.mtb-topic-dl[style]{
-	background-image:none!important;
-}
-
-/* Responsive corrigé */
-@media (max-width:980px){
-	.mtb-topic-head dl.icon{
 		grid-template-columns:minmax(0,1fr) 70px 70px!important;
+	}
+
+	.mtb-head-last{
+		display:none!important;
 	}
 
 	.mtb-topic-dl{
@@ -784,154 +695,32 @@ a.topictitle{
 }
 
 @media (max-width:620px){
-	.mtb-topic-dl,
-	.mtb-topic-head dl.icon{
+	.mtb-topicbox{
+		width:calc(100% - 20px);
+		padding:14px!important;
+	}
+
+	.mtb-topic-head dl.icon,
+	.mtb-topic-dl{
 		display:block!important;
 	}
 
+	.mtb-head-stat,
+	.mtb-head-last{
+		display:none!important;
+	}
+
 	.mtb-topic-main{
-		padding-left:0!important;
+		display:block!important;
 		padding-top:84px!important;
 		overflow:visible!important;
-	}
-
-	.mtb-topic-posts,
-	.mtb-topic-views,
-	.mtb-topic-lastpost{
-		width:100%!important;
-		min-width:0!important;
-		max-width:none!important;
-		margin-top:14px!important;
-	}
-}
-/* =========================================================
-   TOPICLISTBOX — CORRECTION ZONE GAUCHE
-   Empêche le titre de passer sous l'icône
-========================================================= */
-
-/* La colonne titre devient une vraie grille interne :
-   icône ronde à gauche / contenu texte à droite */
-.mtb-topic-main{
-	display:grid!important;
-	grid-template-columns:66px minmax(0,1fr)!important;
-	grid-template-areas:"mtbicon mtbcontent"!important;
-	gap:18px!important;
-	align-items:center!important;
-	padding-left:0!important;
-	overflow:visible!important;
-}
-
-/* Icône ronde */
-.mtb-topic-main::before{
-	position:static!important;
-	grid-area:mtbicon!important;
-	width:66px!important;
-	height:66px!important;
-	transform:none!important;
-	align-self:center!important;
-}
-
-/* Pictogramme feuille centré dans l’icône */
-.mtb-topic-main::after{
-	left:19px!important;
-	top:50%!important;
-	transform:translateY(-50%)!important;
-}
-
-/* On remet le pictogramme en position absolue par rapport à la colonne */
-.mtb-topic-main{
-	position:relative!important;
-}
-
-.mtb-topic-main::after{
-	position:absolute!important;
-}
-
-/* Tout le contenu texte doit être dans la colonne droite */
-.mtb-title-wrap,
-.mtb-topic-desc,
-.mtb-topic-author,
-.mtb-topic-pages{
-	grid-column:2!important;
-	min-width:0!important;
-	max-width:100%!important;
-	margin-left:0!important;
-	padding-left:0!important;
-}
-
-/* Reset des marges natives qui coupent le titre */
-.mtb-title-wrap,
-.topic-title-container{
-	position:relative!important;
-	left:auto!important;
-	right:auto!important;
-	width:100%!important;
-	max-width:100%!important;
-	margin:0!important;
-	padding:0!important;
-	overflow:visible!important;
-}
-
-/* Le h2 ne doit pas avoir de retrait natif */
-.mtb-topic-title,
-.topic-title,
-.topic-title.hierarchy{
-	display:block!important;
-	width:100%!important;
-	max-width:100%!important;
-	margin:0!important;
-	padding:0!important;
-	overflow:visible!important;
-}
-
-/* Le lien du titre ne doit plus être coupé */
-.mtb-topic-title .topictitle,
-.mtb-topic-title a.topictitle,
-.topic-title .topictitle,
-.topic-title a.topictitle,
-a.topictitle{
-	display:inline!important;
-	width:auto!important;
-	max-width:100%!important;
-	margin:0!important;
-	padding:0!important;
-	white-space:normal!important;
-	overflow:visible!important;
-	text-indent:0!important;
-}
-
-/* Sécurité : les images new/participation ne prennent aucune place */
-.mtb-topic-icons,
-.mtb-topic-icons *,
-.topic-title-container > img,
-.topic-title-container > a > img{
-	display:none!important;
-	width:0!important;
-	height:0!important;
-	margin:0!important;
-	padding:0!important;
-}
-
-/* ModernBB met parfois une image de dossier en background sur le dl */
-.mtb-topic-dl,
-.mtb-topic-dl[style],
-.mtb-topicbox dl.icon[style]{
-	background-image:none!important;
-	background-position:0 0!important;
-	padding-left:0!important;
-}
-
-/* Version mobile : on garde l’icône au-dessus */
-@media (max-width:620px){
-	.mtb-topic-main{
-		display:block!important;
-		padding-top:84px!important;
 	}
 
 	.mtb-topic-main::before{
 		position:absolute!important;
 		left:0!important;
 		top:0!important;
+		transform:none!important;
 	}
 
 	.mtb-topic-main::after{
@@ -945,5 +734,20 @@ a.topictitle{
 	.mtb-topic-author,
 	.mtb-topic-pages{
 		grid-column:auto!important;
+	}
+
+	.mtb-topic-posts,
+	.mtb-topic-views,
+	.mtb-topic-lastpost{
+		width:100%!important;
+		min-width:0!important;
+		max-width:none!important;
+		margin-top:14px!important;
+	}
+
+	.mtb-topic-title .topictitle,
+	.mtb-topic-title a.topictitle,
+	a.topictitle{
+		font-size:22px!important;
 	}
 }
