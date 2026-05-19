@@ -8,6 +8,7 @@
    - poser la base noire / rouge / ivoire
    - corriger la navbar native sans casser les linklist internes
    - conserver les couleurs natives des groupes Forumactif
+   - corriger QEEL / légende / footer / lastpost
 ========================================================= */
 
 
@@ -35,6 +36,13 @@
 	--me-muted:#b7aaa4;
 	--me-dim:#8f8580;
 	--me-grey:#b9b9b9;
+
+	/* Couleurs de groupes visibles dans ton PA */
+	--me-group-admin:#f4ece7;
+	--me-group-modo:#f4ece7;
+	--me-group-sangpur:#f4ece7;
+	--me-group-hybride:#ff1b24;
+	--me-group-monstre:#c72cff;
 
 	--me-font-title:"Cinzel Decorative",Cinzel,"Cormorant Garamond",Georgia,serif;
 	--me-font-body:Inter,Arial,Helvetica,sans-serif;
@@ -380,21 +388,41 @@ a:hover{
 	text-decoration:none;
 }
 
+/* Liens généraux : blancs/rouges, sauf pseudos/groupes/inline colors */
+#page-body a:not([href^="/u"]):not([href*="/u"]):not([href^="/g"]):not([href*="/g"]):not([style*="color"]),
+#footer a:not([href^="/u"]):not([href*="/u"]):not([href^="/g"]):not([href*="/g"]):not([style*="color"]),
+#page-footer a:not([href^="/u"]):not([href*="/u"]):not([href^="/g"]):not([href*="/g"]):not([style*="color"]){
+	color:#fff!important;
+	text-decoration:none!important;
+}
+
+#page-body a:not([href^="/u"]):not([href*="/u"]):not([href^="/g"]):not([href*="/g"]):not([style*="color"]):hover,
+#footer a:not([href^="/u"]):not([href*="/u"]):not([href^="/g"]):not([href*="/g"]):not([style*="color"]):hover,
+#page-footer a:not([href^="/u"]):not([href*="/u"]):not([href^="/g"]):not([href*="/g"]):not([style*="color"]):hover{
+	color:var(--me-red)!important;
+}
+
 /* Pseudos / groupes : on enlève juste le soulignement, pas la couleur */
 .username,
 .username a,
 a[href^="/u"],
+a[href*="/u"],
+a[href^="/g"],
+a[href*="/g"],
 span[style*="color"],
+strong[style*="color"],
 font[color]{
 	text-decoration:none!important;
 }
 
-/* Si Forumactif injecte une couleur inline ou font[color], elle doit rester prioritaire */
+/* IMPORTANT :
+   Pas de color:revert ici, sinon Forumactif peut retomber sur le bleu natif.
+   On laisse simplement la couleur inline / font[color] s’appliquer. */
 a[style*="color"],
 span[style*="color"],
 strong[style*="color"],
 font[color]{
-	color:revert!important;
+	text-decoration:none!important;
 }
 
 a[style*="color"] *,
@@ -406,7 +434,90 @@ font[color] *{
 
 
 /* =========================================================
-   08 — BOUTONS / INPUTS
+   08 — GROUPES CONNUS / QEEL / LÉGENDE
+   Corrige les groupes qui ressortent bleus dans la légende.
+========================================================= */
+
+/* Groupes par URL Forumactif probable */
+#page-body a[href*="admin"]:not([style*="color"]),
+#page-body a[href*="administrateur"]:not([style*="color"]),
+#page-body a[href*="moderateur"]:not([style*="color"]),
+#page-body a[href*="modo"]:not([style*="color"]),
+#page-body a[href*="sang"]:not([style*="color"]),
+#page-body a[href*="pur"]:not([style*="color"]){
+	color:var(--me-group-sangpur)!important;
+}
+
+#page-body a[href*="hybride"]:not([style*="color"]){
+	color:var(--me-group-hybride)!important;
+}
+
+#page-body a[href*="monstre"]:not([style*="color"]){
+	color:var(--me-group-monstre)!important;
+}
+
+/* Parfois Forumactif génère /g1- /g2- etc. Ajuste les numéros si besoin. */
+#page-body a[href^="/g1-"]:not([style*="color"]),
+#page-body a[href*="/g1-"]:not([style*="color"]),
+#page-body a[href^="/g2-"]:not([style*="color"]),
+#page-body a[href*="/g2-"]:not([style*="color"]){
+	color:var(--me-group-admin)!important;
+}
+
+#page-body a[href^="/g3-"]:not([style*="color"]),
+#page-body a[href*="/g3-"]:not([style*="color"]){
+	color:var(--me-group-sangpur)!important;
+}
+
+#page-body a[href^="/g4-"]:not([style*="color"]),
+#page-body a[href*="/g4-"]:not([style*="color"]){
+	color:var(--me-group-hybride)!important;
+}
+
+#page-body a[href^="/g5-"]:not([style*="color"]),
+#page-body a[href*="/g5-"]:not([style*="color"]){
+	color:var(--me-group-monstre)!important;
+}
+
+/* QEEL / stats */
+.statistics,
+.statistics *,
+#page-body .statistics,
+#page-body .h3,
+#page-body .panel{
+	color:var(--me-text);
+}
+
+.statistics a:not([style*="color"]):not([href^="/u"]):not([href*="/u"]):not([href^="/g"]):not([href*="/g"]),
+#page-body .gensmall a:not([style*="color"]):not([href^="/u"]):not([href*="/u"]):not([href^="/g"]):not([href*="/g"]){
+	color:#fff!important;
+}
+
+.statistics a:not([style*="color"]):not([href^="/u"]):not([href*="/u"]):hover,
+#page-body .gensmall a:not([style*="color"]):not([href^="/u"]):not([href*="/u"]):hover{
+	color:var(--me-red)!important;
+}
+
+/* Pseudos utilisateurs sans couleur inline :
+   fallback ivoire pour Admin / compte test. */
+a[href^="/u"]:not([style*="color"]),
+a[href*="/u"]:not([style*="color"]),
+.username a:not([style*="color"]){
+	color:var(--me-group-admin)!important;
+}
+
+/* Si le pseudo a une couleur inline Forumactif, elle gagne naturellement. */
+a[href^="/u"][style*="color"],
+a[href*="/u"][style*="color"],
+.username a[style*="color"],
+span[style*="color"] a,
+font[color] a{
+	color:inherit!important;
+}
+
+
+/* =========================================================
+   09 — BOUTONS / INPUTS
 ========================================================= */
 
 .button,
@@ -465,7 +576,7 @@ select:focus{
 
 
 /* =========================================================
-   09 — TABLES / LISTES NATIVES
+   10 — TABLES / LISTES NATIVES
 ========================================================= */
 
 table,
@@ -515,7 +626,7 @@ li.row:hover{
 
 
 /* =========================================================
-   10 — POSTS
+   11 — POSTS
 ========================================================= */
 
 .post{
@@ -552,12 +663,57 @@ li.row:hover{
 .postbody span[style*="color"],
 .postprofile font[color],
 .postbody font[color]{
-	color:revert!important;
+	text-decoration:none!important;
 }
 
 
 /* =========================================================
-   11 — BBCODE GLOBAL
+   12 — INDEXBOX / TOPICLISTBOX LASTPOST
+   Corrige le bleu dans les derniers posteurs.
+========================================================= */
+
+/* Indexbox : pseudos utilisateurs */
+#mib-indexbox .mib-lastpost a[href^="/u"]:not([style*="color"]),
+#mib-indexbox .mib-lastpost a[href*="/u"]:not([style*="color"]),
+#mib-indexbox .lastpost-infos a[href^="/u"]:not([style*="color"]),
+#mib-indexbox .lastpost-infos a[href*="/u"]:not([style*="color"]){
+	color:var(--me-group-admin)!important;
+	font-weight:900!important;
+	text-decoration:none!important;
+}
+
+/* Indexbox : liens de sujet dans le lastpost */
+#mib-indexbox .mib-lastpost a:not([href^="/u"]):not([href*="/u"]):not([style*="color"]),
+#mib-indexbox .lastpost-infos a:not([href^="/u"]):not([href*="/u"]):not([style*="color"]){
+	color:#fff!important;
+}
+
+#mib-indexbox .mib-lastpost a:not([href^="/u"]):not([href*="/u"]):not([style*="color"]):hover,
+#mib-indexbox .lastpost-infos a:not([href^="/u"]):not([href*="/u"]):not([style*="color"]):hover{
+	color:var(--me-red)!important;
+}
+
+/* Topiclistbox : pseudos */
+.mtb-topicbox .mtb-lastpost-author a[href^="/u"]:not([style*="color"]),
+.mtb-topicbox .mtb-lastpost-author a[href*="/u"]:not([style*="color"]),
+.mtb-topicbox .lastpost-infos a[href^="/u"]:not([style*="color"]),
+.mtb-topicbox .lastpost-infos a[href*="/u"]:not([style*="color"]){
+	color:var(--me-group-admin)!important;
+	font-weight:900!important;
+}
+
+/* Topiclistbox : lien topic dans lastpost */
+.mtb-topicbox .mtb-topic-lastpost a:not([href^="/u"]):not([href*="/u"]):not([style*="color"]){
+	color:#fff!important;
+}
+
+.mtb-topicbox .mtb-topic-lastpost a:not([href^="/u"]):not([href*="/u"]):not([style*="color"]):hover{
+	color:var(--me-red)!important;
+}
+
+
+/* =========================================================
+   13 — BBCODE GLOBAL
 ========================================================= */
 
 .postbody .content strong,
@@ -588,7 +744,7 @@ li.row:hover{
 
 
 /* =========================================================
-   12 — PAGINATION
+   14 — PAGINATION
 ========================================================= */
 
 .pagination span,
@@ -609,7 +765,7 @@ li.row:hover{
 
 
 /* =========================================================
-   13 — QUOTE / CODE
+   15 — QUOTE / CODE
 ========================================================= */
 
 blockquote,
@@ -630,7 +786,7 @@ blockquote,
 
 
 /* =========================================================
-   14 — FOOTER
+   16 — FOOTER
 ========================================================= */
 
 #page-footer,
@@ -642,21 +798,23 @@ blockquote,
 	text-shadow:none!important;
 }
 
-#page-footer a,
-#footer a,
-.copyright a{
+#page-footer a:not([style*="color"]),
+#footer a:not([style*="color"]),
+.copyright a:not([style*="color"]),
+.statistics a:not([style*="color"]):not([href^="/g"]):not([href*="/g"]){
 	color:var(--me-soft)!important;
 }
 
-#page-footer a:hover,
-#footer a:hover,
-.copyright a:hover{
+#page-footer a:not([style*="color"]):hover,
+#footer a:not([style*="color"]):hover,
+.copyright a:not([style*="color"]):hover,
+.statistics a:not([style*="color"]):not([href^="/g"]):not([href*="/g"]):hover{
 	color:var(--me-red)!important;
 }
 
 
 /* =========================================================
-   15 — RESPONSIVE NAVBAR
+   17 — RESPONSIVE NAVBAR
 ========================================================= */
 
 @media (max-width:900px){
@@ -672,108 +830,4 @@ blockquote,
 		font-size:11px!important;
 		padding:6px!important;
 	}
-}
-/* =========================================================
-   MAN EATER — CORRECTION LIENS BLEUS / GROUPES
-   À placer tout à la fin du CSS global
-========================================================= */
-
-/* =====================
-   LIENS NATIFS BLEUS
-   On recolore les liens généraux, sauf les pseudos colorés.
-===================== */
-
-a:not([style*="color"]):not(.gensmall a):not(.username):not([href^="/u"]),
-a:link:not([style*="color"]):not(.username):not([href^="/u"]),
-a:visited:not([style*="color"]):not(.username):not([href^="/u"]){
-	color:#fff!important;
-	text-decoration:none!important;
-}
-
-a:hover:not([style*="color"]):not(.username):not([href^="/u"]){
-	color:var(--me-red)!important;
-	text-decoration:none!important;
-}
-
-/* =====================
-   PSEUDOS FORUMACTIF
-   On ne force PAS leur couleur.
-   La couleur de groupe doit venir de Forumactif.
-===================== */
-
-a[href^="/u"],
-.username,
-.username a,
-span[style*="color"],
-a[style*="color"],
-strong[style*="color"],
-font[color]{
-	text-decoration:none!important;
-}
-
-/* Important :
-   si Forumactif met une couleur inline, on la laisse gagner. */
-a[href^="/u"][style*="color"],
-.username[style*="color"],
-.username a[style*="color"],
-span[style*="color"],
-a[style*="color"],
-strong[style*="color"],
-font[color]{
-	color:revert!important;
-}
-
-/* Les enfants héritent de la couleur du groupe */
-a[href^="/u"][style*="color"] *,
-.username[style*="color"] *,
-.username a[style*="color"] *,
-span[style*="color"] *,
-a[style*="color"] *,
-strong[style*="color"] *,
-font[color] *{
-	color:inherit!important;
-}
-
-/* =====================
-   LÉGENDE DES GROUPES
-   On garde la couleur native du groupe,
-   mais on retire le bleu des crochets / séparateurs si possible.
-===================== */
-
-.legend,
-.legend *,
-#page-body .gensmall,
-#page-body .gensmall a{
-	text-decoration:none!important;
-}
-
-/* Si un lien de groupe n’a pas de couleur inline,
-   il prend la couleur du thème au lieu du bleu natif. */
-.legend a:not([style*="color"]),
-#page-body .gensmall a:not([style*="color"]):not([href^="/u"]){
-	color:#fff!important;
-}
-
-.legend a:not([style*="color"]):hover,
-#page-body .gensmall a:not([style*="color"]):not([href^="/u"]):hover{
-	color:var(--me-red)!important;
-}
-
-/* =====================
-   FOOTER FORUMACTIF
-   Les liens phpBB / Forum gratuit / stats ne doivent plus être bleus.
-===================== */
-
-#page-footer a:not([style*="color"]),
-#footer a:not([style*="color"]),
-.copyright a:not([style*="color"]),
-.statistics a:not([style*="color"]){
-	color:var(--me-soft)!important;
-}
-
-#page-footer a:not([style*="color"]):hover,
-#footer a:not([style*="color"]):hover,
-.copyright a:not([style*="color"]):hover,
-.statistics a:not([style*="color"]):hover{
-	color:var(--me-red)!important;
 }
