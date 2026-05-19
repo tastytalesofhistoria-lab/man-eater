@@ -477,63 +477,7 @@
 	background-size:auto,9px 9px;
 }
 
-/* ===================== RAPPORT / STATS QEEL ===================== */
-
-.me-qeel-report{
-	padding:18px;
-}
-
-.me-qeel-report-grid{
-	display:grid;
-	grid-template-columns:repeat(3,minmax(0,1fr));
-	gap:12px;
-}
-
-.me-qeel-report-item{
-	min-height:102px;
-	padding:14px 10px;
-	background:var(--me-soft,#d8c8bf);
-	color:#111;
-	text-align:center;
-	text-transform:uppercase;
-}
-
-.me-qeel-report-item span{
-	display:block;
-	min-height:28px;
-	font-size:10px;
-	font-weight:900;
-	line-height:1.25;
-	letter-spacing:.12em;
-}
-
-.me-qeel-report-item strong{
-	display:block;
-	width:100%;
-	margin-top:10px;
-	overflow:hidden;
-	color:#111;
-	font-family:var(--me-font-title,"Cinzel Decorative",Cinzel,Georgia,serif);
-	font-size:30px;
-	font-weight:900;
-	line-height:.9;
-	white-space:nowrap;
-	text-overflow:ellipsis;
-}
-
-.me-qeel-report-item em{
-	display:block;
-	margin-top:10px;
-	color:#111;
-	font-size:10px;
-	font-style:normal;
-	font-weight:900;
-	letter-spacing:.10em;
-}
-
-.me-qeel-report-item--red strong{
-	color:var(--me-red,#c6262d);
-}
+ 
 
 /* ===================== ONLINE ===================== */
 
@@ -755,8 +699,7 @@
 	}
 
 	.me-qeel-metrics,
-	.me-qeel-groups-grid,
-	.me-qeel-report-grid{
+	.me-qeel-groups-grid{
 		grid-template-columns:1fr;
 	}
 }
