@@ -2046,15 +2046,4 @@
 		margin-top:14px;
 	}
 }
-.me-qeel-users-source,
-.me-qeel-native-data{
-	display:none!important;
-}
 
-.me-qeel-user strong{
-	color:inherit;
-}
-
-.me-qeel-group-icon strong{
-	pointer-events:none;
-}
