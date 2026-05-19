@@ -1,7 +1,7 @@
-
 /* =========================================================
-   MAN EATER — QEEL / OVERALL_BODY MODERNBB
+   MAN EATER — QEEL / INDEX_BODY MODERNBB
    Préfixe : me-qeel
+   Version corrigée + stats QEEL stylisées
 ========================================================= */
 
 .me-qeel,
@@ -320,7 +320,8 @@
 
 .me-qeel-groups h3,
 .me-qeel-contamination h3,
-.me-qeel-online h3{
+.me-qeel-online h3,
+.me-qeel-report h3{
 	margin:0 0 18px;
 	color:var(--me-soft,#d8c8bf);
 	font-family:var(--me-font-title,"Cinzel Decorative",Cinzel,Georgia,serif);
@@ -476,6 +477,64 @@
 	background-size:auto,9px 9px;
 }
 
+/* ===================== RAPPORT / STATS QEEL ===================== */
+
+.me-qeel-report{
+	padding:18px;
+}
+
+.me-qeel-report-grid{
+	display:grid;
+	grid-template-columns:repeat(3,minmax(0,1fr));
+	gap:12px;
+}
+
+.me-qeel-report-item{
+	min-height:102px;
+	padding:14px 10px;
+	background:var(--me-soft,#d8c8bf);
+	color:#111;
+	text-align:center;
+	text-transform:uppercase;
+}
+
+.me-qeel-report-item span{
+	display:block;
+	min-height:28px;
+	font-size:10px;
+	font-weight:900;
+	line-height:1.25;
+	letter-spacing:.12em;
+}
+
+.me-qeel-report-item strong{
+	display:block;
+	width:100%;
+	margin-top:10px;
+	overflow:hidden;
+	color:#111;
+	font-family:var(--me-font-title,"Cinzel Decorative",Cinzel,Georgia,serif);
+	font-size:30px;
+	font-weight:900;
+	line-height:.9;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+.me-qeel-report-item em{
+	display:block;
+	margin-top:10px;
+	color:#111;
+	font-size:10px;
+	font-style:normal;
+	font-weight:900;
+	letter-spacing:.10em;
+}
+
+.me-qeel-report-item--red strong{
+	color:var(--me-red,#c6262d);
+}
+
 /* ===================== ONLINE ===================== */
 
 .me-qeel-online{
@@ -524,6 +583,7 @@
 	scrollbar-width:thin;
 	scrollbar-color:var(--me-red,#c6262d) rgba(0,0,0,.35);
 }
+
 .me-qeel-user{
 	display:grid;
 	grid-template-columns:42px minmax(0,1fr) 20px;
@@ -534,6 +594,20 @@
 	margin-bottom:8px;
 	border-bottom:1px solid var(--me-line,rgba(255,255,255,.10));
 	text-decoration:none!important;
+}
+
+.me-qeel-user span{
+	width:40px;
+	height:40px;
+	display:grid;
+	place-items:center;
+	border:1px solid var(--me-line,rgba(255,255,255,.10));
+	border-radius:50%;
+	background:rgba(0,0,0,.40);
+	color:var(--me-red,#c6262d);
+	font-family:var(--me-font-title,"Cinzel Decorative",Cinzel,Georgia,serif);
+	font-size:13px;
+	font-weight:900;
 }
 
 .me-qeel-user strong{
@@ -552,22 +626,6 @@
 .me-qeel-user em{
 	display:none!important;
 }
- 
-.me-qeel-user span{
-	width:40px;
-	height:40px;
-	display:grid;
-	place-items:center;
-	border:1px solid var(--me-line,rgba(255,255,255,.10));
-	border-radius:50%;
-	background:rgba(0,0,0,.40);
-	color:var(--me-red,#c6262d);
-	font-family:var(--me-font-title,"Cinzel Decorative",Cinzel,Georgia,serif);
-	font-size:13px;
-	font-weight:900;
-}
-
- 
 
 .me-qeel-user i{
 	color:var(--me-red-hot,#ff333d);
@@ -575,12 +633,13 @@
 }
 
 .me-qeel-user--empty{
-	grid-template-columns:42px minmax(0,1fr);
+	grid-template-columns:42px minmax(0,1fr) 20px;
 	color:var(--me-soft,#d8c8bf);
 }
 
 .me-qeel-user--empty i{
-	display:none;
+	display:block;
+	opacity:.35;
 }
 
 .me-qeel-last-user{
@@ -696,7 +755,8 @@
 	}
 
 	.me-qeel-metrics,
-	.me-qeel-groups-grid{
+	.me-qeel-groups-grid,
+	.me-qeel-report-grid{
 		grid-template-columns:1fr;
 	}
 }
