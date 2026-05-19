@@ -3,11 +3,18 @@
    Fichier : topiclistbox.css
    Template : topics_list_box
    Préfixe : mtb-
-   Version corrigée / conflits nettoyés / doublons fusionnés
+   Version corrigée / doublons fusionnés / conflits nettoyés
+
+   Notes :
+   - Les pseudos gardent la couleur native des groupes Forumactif.
+   - Les styles ModernBB natifs float/width sont neutralisés.
+   - Les corrections de zone gauche sont intégrées, pas ajoutées en patch.
 ========================================================= */
 
 
-/* ===================== VARIABLES ===================== */
+/* =========================================================
+   00 — VARIABLES
+========================================================= */
 
 :root{
 	--mtb-red:#c6262d;
@@ -34,7 +41,9 @@
 }
 
 
-/* ===================== WRAPPER ===================== */
+/* =========================================================
+   01 — WRAPPER + RESET LOCAL
+========================================================= */
 
 .mtb-topicbox,
 .mtb-topicbox *,
@@ -93,7 +102,10 @@
 }
 
 
-/* ===================== RESET MODERNBB ===================== */
+/* =========================================================
+   02 — RESET MODERNBB NATIF
+   Neutralise les floats / widths qui cassent la grille.
+========================================================= */
 
 .mtb-topicbox .topiclist dl.icon,
 .mtb-topicbox .topiclist dl.icon dt,
@@ -112,15 +124,18 @@
 	overflow:visible!important;
 }
 
-.mtb-topicbox .topiclist dl.icon[style],
-.mtb-topicbox .mtb-topic-dl[style]{
+.mtb-topic-dl,
+.mtb-topic-dl[style],
+.mtb-topicbox dl.icon[style]{
 	background-image:none!important;
 	background-position:0 0!important;
 	padding-left:0!important;
 }
 
 
-/* ===================== HEADER ===================== */
+/* =========================================================
+   03 — HEADER
+========================================================= */
 
 .mtb-topic-head{
 	margin:0 0 16px!important;
@@ -159,8 +174,8 @@
 .mtb-head-stat,
 .mtb-head-last{
 	display:flex!important;
-	align-items:center;
-	justify-content:center;
+	align-items:center!important;
+	justify-content:center!important;
 	color:var(--mtb-muted)!important;
 	font-size:18px!important;
 }
@@ -171,8 +186,6 @@
 	font-family:var(--mtb-font-body);
 	font-size:12px!important;
 	font-weight:900!important;
-	line-height:1.1;
-	text-align:right;
 	text-transform:uppercase;
 	letter-spacing:.16em;
 }
@@ -182,7 +195,9 @@
 }
 
 
-/* ===================== LIGNES TOPIC ===================== */
+/* =========================================================
+   04 — LISTE / LIGNES TOPIC
+========================================================= */
 
 .mtb-topic-list{
 	margin:0!important;
@@ -218,7 +233,9 @@
 }
 
 
-/* ===================== ZONE TITRE + ICÔNE ===================== */
+/* =========================================================
+   05 — ZONE GAUCHE : ICÔNE + TITRE
+========================================================= */
 
 .mtb-topic-main{
 	position:relative!important;
@@ -231,10 +248,11 @@
 	width:auto!important;
 	min-width:0!important;
 	min-height:96px!important;
-	padding-left:0!important;
+	padding:0!important;
 	overflow:visible!important;
 }
 
+/* Rond noir */
 .mtb-topic-main::before{
 	content:"";
 	position:static!important;
@@ -248,6 +266,7 @@
 	transform:none!important;
 }
 
+/* Icône feuille */
 .mtb-topic-main::after{
 	content:"";
 	position:absolute!important;
@@ -267,6 +286,7 @@
 	-webkit-mask-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 2.8h8.8L20 8v13.2H6V2.8Zm8 1.8V9h4.4L14 4.6ZM8 4.5v15h10v-9h-5.8v-6H8Zm2 8h6v1.6h-6V12.5Zm0 3h6v1.6h-6v-1.6Z'/%3E%3C/svg%3E");
 }
 
+/* Tout le contenu texte part dans la colonne droite */
 .mtb-title-wrap,
 .mtb-topic-desc,
 .mtb-topic-author,
@@ -277,6 +297,11 @@
 	margin-left:0!important;
 	padding-left:0!important;
 }
+
+
+/* =========================================================
+   06 — TYPE / TITRE TOPIC
+========================================================= */
 
 .mtb-title-wrap,
 .topic-title-container{
@@ -289,6 +314,7 @@
 	gap:8px;
 	width:100%!important;
 	max-width:100%!important;
+	min-width:0;
 	margin:0!important;
 	padding:0!important;
 	overflow:visible!important;
@@ -326,7 +352,8 @@
 
 .mtb-topic-title,
 .topic-title,
-.topic-title.hierarchy{
+.topic-title.hierarchy,
+.mtb-topic-title.hierarchy{
 	display:block!important;
 	width:100%!important;
 	max-width:100%!important;
@@ -354,11 +381,11 @@ a.topictitle{
 	text-transform:uppercase!important;
 	letter-spacing:-.04em!important;
 	text-decoration:none!important;
-	white-space:normal!important;
-	word-break:normal!important;
-	overflow-wrap:break-word!important;
-	overflow:visible!important;
 	text-indent:0!important;
+	white-space:normal!important;
+	overflow:visible!important;
+	overflow-wrap:break-word!important;
+	word-break:normal!important;
 }
 
 .mtb-topic-title .topictitle:hover,
@@ -370,7 +397,9 @@ a.topictitle:hover{
 }
 
 
-/* ===================== DESCRIPTION / AUTEUR ===================== */
+/* =========================================================
+   07 — DESCRIPTION / AUTEUR
+========================================================= */
 
 .mtb-topic-desc{
 	display:block;
@@ -382,10 +411,12 @@ a.topictitle:hover{
 	line-height:1.35;
 }
 
+/* Le conteneur peut être discret,
+   mais les pseudos gardent leurs couleurs de groupe Forumactif. */
 .mtb-topic-author{
 	display:block;
 	margin-top:8px!important;
-	color:var(--mtb-dim)!important;
+	color:var(--mtb-dim);
 	font-family:var(--mtb-font-body);
 	font-size:12px;
 	font-weight:800;
@@ -393,32 +424,34 @@ a.topictitle:hover{
 	letter-spacing:.04em;
 }
 
-/* Pseudos : laisser Forumactif appliquer la couleur native des groupes */
 .mtb-topic-author a,
 .mtb-topic-author span,
 .mtb-topic-author strong,
-.mtb-topic-author font,
-.mtb-lastpost-author a,
-.mtb-lastpost-author span,
-.mtb-lastpost-author strong,
-.mtb-lastpost-author font,
-.mtb-topic-lastpost .lastpost-infos a,
-.mtb-topic-lastpost .lastpost-infos span,
-.mtb-topic-lastpost .lastpost-infos strong,
-.mtb-topic-lastpost .lastpost-infos font{
-	color:inherit!important;
+.mtb-topic-author font{
+	color:inherit;
 	text-decoration:none!important;
+	font-weight:900;
 }
 
-.mtb-topicbox span[style*="color"] *,
-.mtb-topicbox font[color] *,
-.mtb-topicbox a[style*="color"] *,
-.mtb-topicbox strong[style*="color"] *{
+/* Si Forumactif injecte une couleur inline ou font[color], elle prime. */
+.mtb-topic-author [style*="color"],
+.mtb-topic-author font[color],
+.mtb-topic-author a[style*="color"],
+.mtb-topic-author span[style*="color"]{
+	color:revert!important;
+}
+
+.mtb-topic-author [style*="color"] *,
+.mtb-topic-author font[color] *,
+.mtb-topic-author a[style*="color"] *,
+.mtb-topic-author span[style*="color"] *{
 	color:inherit!important;
 }
 
 
-/* ===================== PAGINATION TOPIC ===================== */
+/* =========================================================
+   08 — PAGINATION TOPIC
+========================================================= */
 
 .mtb-topic-pages{
 	display:block;
@@ -451,7 +484,9 @@ a.topictitle:hover{
 }
 
 
-/* ===================== STATS ===================== */
+/* =========================================================
+   09 — STATS
+========================================================= */
 
 .mtb-topic-posts{
 	grid-column:2!important;
@@ -500,7 +535,9 @@ a.topictitle:hover{
 }
 
 
-/* ===================== LASTPOST ===================== */
+/* =========================================================
+   10 — LASTPOST
+========================================================= */
 
 .mtb-topic-lastpost{
 	grid-column:4!important;
@@ -523,15 +560,15 @@ a.topictitle:hover{
 
 .mtb-lastpost-avatar,
 .mtb-lastpost-avatar img,
-.mtb-topic-lastpost img,
 .mtb-topic-lastpost .lastpost-avatar,
-.mtb-topic-lastpost .lastpost-avatar img{
+.mtb-topic-lastpost .lastpost-avatar img,
+.mtb-topic-lastpost img{
 	display:none!important;
 }
 
 .mtb-lastpost-infos,
 .mtb-topic-lastpost .lastpost-infos{
-	display:flex;
+	display:flex!important;
 	flex-direction:column;
 	justify-content:center;
 	align-items:flex-start;
@@ -541,23 +578,61 @@ a.topictitle:hover{
 	max-width:100%!important;
 	min-height:96px;
 	padding:14px;
-	color:var(--mtb-muted)!important;
+	overflow:hidden!important;
+	color:var(--mtb-muted);
 	word-break:normal!important;
 	overflow-wrap:break-word!important;
 	white-space:normal!important;
-	overflow:hidden!important;
 }
 
 .mtb-lastpost-author{
 	display:block;
 	max-width:100%!important;
-	color:inherit!important;
+	color:inherit;
 	font-size:13px;
 	font-weight:700;
 	line-height:1.25;
 	word-break:normal!important;
 	overflow-wrap:break-word!important;
 	white-space:normal!important;
+}
+
+/* Ne jamais forcer la couleur du pseudo :
+   Forumactif doit conserver la couleur native du groupe. */
+.mtb-lastpost-author a,
+.mtb-lastpost-author span,
+.mtb-lastpost-author strong,
+.mtb-lastpost-author font,
+.mtb-topic-lastpost .lastpost-infos a,
+.mtb-topic-lastpost .lastpost-infos span,
+.mtb-topic-lastpost .lastpost-infos strong,
+.mtb-topic-lastpost .lastpost-infos font{
+	color:inherit;
+	text-decoration:none!important;
+	font-weight:900;
+	max-width:100%!important;
+	word-break:normal!important;
+	overflow-wrap:break-word!important;
+	white-space:normal!important;
+}
+
+/* Couleurs natives Forumactif : inline style ou font[color] gagnent. */
+.mtb-lastpost-author [style*="color"],
+.mtb-lastpost-author font[color],
+.mtb-topic-lastpost .lastpost-infos [style*="color"],
+.mtb-topic-lastpost .lastpost-infos font[color],
+.mtb-topic-lastpost .lastpost-infos a[style*="color"],
+.mtb-topic-lastpost .lastpost-infos span[style*="color"]{
+	color:revert!important;
+}
+
+.mtb-lastpost-author [style*="color"] *,
+.mtb-lastpost-author font[color] *,
+.mtb-topic-lastpost .lastpost-infos [style*="color"] *,
+.mtb-topic-lastpost .lastpost-infos font[color] *,
+.mtb-topic-lastpost .lastpost-infos a[style*="color"] *,
+.mtb-topic-lastpost .lastpost-infos span[style*="color"] *{
+	color:inherit!important;
 }
 
 .mtb-lastpost-date{
@@ -573,22 +648,14 @@ a.topictitle:hover{
 	white-space:normal!important;
 }
 
-.mtb-topic-lastpost a{
-	color:inherit!important;
-	font-weight:900!important;
-	text-decoration:none!important;
-}
-
-.mtb-topic-lastpost a:hover{
-	color:var(--mtb-red)!important;
-}
-
 .mtb-topic-lastpost dfn{
 	display:none!important;
 }
 
 
-/* ===================== SÉLECTION / MODÉRATION ===================== */
+/* =========================================================
+   11 — SÉLECTION / MODÉRATION
+========================================================= */
 
 .mtb-topicbox input[type="checkbox"],
 .mtb-topicbox input[type="radio"]{
@@ -603,7 +670,9 @@ a.topictitle:hover{
 }
 
 
-/* ===================== NO TOPICS ===================== */
+/* =========================================================
+   12 — NO TOPICS
+========================================================= */
 
 .mtb-no-topic dl{
 	padding:20px!important;
@@ -620,7 +689,10 @@ a.topictitle:hover{
 }
 
 
-/* ===================== BBCODE DANS DESCRIPTION ===================== */
+/* =========================================================
+   13 — BBCODE DANS LES DESCRIPTIONS UNIQUEMENT
+   Ne s’applique pas aux pseudos.
+========================================================= */
 
 .mtb-topic-desc strong,
 .mtb-topic-desc b{
@@ -645,7 +717,9 @@ a.topictitle:hover{
 }
 
 
-/* ===================== RESPONSIVE ===================== */
+/* =========================================================
+   14 — RESPONSIVE
+========================================================= */
 
 @media (max-width:980px){
 	.mtb-topicbox{
@@ -700,8 +774,8 @@ a.topictitle:hover{
 		padding:14px!important;
 	}
 
-	.mtb-topic-head dl.icon,
-	.mtb-topic-dl{
+	.mtb-topic-dl,
+	.mtb-topic-head dl.icon{
 		display:block!important;
 	}
 
@@ -747,6 +821,8 @@ a.topictitle:hover{
 
 	.mtb-topic-title .topictitle,
 	.mtb-topic-title a.topictitle,
+	.topic-title .topictitle,
+	.topic-title a.topictitle,
 	a.topictitle{
 		font-size:22px!important;
 	}
