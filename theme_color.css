@@ -1,11 +1,19 @@
-
 /* =========================================================
    MAN EATER — BASE THEME GLOBAL FORUMACTIF MODERNBB
-   Objectif : remplacer les couleurs natives bleues/blanches
-   par la base noire / rouge / ivoire du thème.
+   Fichier : man-eater-base-theme.css
+   Version corrigée / doublons fusionnés / conflits nettoyés
+
+   Objectif :
+   - supprimer le gris/bleu natif ModernBB
+   - poser la base noire / rouge / ivoire
+   - corriger la navbar native sans casser les linklist internes
+   - conserver les couleurs natives des groupes Forumactif
 ========================================================= */
 
-/* ===================== VARIABLES GLOBALES ===================== */
+
+/* =========================================================
+   00 — VARIABLES GLOBALES
+========================================================= */
 
 :root{
 	--me-red:#c6262d;
@@ -33,31 +41,53 @@
 }
 
 
-/* ===================== BASE PAGE ===================== */
+/* =========================================================
+   01 — BASE PAGE / FOND GLOBAL
+========================================================= */
 
 html,
 body{
-	background:#e5e5e5!important;
+	min-height:100%;
+	background:#050505!important;
+	background-color:#050505!important;
 	color:var(--me-text)!important;
 	font-family:var(--me-font-body)!important;
 }
 
 body{
 	background:
-		linear-gradient(180deg,#e5e5e5,#d8d8d8)!important;
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.08),transparent 28%),
+		linear-gradient(90deg,#050505,#080808,#050505)!important;
 }
 
-/* Zone générale forum */
+/* Wrappers ModernBB / Forumactif qui gardent souvent le gris clair */
+#phpbb,
 #wrap,
 #page-body,
 #content-container,
 #container,
-#main-content{
+#main-content,
+#content,
+#main,
+.modern-resp,
+.conteneur_layout_IE,
+.conteneur_container_IE,
+.conteneur_minwidth_IE,
+#page-body .panel{
 	background:transparent!important;
+	background-color:transparent!important;
 	color:var(--me-text)!important;
+	box-shadow:none!important;
 }
 
-/* Grand conteneur central si ModernBB le crée */
+/* Conteneur central Forumactif repéré dans ton DOM */
+.conteneur_layout_IE{
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.08),transparent 28%),
+		linear-gradient(90deg,#050505,#080808,#050505)!important;
+}
+
+.conteneur_container_IE,
 #wrap{
 	max-width:1220px;
 	margin:0 auto!important;
@@ -68,18 +98,31 @@ body{
 	border-right:1px solid var(--me-line);
 }
 
+/* Sécurité contre les marges/fonds blancs autour du forum */
+#page-body,
+#content-container,
+#container{
+	border:0!important;
+	box-shadow:none!important;
+}
 
-/* ===================== HEADER NATIF ===================== */
+
+/* =========================================================
+   02 — HEADER NATIF
+========================================================= */
 
 #page-header,
 .headerbar,
 #logo-desc,
 #site-desc{
+	position:relative!important;
+	z-index:5!important;
 	background:
 		linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.35),rgba(0,0,0,.75)),
 		#111!important;
 	color:var(--me-text)!important;
 	border:0!important;
+	box-shadow:none!important;
 }
 
 .headerbar{
@@ -108,69 +151,166 @@ body{
 }
 
 
-/* ===================== NAVBAR NATIVE ===================== */
+/* =========================================================
+   03 — NAVBAR MODERNBB NATIVE
+   Important : ne cible PAS tous les ul.linklist globalement.
+========================================================= */
 
-.navbar,
-.navbar ul,
-.navbar .linklist,
-ul.linklist{
+#page-header .navbar,
+.navbar{
+	width:100%!important;
+	max-width:1220px!important;
+	min-height:0!important;
+	margin:0 auto!important;
+	padding:0!important;
 	background:#0c0c0c!important;
 	border:0!important;
+	border-bottom:1px solid var(--me-line)!important;
+	box-shadow:none!important;
 	color:var(--me-text)!important;
 }
 
-.navbar{
-	border-bottom:1px solid var(--me-line)!important;
+/* Liste interne de la navbar */
+#page-header .navbar ul.linklist,
+.navbar ul.linklist,
+.navbar .linklist{
+	display:flex!important;
+	flex-wrap:wrap!important;
+	align-items:center!important;
+	justify-content:center!important;
+	gap:0!important;
+	min-height:0!important;
+	margin:0!important;
+	padding:8px 14px!important;
+	background:transparent!important;
+	border:0!important;
+	line-height:1!important;
 }
 
+/* Items */
+#page-header .navbar ul.linklist > li,
+.navbar ul.linklist > li,
+.navbar .linklist > li{
+	display:flex!important;
+	align-items:center!important;
+	float:none!important;
+	margin:0!important;
+	padding:0!important;
+	line-height:1!important;
+	white-space:nowrap;
+}
+
+/* Liens navbar */
+#page-header .navbar a,
 .navbar a,
-ul.linklist a,
-.linklist a,
+#page-header .navbar ul.linklist a,
+.navbar ul.linklist a,
 .mainmenu a,
 a.mainmenu{
+	display:inline-flex!important;
+	align-items:center!important;
+	justify-content:center!important;
+	gap:5px;
+	min-height:26px!important;
+	padding:6px 8px!important;
+	background:transparent!important;
+	border:0!important;
+	box-shadow:none!important;
 	color:#fff!important;
 	font-family:var(--me-font-body)!important;
-	font-weight:800!important;
-	text-transform:uppercase;
-	letter-spacing:.04em;
+	font-size:12px!important;
+	font-weight:900!important;
+	line-height:1!important;
+	text-transform:uppercase!important;
+	letter-spacing:.03em!important;
 	text-decoration:none!important;
 	text-shadow:none!important;
 }
 
+#page-header .navbar a:hover,
 .navbar a:hover,
-ul.linklist a:hover,
-.linklist a:hover,
 .mainmenu a:hover,
 a.mainmenu:hover{
+	background:transparent!important;
 	color:var(--me-red)!important;
 }
 
+/* Icônes navbar */
+#page-header .navbar i,
+.navbar i,
+#page-header .navbar .ion,
+.navbar .ion{
+	margin:0!important;
+	color:inherit!important;
+	font-size:13px!important;
+	line-height:1!important;
+}
 
-/* ===================== BARRE LIENS HAUT / BAS ===================== */
+/* Déconnexion/admin : reste dans le flux, pas en float cassé */
+#page-header .navbar .rightside,
+.navbar .rightside{
+	margin-left:0!important;
+	float:none!important;
+}
 
-.linklist.top,
-.linklist.bottom,
+/* Z-index : l’indexbox ne doit pas remonter sur la navbar */
+#mib-indexbox,
+.categories-wrapper,
+.mib-forabg{
+	position:relative;
+	z-index:1;
+}
+
+
+/* =========================================================
+   04 — LINKLIST HORS NAVBAR
+   Barres de liens dans le contenu : nouveaux messages, sans réponses…
+========================================================= */
+
+#page-body > ul.linklist,
+#content-container ul.linklist.top,
+#content-container ul.linklist.bottom,
 ul.linklist.top,
 ul.linklist.bottom{
+	max-width:1220px;
+	margin:0 auto!important;
+	padding:10px 18px!important;
 	background:#0c0c0c!important;
 	border:0!important;
 	border-bottom:1px solid var(--me-line)!important;
-	color:var(--me-text)!important;
-	padding:10px 18px!important;
-}
-
-.linklist.top a,
-.linklist.bottom a{
 	color:#fff!important;
 }
 
-.linklist.top a:hover,
-.linklist.bottom a:hover{
+#page-body > ul.linklist li,
+ul.linklist.top li,
+ul.linklist.bottom li{
+	float:none!important;
+	margin:0!important;
+	padding:0 8px!important;
+}
+
+#page-body > ul.linklist a,
+ul.linklist.top a,
+ul.linklist.bottom a{
+	color:#fff!important;
+	font-family:var(--me-font-body)!important;
+	font-size:12px!important;
+	font-weight:900!important;
+	text-transform:uppercase!important;
+	text-decoration:none!important;
+	text-shadow:none!important;
+}
+
+#page-body > ul.linklist a:hover,
+ul.linklist.top a:hover,
+ul.linklist.bottom a:hover{
 	color:var(--me-red)!important;
 }
 
 
-/* ===================== BLOCS NATIFS FORUMACTIF ===================== */
+/* =========================================================
+   05 — BLOCS NATIFS FORUMACTIF
+========================================================= */
 
 .forabg,
 .forumbg,
@@ -198,7 +338,9 @@ li.header{
 }
 
 
-/* ===================== TITRES NATIFS ===================== */
+/* =========================================================
+   06 — TITRES NATIFS
+========================================================= */
 
 h1,
 h2,
@@ -223,7 +365,10 @@ a.topictitle:hover,
 }
 
 
-/* ===================== LIENS GÉNÉRAUX ===================== */
+/* =========================================================
+   07 — LIENS GÉNÉRAUX
+   Attention : ne pas écraser les couleurs de groupe Forumactif.
+========================================================= */
 
 a{
 	color:#fff;
@@ -235,7 +380,7 @@ a:hover{
 	text-decoration:none;
 }
 
-/* Attention : ne pas forcer les couleurs des pseudos de groupe */
+/* Pseudos / groupes : on enlève juste le soulignement, pas la couleur */
 .username,
 .username a,
 a[href^="/u"],
@@ -244,8 +389,25 @@ font[color]{
 	text-decoration:none!important;
 }
 
+/* Si Forumactif injecte une couleur inline ou font[color], elle doit rester prioritaire */
+a[style*="color"],
+span[style*="color"],
+strong[style*="color"],
+font[color]{
+	color:revert!important;
+}
 
-/* ===================== BOUTONS / INPUTS ===================== */
+a[style*="color"] *,
+span[style*="color"] *,
+strong[style*="color"] *,
+font[color] *{
+	color:inherit!important;
+}
+
+
+/* =========================================================
+   08 — BOUTONS / INPUTS
+========================================================= */
 
 .button,
 .button1,
@@ -283,8 +445,6 @@ a.button2:hover,
 	color:#fff!important;
 }
 
-
-/* Champs */
 input,
 textarea,
 select,
@@ -304,7 +464,9 @@ select:focus{
 }
 
 
-/* ===================== TABLES / LISTES NATIVES ===================== */
+/* =========================================================
+   09 — TABLES / LISTES NATIVES
+========================================================= */
 
 table,
 .table1,
@@ -330,8 +492,31 @@ td,
 	border-color:var(--me-line-soft)!important;
 }
 
+.bg1,
+.bg2,
+.bg3,
+.panel.bg1,
+.panel.bg2,
+.panel.bg3{
+	background:var(--me-panel)!important;
+	color:var(--me-text)!important;
+}
 
-/* ===================== POSTS ===================== */
+li.row,
+li.row:hover,
+.row,
+.row:hover{
+	background:transparent!important;
+}
+
+li.row:hover{
+	background:rgba(198,38,45,.035)!important;
+}
+
+
+/* =========================================================
+   10 — POSTS
+========================================================= */
 
 .post{
 	background:
@@ -360,8 +545,20 @@ td,
 	color:var(--me-red);
 }
 
+/* Pseudos dans les posts : couleur native de groupe conservée */
+.postprofile a[style*="color"],
+.postbody a[style*="color"],
+.postprofile span[style*="color"],
+.postbody span[style*="color"],
+.postprofile font[color],
+.postbody font[color]{
+	color:revert!important;
+}
 
-/* ===================== BBCODE GLOBAL ===================== */
+
+/* =========================================================
+   11 — BBCODE GLOBAL
+========================================================= */
 
 .postbody .content strong,
 .postbody .content b,
@@ -390,7 +587,9 @@ td,
 }
 
 
-/* ===================== PAGINATION ===================== */
+/* =========================================================
+   12 — PAGINATION
+========================================================= */
 
 .pagination span,
 .pagination a,
@@ -409,7 +608,30 @@ td,
 }
 
 
-/* ===================== FOOTER ===================== */
+/* =========================================================
+   13 — QUOTE / CODE
+========================================================= */
+
+blockquote,
+.codebox{
+	background:#0b0b0b!important;
+	border:1px solid var(--me-line-strong)!important;
+	color:var(--me-text)!important;
+}
+
+.codebox dt{
+	color:var(--me-soft)!important;
+	border-bottom:1px solid var(--me-line)!important;
+}
+
+.codebox code{
+	color:var(--me-text)!important;
+}
+
+
+/* =========================================================
+   14 — FOOTER
+========================================================= */
 
 #page-footer,
 #footer,
@@ -433,41 +655,21 @@ td,
 }
 
 
-/* ===================== SUPPRESSION BLEUS NATIFS COURANTS ===================== */
+/* =========================================================
+   15 — RESPONSIVE NAVBAR
+========================================================= */
 
-.bg1,
-.bg2,
-.bg3,
-.panel.bg1,
-.panel.bg2,
-.panel.bg3{
-	background:var(--me-panel)!important;
-	color:var(--me-text)!important;
-}
+@media (max-width:900px){
+	#page-header .navbar ul.linklist,
+	.navbar ul.linklist,
+	.navbar .linklist{
+		justify-content:center!important;
+		padding:8px!important;
+	}
 
-li.row,
-li.row:hover,
-.row,
-.row:hover{
-	background:transparent!important;
-}
-
-li.row:hover{
-	background:rgba(198,38,45,.035)!important;
-}
-
-blockquote,
-.codebox{
-	background:#0b0b0b!important;
-	border:1px solid var(--me-line-strong)!important;
-	color:var(--me-text)!important;
-}
-
-.codebox dt{
-	color:var(--me-soft)!important;
-	border-bottom:1px solid var(--me-line)!important;
-}
-
-.codebox code{
-	color:var(--me-text)!important;
+	#page-header .navbar a,
+	.navbar a{
+		font-size:11px!important;
+		padding:6px!important;
+	}
 }
