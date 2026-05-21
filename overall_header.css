@@ -731,3 +731,33 @@
 		display:none;
 	}
 }
+/* =========================================================
+   PATCH — TOOLBAR INVITÉ
+   Empêche Connexion / S'enregistrer natifs de réapparaître
+========================================================= */
+
+#fa_toolbar #fa_right > a,
+#fa_toolbar #fa_right > span,
+#fa_toolbar #fa_right .fa_tbMainElement,
+#fa_toolbar #fa_right .rightHeaderLink{
+	display:none!important;
+	visibility:hidden!important;
+	pointer-events:none!important;
+}
+
+/* Exception : on garde seulement les notifications natives pour les membres connectés */
+#fa_toolbar #fa_right #fa_notifications,
+#fa_toolbar #fa_right #notif_list{
+	display:block!important;
+	visibility:visible!important;
+	pointer-events:auto!important;
+}
+
+/* Si invité : pas de bouton notif natif utile */
+#fa_toolbar #fa_right a[href*="/login"],
+#fa_toolbar #fa_right a[href*="/register"],
+#fa_toolbar #fa_right a[href*="agreed=true"]{
+	display:none!important;
+	visibility:hidden!important;
+	pointer-events:none!important;
+}
