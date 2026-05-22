@@ -1,1 +1,291 @@
 
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+/* =========================================================
+   MAN EATER — CONTEXTE
+   Forumactif ModernBB
+   Préfixe unique : me-ctx-
+   CSS optimisé / conflits corrigés / doublons fusionnés
+========================================================= */
+
+.me-ctx,
+.me-ctx *,
+.me-ctx *::before,
+.me-ctx *::after{
+	box-sizing:border-box;
+}
+
+.me-ctx{
+	--me-red:var(--mef-red,#c6262d);
+	--me-red-hot:var(--mef-red-hot,#ff333d);
+	--me-line:var(--mef-line,rgba(255,255,255,.10));
+	--me-line-soft:var(--mef-line-soft,rgba(255,255,255,.07));
+	--me-text:var(--mef-text,#f4ece7);
+	--me-soft:var(--mef-soft,#d8c8bf);
+	--me-muted:var(--mef-muted,#b7aaa4);
+	--me-sang:var(--mef-sangpur,#f4ece7);
+	--me-hybride:var(--mef-hybride,#ff1b24);
+	--me-monstre:var(--mef-monstre,#c72cff);
+	--me-font-title:var(--mef-font-title,"Cinzel Decorative",Cinzel,Georgia,serif);
+	--me-font-body:var(--mef-font-body,Inter,Arial,Helvetica,sans-serif);
+
+	position:relative;
+	width:calc(100% - 52px);
+	max-width:1050px;
+	margin:30px auto;
+	padding:24px;
+	overflow:hidden;
+	border:1px solid var(--me-line);
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.12),transparent 32%),
+		linear-gradient(180deg,#101010,#080808);
+	color:var(--me-text);
+	font-family:var(--me-font-body);
+	font-size:14px;
+	line-height:1.55;
+}
+
+.me-ctx::before{
+	content:"";
+	position:absolute;
+	inset:0;
+	pointer-events:none;
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.12),transparent 34%),
+		linear-gradient(180deg,rgba(255,255,255,.025),transparent 30%);
+}
+
+.me-ctx::after{
+	content:"";
+	position:absolute;
+	inset:0;
+	pointer-events:none;
+	opacity:.14;
+	background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.12) 1px,transparent 1px);
+	background-size:34px 34px;
+}
+
+.me-ctx > *{
+	position:relative;
+	z-index:2;
+}
+
+.me-ctx strong{
+	color:var(--me-red)!important;
+	font-weight:900!important;
+}
+
+/* ===================== HEADER ===================== */
+
+.me-ctx-head{
+	margin-bottom:22px;
+	padding-bottom:20px;
+	border-bottom:1px solid var(--me-line);
+}
+
+.me-ctx-kicker{
+	display:block;
+	margin-bottom:10px;
+	color:var(--me-red);
+	font-size:11px;
+	font-weight:900;
+	line-height:1;
+	text-transform:uppercase;
+	letter-spacing:.22em;
+}
+
+.me-ctx-title{
+	margin:0;
+	border:0!important;
+	color:var(--me-red)!important;
+	font-family:var(--me-font-title)!important;
+	font-size:clamp(34px,5vw,52px);
+	font-weight:900;
+	line-height:.95;
+	text-transform:uppercase;
+	letter-spacing:.03em;
+	text-decoration:none!important;
+}
+
+/* ===================== SECTIONS ===================== */
+
+.me-ctx-section{
+	position:relative;
+	margin-top:22px;
+	padding:20px;
+	overflow:hidden;
+	border:1px solid var(--me-line);
+	background:rgba(0,0,0,.25);
+}
+
+.me-ctx-section::before{
+	content:"";
+	position:absolute;
+	inset:0;
+	pointer-events:none;
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 34%),
+		linear-gradient(180deg,rgba(255,255,255,.025),transparent 35%);
+}
+
+.me-ctx-section > *{
+	position:relative;
+	z-index:2;
+}
+
+.me-ctx-section-title{
+	margin:0 0 18px;
+	padding-bottom:14px;
+	border:0!important;
+	border-bottom:1px solid var(--me-line)!important;
+	color:var(--me-red)!important;
+	font-family:var(--me-font-title)!important;
+	font-size:30px;
+	font-weight:900;
+	line-height:1;
+	text-transform:uppercase;
+	letter-spacing:.04em;
+	text-decoration:none!important;
+}
+
+.me-ctx-section p{
+	margin:0 0 12px;
+	color:var(--me-muted);
+	font-size:14px;
+	font-weight:600;
+	line-height:1.6;
+	text-align:justify;
+	text-justify:inter-word;
+}
+
+.me-ctx-section p:last-child{
+	margin-bottom:0;
+}
+
+/* ===================== PHRASES IMPACT ===================== */
+
+.me-ctx-impact,
+.me-ctx-final{
+	display:block;
+	max-width:86%;
+	margin:18px auto 0!important;
+	padding:14px 18px;
+	border-top:1px solid rgba(198,38,45,.32);
+	border-bottom:1px solid rgba(198,38,45,.22);
+	background:linear-gradient(90deg,transparent,rgba(198,38,45,.08),transparent);
+	color:#fff!important;
+	font-family:var(--me-font-title);
+	font-size:16px!important;
+	font-weight:900!important;
+	line-height:1.25!important;
+	text-align:center!important;
+	text-transform:uppercase;
+	letter-spacing:.04em;
+	text-shadow:0 0 10px rgba(198,38,45,.18);
+}
+
+.me-ctx-impact::before,
+.me-ctx-final::before{
+	content:"« ";
+	color:var(--me-red);
+}
+
+.me-ctx-impact::after,
+.me-ctx-final::after{
+	content:" »";
+	color:var(--me-red);
+}
+
+/* ===================== GROUPES ===================== */
+
+.me-ctx-groups{
+	display:grid;
+	grid-template-columns:repeat(3,minmax(0,1fr));
+	gap:12px;
+	margin-top:18px;
+}
+
+.me-ctx-group{
+	position:relative;
+	padding:16px;
+	overflow:hidden;
+	border:1px solid var(--me-line-soft);
+	background:rgba(0,0,0,.20);
+}
+
+.me-ctx-group::before{
+	content:"";
+	position:absolute;
+	inset:0;
+	pointer-events:none;
+	background:radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 46%);
+}
+
+.me-ctx-group > *{
+	position:relative;
+	z-index:2;
+}
+
+.me-ctx-group-title{
+	margin:0 0 10px;
+	border:0!important;
+	font-family:var(--me-font-title)!important;
+	font-size:clamp(18px,2.2vw,22px);
+	font-weight:900;
+	line-height:1;
+	text-transform:uppercase;
+	letter-spacing:.05em;
+	text-decoration:none!important;
+}
+
+.me-ctx-group--sang .me-ctx-group-title{
+	color:var(--me-sang)!important;
+}
+
+.me-ctx-group--hybride .me-ctx-group-title{
+	color:var(--me-hybride)!important;
+}
+
+.me-ctx-group--monstre .me-ctx-group-title{
+	color:var(--me-monstre)!important;
+}
+
+.me-ctx-group p{
+	margin:0;
+	color:var(--me-muted);
+	font-size:13px;
+	font-weight:600;
+	line-height:1.5;
+	text-align:left;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media (max-width:900px){
+	.me-ctx{
+		width:calc(100% - 28px);
+		padding:18px;
+	}
+
+	.me-ctx-title{
+		font-size:34px;
+	}
+
+	.me-ctx-section{
+		padding:18px;
+	}
+
+	.me-ctx-section-title{
+		font-size:25px;
+	}
+
+	.me-ctx-groups{
+		grid-template-columns:1fr;
+	}
+
+	.me-ctx-impact,
+	.me-ctx-final{
+		max-width:100%;
+		font-size:14px!important;
+	}
+}
