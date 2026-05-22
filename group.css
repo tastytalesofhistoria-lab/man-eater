@@ -877,3 +877,24 @@
 	background:none!important;
 	padding-bottom:0!important;
 }
+/* =========================================================
+   PATCH FORUMACTIF — TITRES SOUS-GROUPES SANS SOULIGNEMENT
+========================================================= */
+
+.me-fac .me-fac-card-name,
+.me-fac .me-fac-card-top .me-fac-card-name{
+	border:0!important;
+	border-bottom:0!important;
+	box-shadow:none!important;
+	text-decoration:none!important;
+	background:none!important;
+	padding-bottom:0!important;
+}
+
+.me-fac .me-fac-card-name::before,
+.me-fac .me-fac-card-name::after{
+	content:none!important;
+	display:none!important;
+	border:0!important;
+	background:none!important;
+}
