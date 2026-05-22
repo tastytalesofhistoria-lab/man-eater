@@ -110,7 +110,8 @@
 	cursor:pointer;
 }
 
-.me-oh-welcome:hover{
+.me-oh-welcome:hover,
+.me-oh-alert-link:hover{
 	color:#fff!important;
 }
 
@@ -124,10 +125,6 @@
 .me-oh-alert-link{
 	text-decoration:none!important;
 	cursor:pointer;
-}
-
-.me-oh-alert-link:hover{
-	color:#fff!important;
 }
 
 /* ===================== NAVBAR STICKY ===================== */
@@ -489,8 +486,6 @@
 
 /* =========================================================
    TOOLBAR FORUMACTIF — MASQUÉE MAIS FONCTIONNELLE
-   Important : ne pas masquer #fa_menu, #fa_welcome,
-   #fa_notifications, #notif_list, #fa_menulist.
 ========================================================= */
 
 #fa_toolbar{
@@ -509,7 +504,6 @@
 	pointer-events:none!important;
 }
 
-/* Éléments visuels inutiles de la toolbar native */
 #fa_left,
 #fa_search,
 #fa_share,
@@ -525,7 +519,6 @@
 	pointer-events:none!important;
 }
 
-/* Zone droite conservée pour menus natifs */
 #fa_toolbar #fa_right{
 	position:fixed!important;
 	top:42px!important;
@@ -542,7 +535,6 @@
 	pointer-events:none!important;
 }
 
-/* Conteneur du menu profil : invisible mais fonctionnel */
 #fa_toolbar #fa_menu{
 	position:absolute!important;
 	top:0!important;
@@ -559,10 +551,10 @@
 	border:0!important;
 	box-shadow:none!important;
 	opacity:1!important;
+	visibility:visible!important;
 	pointer-events:none!important;
 }
 
-/* Déclencheurs natifs : cliquables par JS, invisibles visuellement */
 #fa_welcome,
 #fa_notifications{
 	position:absolute!important;
@@ -576,6 +568,7 @@
 	padding:0!important;
 	overflow:hidden!important;
 	opacity:0!important;
+	visibility:visible!important;
 	background:transparent!important;
 	border:0!important;
 	color:transparent!important;
@@ -593,7 +586,6 @@
 	right:0!important;
 }
 
-/* Liens natifs invités à ne pas afficher */
 #fa_toolbar #fa_right > a[href*="/login"],
 #fa_toolbar #fa_right > a[href*="/register"],
 #fa_toolbar #fa_right > a[href*="agreed=true"],
@@ -630,6 +622,14 @@
 	text-align:left!important;
 	z-index:7000!important;
 	pointer-events:auto!important;
+}
+
+#fa_menulist:not(.me-oh-open-menu){
+	display:none!important;
+}
+
+#fa_menulist.me-oh-open-menu{
+	display:block!important;
 }
 
 #fa_menulist table,
@@ -688,6 +688,14 @@
 	text-align:left!important;
 	pointer-events:auto!important;
 	z-index:7000!important;
+}
+
+#fa_toolbar #fa_right #notif_list:not(.me-oh-open-notifs){
+	display:none!important;
+}
+
+#fa_toolbar #fa_right #notif_list.me-oh-open-notifs{
+	display:block!important;
 }
 
 #fa_toolbar #fa_right.notification #notif_list,
