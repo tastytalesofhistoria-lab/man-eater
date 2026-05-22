@@ -4,7 +4,8 @@
    MAN EATER — EAU POTABLE & EAU NOIRE
    Forumactif ModernBB
    Préfixe unique : me-water-
-   CSS optimisé / conflits corrigés / doublons fusionnés
+   Palette équilibrée : noir / gris / blanc cassé + rouge en accent
+   CSS corrigé / conflits limités / doublons fusionnés
 ========================================================= */
 
 .me-water,
@@ -18,11 +19,17 @@
 	--me-red:var(--mef-red,#c6262d);
 	--me-red-hot:var(--mef-red-hot,#ff333d);
 	--me-purple:var(--mef-monstre,#c72cff);
+	--me-gold:#d4a838;
+	--me-ivory:#f4ece7;
+	--me-soft:#d8c8bf;
+	--me-muted:var(--mef-muted,#b7aaa4);
+	--me-dim:#8f8580;
+	--me-black:#070707;
+	--me-panel:#101010;
+	--me-panel-soft:#151515;
 	--me-line:var(--mef-line,rgba(255,255,255,.10));
 	--me-line-soft:var(--mef-line-soft,rgba(255,255,255,.07));
 	--me-line-strong:var(--mef-line-strong,rgba(255,255,255,.17));
-	--me-text:var(--mef-text,#f4ece7);
-	--me-muted:var(--mef-muted,#b7aaa4);
 	--me-font-title:var(--mef-font-title,"Cinzel Decorative",Cinzel,Georgia,serif);
 	--me-font-body:var(--mef-font-body,Inter,Arial,Helvetica,sans-serif);
 
@@ -35,9 +42,9 @@
 	overflow:hidden;
 	border:1px solid var(--me-line);
 	background:
-		radial-gradient(circle at 50% 0%,rgba(198,38,45,.12),transparent 32%),
-		linear-gradient(180deg,#101010,#080808);
-	color:var(--me-text);
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.08),transparent 34%),
+		linear-gradient(180deg,#111,#080808);
+	color:var(--me-ivory);
 	font-family:var(--me-font-body);
 	font-size:14px;
 	line-height:1.55;
@@ -49,7 +56,7 @@
 	inset:0;
 	pointer-events:none;
 	background:
-		radial-gradient(circle at 50% 0%,rgba(198,38,45,.12),transparent 34%),
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.055),transparent 34%),
 		linear-gradient(180deg,rgba(255,255,255,.025),transparent 30%);
 }
 
@@ -58,8 +65,8 @@
 	position:absolute;
 	inset:0;
 	pointer-events:none;
-	opacity:.14;
-	background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.12) 1px,transparent 1px);
+	opacity:.10;
+	background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.11) 1px,transparent 1px);
 	background-size:34px 34px;
 }
 
@@ -69,18 +76,20 @@
 }
 
 .me-water strong{
-	color:var(--me-red)!important;
+	color:#fff!important;
 	font-weight:900!important;
 }
 
 .me-water a{
-	color:var(--me-red)!important;
+	color:var(--me-red-hot)!important;
 	text-decoration:none!important;
 	font-weight:900!important;
+	border-bottom:2px solid rgba(255,255,255,.72);
 }
 
 .me-water a:hover{
 	color:#fff!important;
+	border-bottom-color:#fff!important;
 	text-decoration:none!important;
 }
 
@@ -96,7 +105,7 @@
 .me-water-kicker{
 	display:block;
 	margin-bottom:10px;
-	color:var(--me-red);
+	color:var(--me-red-hot);
 	font-size:11px;
 	font-weight:900;
 	line-height:1;
@@ -110,7 +119,7 @@
 	max-width:none;
 	margin:0;
 	border:0!important;
-	color:var(--me-red)!important;
+	color:var(--me-ivory)!important;
 	font-family:var(--me-font-title)!important;
 	font-size:clamp(28px,4.2vw,44px);
 	font-weight:900;
@@ -118,7 +127,11 @@
 	text-decoration:none!important;
 	text-transform:uppercase;
 	letter-spacing:.01em;
-	text-shadow:0 0 18px rgba(198,38,45,.24),0 2px 0 #000;
+	text-shadow:
+		2px 0 0 #000,
+		-2px 0 0 #000,
+		0 2px 0 #000,
+		0 0 18px rgba(0,0,0,.75);
 	word-break:keep-all;
 	overflow-wrap:normal;
 	hyphens:none;
@@ -135,7 +148,7 @@
 	letter-spacing:.06em;
 }
 
-/* ===================== NAVIGATION + GIF ===================== */
+/* ===================== NAVIGATION + VISUEL ===================== */
 
 .me-water-nav-zone{
 	display:grid;
@@ -145,26 +158,38 @@
 	align-items:stretch;
 }
 
-.me-water-nav{
+.me-water-nav,
+.me-water-section,
+.me-water-search,
+.me-water-questbox{
 	position:relative;
-	margin:0;
-	padding:18px;
 	overflow:hidden;
 	border:1px solid var(--me-line);
 	background:
-		linear-gradient(135deg,rgba(198,38,45,.12),transparent 34%),
-		rgba(0,0,0,.24);
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.04),transparent 36%),
+		linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.22));
 }
 
-.me-water-nav::before{
+.me-water-nav{
+	margin:0;
+	padding:18px;
+}
+
+.me-water-nav::before,
+.me-water-section::before,
+.me-water-questbox::before{
 	content:"";
 	position:absolute;
 	inset:0;
 	pointer-events:none;
-	background:radial-gradient(circle at 0% 50%,rgba(198,38,45,.12),transparent 42%);
+	background:
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.035),transparent 42%),
+		linear-gradient(180deg,rgba(255,255,255,.025),transparent 38%);
 }
 
-.me-water-nav > *{
+.me-water-nav > *,
+.me-water-section > *,
+.me-water-questbox > *{
 	position:relative;
 	z-index:2;
 }
@@ -183,7 +208,7 @@
 	align-items:center;
 	padding:12px;
 	border:1px solid var(--me-line-soft);
-	background:linear-gradient(90deg,rgba(255,255,255,.025),rgba(0,0,0,.22));
+	background:linear-gradient(90deg,rgba(255,255,255,.035),rgba(0,0,0,.20));
 }
 
 .me-water-nav-block--potable{
@@ -191,7 +216,7 @@
 }
 
 .me-water-nav-block--black{
-	border-left:3px solid var(--me-purple);
+	border-left:3px solid rgba(199,44,255,.55);
 }
 
 .me-water-nav-type{
@@ -208,23 +233,24 @@
 	flex:0 0 auto;
 	border:1px solid rgba(198,38,45,.42);
 	border-radius:50%;
-	background:rgba(0,0,0,.42);
+	background:rgba(0,0,0,.55);
 	color:var(--me-red-hot);
 	font-family:var(--me-font-title);
 	font-size:14px;
 	font-weight:900;
 	line-height:1;
-	box-shadow:0 0 24px rgba(198,38,45,.12);
+	box-shadow:0 0 18px rgba(198,38,45,.08);
 }
 
 .me-water-nav-block--black .me-water-nav-mark{
 	color:var(--me-purple);
-	border-color:rgba(199,44,255,.42);
-	box-shadow:0 0 24px rgba(199,44,255,.14);
+	border-color:rgba(199,44,255,.34);
+	box-shadow:0 0 18px rgba(199,44,255,.08);
 }
 
 .me-water-nav-type strong{
 	display:block;
+	color:#fff!important;
 	font-size:13px;
 	font-weight:900;
 	line-height:1;
@@ -234,30 +260,26 @@
 	white-space:nowrap;
 }
 
-.me-water-nav-block--potable .me-water-nav-type strong{
-	color:var(--me-red)!important;
-}
-
-.me-water-nav-block--black .me-water-nav-type strong{
-	color:var(--me-purple)!important;
-}
-
 .me-water-nav-links{
 	display:flex;
 	flex-wrap:wrap;
 	gap:8px;
 }
 
-.me-water-nav-links a{
+.me-water-nav-links a,
+.me-water-quest-link,
+.me-water-link{
 	position:relative;
 	display:inline-flex;
 	align-items:center;
 	justify-content:center;
 	gap:8px;
+	width:max-content;
+	max-width:100%;
 	min-height:31px;
 	padding:8px 11px;
-	border:1px solid var(--me-line-strong);
-	background:linear-gradient(90deg,#171717,rgba(23,23,23,.62));
+	border:1px solid var(--me-line-strong)!important;
+	background:linear-gradient(90deg,#171717,rgba(23,23,23,.62))!important;
 	color:#d6cbc5!important;
 	font-size:11px;
 	font-weight:900;
@@ -279,23 +301,25 @@
 	background:var(--me-red);
 	border-radius:7px 7px 7px 0;
 	transform:rotate(-45deg);
-	box-shadow:0 0 8px rgba(198,38,45,.35);
+	box-shadow:0 0 8px rgba(198,38,45,.28);
 }
 
 .me-water-nav-block--black .me-water-nav-links a::before{
 	background:var(--me-purple);
-	box-shadow:0 0 8px rgba(199,44,255,.35);
+	box-shadow:0 0 8px rgba(199,44,255,.22);
 }
 
-.me-water-nav-links a:hover{
-	border-color:var(--me-red)!important;
+.me-water-nav-links a:hover,
+.me-water-quest-link:hover,
+.me-water-link:hover{
+	border-color:rgba(198,38,45,.52)!important;
 	background:#000!important;
 	color:#fff!important;
 	transform:translateX(3px);
 }
 
 .me-water-nav-block--black .me-water-nav-links a:hover{
-	border-color:var(--me-purple)!important;
+	border-color:rgba(199,44,255,.45)!important;
 }
 
 .me-water-visual{
@@ -304,6 +328,14 @@
 	overflow:hidden;
 	border:1px solid var(--me-line);
 	background:url("https://i.pinimg.com/originals/2f/16/dc/2f16dce9609da8804a86f26131cebc42.gif") center/cover no-repeat #050505;
+}
+
+.me-water-visual::before{
+	content:"";
+	position:absolute;
+	inset:0;
+	pointer-events:none;
+	background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.26));
 }
 
 .me-water-visual::after{
@@ -324,8 +356,8 @@
 	z-index:2;
 	display:block;
 	padding:8px 9px;
-	border:1px solid rgba(198,38,45,.30);
-	background:rgba(0,0,0,.58);
+	border:1px solid rgba(255,255,255,.14);
+	background:rgba(0,0,0,.62);
 }
 
 .me-water-visual-text strong{
@@ -355,27 +387,8 @@
 /* ===================== SECTIONS ===================== */
 
 .me-water-section{
-	position:relative;
 	margin-top:22px;
 	padding:20px;
-	overflow:hidden;
-	border:1px solid var(--me-line);
-	background:rgba(0,0,0,.25);
-}
-
-.me-water-section::before{
-	content:"";
-	position:absolute;
-	inset:0;
-	pointer-events:none;
-	background:
-		radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 34%),
-		linear-gradient(180deg,rgba(255,255,255,.025),transparent 35%);
-}
-
-.me-water-section > *{
-	position:relative;
-	z-index:2;
 }
 
 .me-water-section-title{
@@ -383,7 +396,7 @@
 	padding-bottom:14px;
 	border:0!important;
 	border-bottom:1px solid var(--me-line)!important;
-	color:var(--me-red)!important;
+	color:var(--me-ivory)!important;
 	font-family:var(--me-font-title)!important;
 	font-size:30px;
 	font-weight:900;
@@ -391,9 +404,19 @@
 	text-decoration:none!important;
 	text-transform:uppercase;
 	letter-spacing:.04em;
+	text-shadow:2px 0 0 #000,0 2px 0 #000;
 	word-break:normal;
 	overflow-wrap:normal;
 	hyphens:none;
+}
+
+.me-water-section-title::after{
+	content:"";
+	display:block;
+	width:54px;
+	height:2px;
+	margin-top:12px;
+	background:var(--me-red);
 }
 
 .me-water-section p{
@@ -424,7 +447,7 @@
 	padding:16px;
 	overflow:hidden;
 	border:1px solid var(--me-line-soft);
-	background:rgba(0,0,0,.20);
+	background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.20));
 }
 
 .me-water-card::before{
@@ -432,7 +455,7 @@
 	position:absolute;
 	inset:0;
 	pointer-events:none;
-	background:radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 46%);
+	background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.045),transparent 46%);
 }
 
 .me-water-card > *{
@@ -443,6 +466,7 @@
 .me-water-card-title{
 	margin:0 0 10px;
 	border:0!important;
+	color:#fff!important;
 	font-family:var(--me-font-title)!important;
 	font-size:clamp(18px,2.2vw,22px);
 	font-weight:900;
@@ -460,15 +484,15 @@
 }
 
 .me-water-card--black{
-	border-left:3px solid var(--me-purple);
+	border-left:3px solid rgba(199,44,255,.55);
 }
 
-.me-water-card--potable .me-water-card-title{
-	color:var(--me-red)!important;
+.me-water-card--potable::before{
+	background:radial-gradient(circle at 50% 0%,rgba(198,38,45,.075),transparent 46%);
 }
 
-.me-water-card--black .me-water-card-title{
-	color:var(--me-purple)!important;
+.me-water-card--black::before{
+	background:radial-gradient(circle at 50% 0%,rgba(199,44,255,.075),transparent 46%);
 }
 
 .me-water-card p{
@@ -499,12 +523,10 @@
 	margin:0 0 12px;
 	padding:14px 16px 13px;
 	overflow:hidden;
-	border:1px solid rgba(198,38,45,.24);
+	border:1px solid var(--me-line);
 	border-left:4px solid var(--me-red);
-	background:
-		linear-gradient(90deg,rgba(198,38,45,.18),rgba(198,38,45,.04) 32%,rgba(0,0,0,.18)),
-		rgba(0,0,0,.24);
-	box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+	background:linear-gradient(90deg,rgba(255,255,255,.045),rgba(0,0,0,.20));
+	box-shadow:none;
 }
 
 .me-water-category-head::before{
@@ -512,7 +534,7 @@
 	position:absolute;
 	inset:0;
 	pointer-events:none;
-	background:radial-gradient(circle at 0% 50%,rgba(198,38,45,.14),transparent 42%);
+	background:radial-gradient(circle at 0% 50%,rgba(198,38,45,.075),transparent 42%);
 }
 
 .me-water-category-head strong,
@@ -528,7 +550,7 @@
 	line-height:1.05;
 	text-transform:uppercase;
 	letter-spacing:.14em;
-	text-shadow:0 0 10px rgba(198,38,45,.16);
+	text-shadow:none;
 }
 
 .me-water-category-head span{
@@ -537,9 +559,9 @@
 	justify-content:center;
 	min-height:30px;
 	padding:7px 10px;
-	border:1px solid rgba(255,255,255,.08);
-	background:rgba(0,0,0,.34);
-	color:#f0dfd6;
+	border:1px solid rgba(255,255,255,.12);
+	background:rgba(0,0,0,.35);
+	color:var(--me-soft);
 	font-size:10px;
 	font-weight:900;
 	line-height:1;
@@ -550,20 +572,17 @@
 }
 
 .me-water-category--black .me-water-category-head{
-	border-color:rgba(199,44,255,.24);
-	border-left-color:var(--me-purple);
-	background:
-		linear-gradient(90deg,rgba(199,44,255,.16),rgba(199,44,255,.04) 32%,rgba(0,0,0,.18)),
-		rgba(0,0,0,.24);
+	border-left-color:rgba(199,44,255,.55);
+	background:linear-gradient(90deg,rgba(199,44,255,.07),rgba(0,0,0,.20));
 }
 
 .me-water-category--black .me-water-category-head::before{
-	background:radial-gradient(circle at 0% 50%,rgba(199,44,255,.16),transparent 42%);
+	background:radial-gradient(circle at 0% 50%,rgba(199,44,255,.08),transparent 42%);
 }
 
 .me-water-category--black .me-water-category-head strong{
 	color:#fff!important;
-	text-shadow:0 0 10px rgba(199,44,255,.18);
+	text-shadow:none;
 }
 
 /* ===================== LISTES EN CARTES ===================== */
@@ -584,7 +603,7 @@
 	padding:10px;
 	overflow:hidden;
 	border:1px solid var(--me-line-soft);
-	border-top:2px solid rgba(198,38,45,.45);
+	border-top:2px solid rgba(255,255,255,.20);
 	background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.24));
 	transition:border-color .22s ease,background .22s ease,transform .22s ease;
 }
@@ -594,7 +613,7 @@
 	position:absolute;
 	inset:0;
 	pointer-events:none;
-	background:radial-gradient(circle at 50% 0%,rgba(198,38,45,.12),transparent 48%);
+	background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.045),transparent 48%);
 }
 
 .me-water-item::after{
@@ -604,9 +623,9 @@
 	bottom:-20px;
 	width:54px;
 	height:54px;
-	border:1px solid rgba(198,38,45,.16);
+	border:1px solid rgba(255,255,255,.08);
 	border-radius:50%;
-	background:rgba(198,38,45,.03);
+	background:rgba(255,255,255,.015);
 }
 
 .me-water-item > *{
@@ -615,8 +634,8 @@
 }
 
 .me-water-item:hover{
-	border-color:rgba(198,38,45,.42);
-	background:linear-gradient(180deg,rgba(198,38,45,.065),rgba(0,0,0,.26));
+	border-color:rgba(255,255,255,.20);
+	background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(0,0,0,.26));
 	transform:translateY(-1px);
 }
 
@@ -652,8 +671,8 @@
 	max-width:100%;
 	min-height:24px;
 	padding:5px 8px;
-	border:1px solid rgba(198,38,45,.30);
-	background:rgba(198,38,45,.10);
+	border:1px solid rgba(255,255,255,.16);
+	background:rgba(255,255,255,.045);
 	color:#fff;
 	font-size:10px;
 	font-weight:900;
@@ -665,53 +684,42 @@
 
 /* Cartes eau noire */
 .me-water-item--black{
-	border-top-color:rgba(199,44,255,.52);
+	border-top-color:rgba(199,44,255,.36);
 }
 
 .me-water-item--black::before{
-	background:radial-gradient(circle at 50% 0%,rgba(199,44,255,.13),transparent 48%);
-}
-
-.me-water-item--black::after{
-	border-color:rgba(199,44,255,.18);
-	background:rgba(199,44,255,.04);
+	background:radial-gradient(circle at 50% 0%,rgba(199,44,255,.075),transparent 48%);
 }
 
 .me-water-item--black:hover{
-	border-color:rgba(199,44,255,.44);
-	background:linear-gradient(180deg,rgba(199,44,255,.06),rgba(0,0,0,.26));
+	border-color:rgba(199,44,255,.30);
 }
 
 .me-water-item--black .me-water-price{
-	border-color:rgba(199,44,255,.34);
-	background:rgba(199,44,255,.10);
-	color:var(--me-purple);
+	border-color:rgba(199,44,255,.22);
+	background:rgba(199,44,255,.075);
+	color:#fff;
 }
 
 /* Carte validation */
 .me-water-item--validate{
-	border-top-color:rgba(212,168,56,.68);
-	background:linear-gradient(180deg,rgba(212,168,56,.09),rgba(0,0,0,.24));
+	border-top-color:rgba(212,168,56,.42);
+	background:linear-gradient(180deg,rgba(212,168,56,.075),rgba(0,0,0,.24));
 }
 
 .me-water-item--validate::before{
-	background:radial-gradient(circle at 50% 0%,rgba(212,168,56,.18),transparent 48%);
-}
-
-.me-water-item--validate::after{
-	border-color:rgba(212,168,56,.20);
-	background:rgba(212,168,56,.04);
+	background:radial-gradient(circle at 50% 0%,rgba(212,168,56,.085),transparent 48%);
 }
 
 .me-water-item--validate:hover{
-	border-color:rgba(212,168,56,.50);
-	background:linear-gradient(180deg,rgba(212,168,56,.15),rgba(0,0,0,.26));
+	border-color:rgba(212,168,56,.34);
+	background:linear-gradient(180deg,rgba(212,168,56,.10),rgba(0,0,0,.26));
 }
 
 .me-water-item--validate .me-water-price{
-	border-color:rgba(212,168,56,.34);
-	background:linear-gradient(180deg,rgba(212,168,56,.18),rgba(212,168,56,.08));
-	color:#fff1c2;
+	border-color:rgba(212,168,56,.26);
+	background:rgba(212,168,56,.075);
+	color:#fff;
 }
 
 /* Réserve de départ */
@@ -742,25 +750,9 @@
 /* ===================== QUÊTES ===================== */
 
 .me-water-questbox{
-	position:relative;
 	margin-top:14px;
 	padding:14px;
-	overflow:hidden;
-	border:1px solid var(--me-line-soft);
-	background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(0,0,0,.24));
-}
-
-.me-water-questbox::before{
-	content:"";
-	position:absolute;
-	inset:0;
-	pointer-events:none;
-	background:radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 50%);
-}
-
-.me-water-questbox > *{
-	position:relative;
-	z-index:2;
+	border-color:var(--me-line-soft);
 }
 
 .me-water-quest-head{
@@ -790,29 +782,6 @@
 	letter-spacing:.08em;
 }
 
-.me-water-quest-link,
-.me-water-link{
-	display:inline-flex;
-	align-items:center;
-	gap:8px;
-	width:max-content;
-	max-width:100%;
-	min-height:28px;
-	padding:7px 9px;
-	border:1px solid rgba(198,38,45,.32);
-	background:linear-gradient(90deg,rgba(198,38,45,.12),rgba(0,0,0,.18));
-	color:#fff!important;
-	font-size:11px;
-	font-weight:900;
-	line-height:1;
-	text-decoration:none!important;
-	text-transform:uppercase;
-	letter-spacing:.06em;
-	transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease;
-	word-break:normal;
-	overflow-wrap:normal;
-}
-
 .me-water-quest-link{
 	min-height:34px;
 	padding:9px 12px;
@@ -827,14 +796,6 @@
 	font-size:10px;
 	font-weight:900;
 	line-height:1;
-}
-
-.me-water-quest-link:hover,
-.me-water-link:hover{
-	border-color:var(--me-red)!important;
-	background:#000!important;
-	color:#fff!important;
-	transform:translateX(3px);
 }
 
 .me-water-quest-levels{
@@ -873,8 +834,8 @@
 }
 
 .me-water-quest-level--ss{
-	border-color:rgba(255,50,50,.35);
-	background:linear-gradient(180deg,rgba(255,50,50,.12),rgba(0,0,0,.22));
+	border-color:rgba(198,38,45,.35);
+	background:linear-gradient(180deg,rgba(198,38,45,.11),rgba(0,0,0,.22));
 }
 
 .me-water-quest-level--ss strong{
@@ -882,17 +843,17 @@
 }
 
 .me-water-quest-level--s{
-	border-color:rgba(255,110,60,.35);
-	background:linear-gradient(180deg,rgba(255,110,60,.11),rgba(0,0,0,.22));
+	border-color:rgba(198,38,45,.28);
+	background:linear-gradient(180deg,rgba(198,38,45,.08),rgba(0,0,0,.22));
 }
 
 .me-water-quest-level--s strong{
-	color:#ff7b47!important;
+	color:#ff8a65!important;
 }
 
 .me-water-quest-level--a{
-	border-color:rgba(214,168,64,.35);
-	background:linear-gradient(180deg,rgba(214,168,64,.11),rgba(0,0,0,.22));
+	border-color:rgba(212,168,56,.30);
+	background:linear-gradient(180deg,rgba(212,168,56,.08),rgba(0,0,0,.22));
 }
 
 .me-water-quest-level--a strong{
@@ -901,7 +862,7 @@
 
 .me-water-quest-level--b{
 	border-color:rgba(220,220,220,.20);
-	background:linear-gradient(180deg,rgba(220,220,220,.07),rgba(0,0,0,.22));
+	background:linear-gradient(180deg,rgba(220,220,220,.06),rgba(0,0,0,.22));
 }
 
 .me-water-quest-level--b strong{
@@ -909,26 +870,26 @@
 }
 
 .me-water-quest-level--c{
-	border-color:rgba(74,140,255,.35);
-	background:linear-gradient(180deg,rgba(74,140,255,.10),rgba(0,0,0,.22));
+	border-color:rgba(170,170,170,.22);
+	background:linear-gradient(180deg,rgba(170,170,170,.055),rgba(0,0,0,.22));
 }
 
 .me-water-quest-level--c strong{
-	color:#76a7ff!important;
+	color:#d8d8d8!important;
 }
 
 .me-water-quest-level--d{
-	border-color:rgba(76,182,114,.35);
-	background:linear-gradient(180deg,rgba(76,182,114,.10),rgba(0,0,0,.22));
+	border-color:rgba(150,150,150,.20);
+	background:linear-gradient(180deg,rgba(150,150,150,.045),rgba(0,0,0,.22));
 }
 
 .me-water-quest-level--d strong{
-	color:#71d18e!important;
+	color:#c7c7c7!important;
 }
 
 .me-water-quest-level--e{
-	border-color:rgba(145,145,145,.28);
-	background:linear-gradient(180deg,rgba(145,145,145,.08),rgba(0,0,0,.22));
+	border-color:rgba(145,145,145,.18);
+	background:linear-gradient(180deg,rgba(145,145,145,.04),rgba(0,0,0,.22));
 }
 
 .me-water-quest-level--e strong{
@@ -936,12 +897,12 @@
 }
 
 .me-water-quest-level--v{
-	border-color:rgba(198,38,45,.35);
-	background:linear-gradient(180deg,rgba(198,38,45,.12),rgba(0,0,0,.22));
+	border-color:rgba(198,38,45,.32);
+	background:linear-gradient(180deg,rgba(198,38,45,.10),rgba(0,0,0,.22));
 }
 
 .me-water-quest-level--v strong{
-	color:var(--me-red)!important;
+	color:var(--me-red-hot)!important;
 }
 
 /* ===================== NOTES / RÈGLES ===================== */
@@ -951,9 +912,9 @@
 	max-width:86%;
 	margin:18px auto 0!important;
 	padding:14px 18px;
-	border-top:1px solid rgba(198,38,45,.32);
-	border-bottom:1px solid rgba(198,38,45,.22);
-	background:linear-gradient(90deg,transparent,rgba(198,38,45,.08),transparent);
+	border-top:1px solid rgba(255,255,255,.16);
+	border-bottom:1px solid rgba(255,255,255,.10);
+	background:linear-gradient(90deg,transparent,rgba(255,255,255,.035),transparent);
 	color:#fff!important;
 	font-family:var(--me-font-title);
 	font-size:16px!important;
@@ -962,7 +923,7 @@
 	text-align:center!important;
 	text-transform:uppercase;
 	letter-spacing:.04em;
-	text-shadow:0 0 10px rgba(198,38,45,.18);
+	text-shadow:0 0 10px rgba(0,0,0,.55);
 }
 
 .me-water-note::before{
@@ -980,7 +941,7 @@
 	padding:14px 16px;
 	border:1px solid var(--me-line-soft);
 	border-left:3px solid var(--me-red);
-	background:rgba(0,0,0,.22);
+	background:linear-gradient(90deg,rgba(255,255,255,.035),rgba(0,0,0,.20));
 	color:var(--me-muted);
 	font-size:13px;
 	font-weight:700;
@@ -1014,13 +975,27 @@
 }
 
 .me-water-rule{
-	padding:12px;
+	position:relative;
+	padding:12px 12px 12px 36px;
 	border:1px solid var(--me-line-soft);
-	background:rgba(0,0,0,.20);
+	background:linear-gradient(90deg,rgba(255,255,255,.035),rgba(0,0,0,.20));
 	color:var(--me-muted);
 	font-size:13px;
 	font-weight:700;
 	line-height:1.5;
+}
+
+.me-water-rule::before{
+	content:"";
+	position:absolute;
+	left:14px;
+	top:18px;
+	width:8px;
+	height:8px;
+	border-radius:8px 8px 8px 0;
+	transform:rotate(-45deg);
+	background:var(--me-red);
+	box-shadow:0 0 10px rgba(198,38,45,.28);
 }
 
 .me-water-rule strong{
