@@ -835,3 +835,155 @@
 		width:max-content;
 	}
 }
+/* =========================================================
+   PATCH FORUMACTIF — FICHE GROUPES / SOUS-GROUPES
+   Corrige rendu posté : titres, intro, navigation, responsive
+========================================================= */
+
+/* Titre principal */
+.me-fac-title{
+	color:var(--mef-red)!important;
+	font-size:clamp(30px,4vw,44px)!important;
+	line-height:.95!important;
+	word-break:normal!important;
+	overflow-wrap:normal!important;
+	hyphens:none!important;
+}
+
+/* Suppression complète du pulse titre */
+.me-fac-card-name:hover{
+	animation:none!important;
+	transform:none!important;
+}
+
+/* Sécurité titres de fiches */
+.me-fac-card-name{
+	display:block!important;
+	max-width:100%!important;
+	font-size:clamp(34px,5vw,50px)!important;
+	line-height:.9!important;
+	word-break:normal!important;
+	overflow-wrap:normal!important;
+	hyphens:none!important;
+	white-space:normal!important;
+}
+
+/* Le titre et le badge passent en colonne pour éviter les compressions */
+.me-fac-card-top{
+	display:grid!important;
+	grid-template-columns:1fr!important;
+	gap:12px!important;
+	align-items:start!important;
+	padding:24px 22px!important;
+}
+
+/* Badge sous le titre */
+.me-fac-card-kind{
+	width:max-content!important;
+	max-width:100%!important;
+	text-align:left!important;
+	justify-self:start!important;
+}
+
+/* Colonnes internes plus équilibrées */
+.me-fac-card-content{
+	grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr)!important;
+}
+
+/* Hiérarchie moins large et moins envahissante */
+.me-fac-roster-rank{
+	grid-template-columns:1fr!important;
+}
+
+.me-fac-roster-limit{
+	width:max-content!important;
+	max-width:100%!important;
+	white-space:normal!important;
+}
+
+/* Cartes des groupes principaux */
+.me-fac-groups-overview{
+	display:grid!important;
+	grid-template-columns:repeat(3,minmax(0,1fr))!important;
+	gap:12px!important;
+	margin:18px 0!important;
+}
+
+.me-fac-group-box{
+	position:relative!important;
+	padding:16px!important;
+	border:1px solid var(--mef-line-soft)!important;
+	background:rgba(0,0,0,.20)!important;
+	overflow:hidden!important;
+}
+
+.me-fac-group-box strong{
+	display:block!important;
+	margin-bottom:8px!important;
+	font-family:var(--mef-font-title)!important;
+	font-size:clamp(16px,2.2vw,18px)!important;
+	font-weight:900!important;
+	line-height:1!important;
+	text-transform:uppercase!important;
+	letter-spacing:.04em!important;
+}
+
+.me-fac-group-box p{
+	margin:0!important;
+	color:var(--mef-muted)!important;
+	font-size:13px!important;
+	font-weight:600!important;
+	line-height:1.45!important;
+	text-align:left!important;
+}
+
+.me-fac-group-box--sang strong{
+	color:var(--mef-sangpur)!important;
+}
+
+.me-fac-group-box--hybride strong{
+	color:var(--mef-hybride)!important;
+}
+
+.me-fac-group-box--monstre strong{
+	color:var(--mef-monstre)!important;
+}
+
+/* Responsive Forumactif */
+@media (max-width:900px){
+	.me-fac{
+		width:calc(100% - 24px)!important;
+		padding:16px!important;
+	}
+
+	.me-fac-groups-overview,
+	.me-fac-card-content,
+	.me-fac-hub-grid,
+	.me-fac-bottom-grid{
+		grid-template-columns:1fr!important;
+	}
+
+	.me-fac-card-content{
+		grid-template-areas:
+			"top"
+			"tags"
+			"desc"
+			"ranks"!important;
+		padding:18px!important;
+	}
+
+	.me-fac-card-top{
+		text-align:center!important;
+	}
+
+	.me-fac-card-name{
+		font-size:clamp(30px,10vw,40px)!important;
+	}
+
+	.me-fac-card-kind{
+		width:auto!important;
+		max-width:none!important;
+		text-align:center!important;
+		justify-self:center!important;
+	}
+}
