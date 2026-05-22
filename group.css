@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 /* =========================================================
@@ -93,11 +92,14 @@
 	margin:0;
 	color:var(--mef-red)!important;
 	font-family:var(--mef-font-title)!important;
-	font-size:44px;
+	font-size:clamp(30px,4vw,44px);
 	font-weight:900;
 	line-height:.95;
 	text-transform:uppercase;
 	letter-spacing:.03em;
+	word-break:normal;
+	overflow-wrap:normal;
+	hyphens:none;
 }
 
 .me-fac-subtitle{
@@ -221,11 +223,11 @@
 	display:block;
 	margin-bottom:8px;
 	font-family:var(--mef-font-title);
-	font-size:18px;
+	font-size:clamp(16px,2.2vw,18px);
 	font-weight:900;
 	line-height:1;
 	text-transform:uppercase;
-	letter-spacing:.05em;
+	letter-spacing:.04em;
 }
 
 .me-fac-group-box p{
@@ -452,7 +454,7 @@
 .me-fac-card-content{
 	position:relative;
 	display:grid;
-	grid-template-columns:minmax(0,1.55fr) minmax(260px,.45fr);
+	grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr);
 	grid-template-areas:
 		"top top"
 		"tags tags"
@@ -465,11 +467,11 @@
 	grid-area:top;
 	position:relative;
 	display:grid;
-	grid-template-columns:minmax(0,1fr) auto;
-	gap:18px;
-	align-items:center;
+	grid-template-columns:1fr;
+	gap:12px;
+	align-items:start;
 	margin:0;
-	padding:26px 22px;
+	padding:24px 22px;
 	overflow:hidden;
 	border:1px solid rgba(198,38,45,.24);
 	background:
@@ -500,22 +502,26 @@
 .me-fac-card-name{
 	position:relative;
 	z-index:2;
-	display:inline-block;
+	display:block;
 	margin:0;
 	color:#fff;
 	font-family:var(--mef-font-title)!important;
-	font-size:58px;
+	font-size:clamp(34px,5vw,50px);
 	font-weight:900;
-	line-height:.85;
+	line-height:.9;
 	text-transform:uppercase;
-	letter-spacing:.02em;
+	letter-spacing:.01em;
 	text-shadow:0 0 18px rgba(198,38,45,.22),0 2px 0 #000;
+	word-break:normal;
+	overflow-wrap:normal;
+	hyphens:none;
 }
 
 .me-fac-card-kind{
 	position:relative;
 	z-index:2;
-	max-width:260px;
+	width:max-content;
+	max-width:100%;
 	padding:10px 12px;
 	border:1px solid rgba(198,38,45,.30);
 	background:rgba(0,0,0,.38);
@@ -523,7 +529,7 @@
 	font-size:10px;
 	font-weight:900;
 	line-height:1.25;
-	text-align:right;
+	text-align:left;
 	text-transform:uppercase;
 	letter-spacing:.10em;
 }
@@ -716,7 +722,7 @@
 
 .me-fac-roster-rank{
 	display:grid;
-	grid-template-columns:minmax(0,1fr) auto;
+	grid-template-columns:minmax(0,1fr);
 	gap:6px 7px;
 	align-items:start;
 	min-width:0;
@@ -748,6 +754,8 @@
 	display:inline-flex;
 	align-items:center;
 	justify-content:center;
+	width:max-content;
+	max-width:100%;
 	min-height:18px;
 	padding:3px 5px;
 	border:1px solid rgba(198,38,45,.28);
@@ -760,7 +768,7 @@
 	text-align:center;
 	text-transform:uppercase;
 	letter-spacing:.08em;
-	white-space:nowrap;
+	white-space:normal;
 }
 
 /* ===================== RESPONSIVE ===================== */
@@ -806,13 +814,14 @@
 	}
 
 	.me-fac-card-name{
-		font-size:40px;
+		font-size:clamp(30px,10vw,40px);
 	}
 
 	.me-fac-card-kind{
+		width:auto;
 		max-width:none;
-		margin-top:10px;
 		text-align:center;
+		justify-self:center;
 	}
 
 	.me-fac-roster-row,
@@ -833,157 +842,5 @@
 
 	.me-fac-roster-limit{
 		width:max-content;
-	}
-}
-/* =========================================================
-   PATCH FORUMACTIF — FICHE GROUPES / SOUS-GROUPES
-   Corrige rendu posté : titres, intro, navigation, responsive
-========================================================= */
-
-/* Titre principal */
-.me-fac-title{
-	color:var(--mef-red)!important;
-	font-size:clamp(30px,4vw,44px)!important;
-	line-height:.95!important;
-	word-break:normal!important;
-	overflow-wrap:normal!important;
-	hyphens:none!important;
-}
-
-/* Suppression complète du pulse titre */
-.me-fac-card-name:hover{
-	animation:none!important;
-	transform:none!important;
-}
-
-/* Sécurité titres de fiches */
-.me-fac-card-name{
-	display:block!important;
-	max-width:100%!important;
-	font-size:clamp(34px,5vw,50px)!important;
-	line-height:.9!important;
-	word-break:normal!important;
-	overflow-wrap:normal!important;
-	hyphens:none!important;
-	white-space:normal!important;
-}
-
-/* Le titre et le badge passent en colonne pour éviter les compressions */
-.me-fac-card-top{
-	display:grid!important;
-	grid-template-columns:1fr!important;
-	gap:12px!important;
-	align-items:start!important;
-	padding:24px 22px!important;
-}
-
-/* Badge sous le titre */
-.me-fac-card-kind{
-	width:max-content!important;
-	max-width:100%!important;
-	text-align:left!important;
-	justify-self:start!important;
-}
-
-/* Colonnes internes plus équilibrées */
-.me-fac-card-content{
-	grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr)!important;
-}
-
-/* Hiérarchie moins large et moins envahissante */
-.me-fac-roster-rank{
-	grid-template-columns:1fr!important;
-}
-
-.me-fac-roster-limit{
-	width:max-content!important;
-	max-width:100%!important;
-	white-space:normal!important;
-}
-
-/* Cartes des groupes principaux */
-.me-fac-groups-overview{
-	display:grid!important;
-	grid-template-columns:repeat(3,minmax(0,1fr))!important;
-	gap:12px!important;
-	margin:18px 0!important;
-}
-
-.me-fac-group-box{
-	position:relative!important;
-	padding:16px!important;
-	border:1px solid var(--mef-line-soft)!important;
-	background:rgba(0,0,0,.20)!important;
-	overflow:hidden!important;
-}
-
-.me-fac-group-box strong{
-	display:block!important;
-	margin-bottom:8px!important;
-	font-family:var(--mef-font-title)!important;
-	font-size:clamp(16px,2.2vw,18px)!important;
-	font-weight:900!important;
-	line-height:1!important;
-	text-transform:uppercase!important;
-	letter-spacing:.04em!important;
-}
-
-.me-fac-group-box p{
-	margin:0!important;
-	color:var(--mef-muted)!important;
-	font-size:13px!important;
-	font-weight:600!important;
-	line-height:1.45!important;
-	text-align:left!important;
-}
-
-.me-fac-group-box--sang strong{
-	color:var(--mef-sangpur)!important;
-}
-
-.me-fac-group-box--hybride strong{
-	color:var(--mef-hybride)!important;
-}
-
-.me-fac-group-box--monstre strong{
-	color:var(--mef-monstre)!important;
-}
-
-/* Responsive Forumactif */
-@media (max-width:900px){
-	.me-fac{
-		width:calc(100% - 24px)!important;
-		padding:16px!important;
-	}
-
-	.me-fac-groups-overview,
-	.me-fac-card-content,
-	.me-fac-hub-grid,
-	.me-fac-bottom-grid{
-		grid-template-columns:1fr!important;
-	}
-
-	.me-fac-card-content{
-		grid-template-areas:
-			"top"
-			"tags"
-			"desc"
-			"ranks"!important;
-		padding:18px!important;
-	}
-
-	.me-fac-card-top{
-		text-align:center!important;
-	}
-
-	.me-fac-card-name{
-		font-size:clamp(30px,10vw,40px)!important;
-	}
-
-	.me-fac-card-kind{
-		width:auto!important;
-		max-width:none!important;
-		text-align:center!important;
-		justify-self:center!important;
 	}
 }
