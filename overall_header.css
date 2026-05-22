@@ -596,9 +596,8 @@
 }
 
 /* =========================================================
-/* =========================================================
    MENU PROFIL RAPIDE FORUMACTIF
-   Fenêtre sous "Bienvenue" — version corrigée
+   Fenêtre sous "Bienvenue" — structure Forumactif réelle
 ========================================================= */
 
 #fa_menulist{
@@ -625,6 +624,7 @@
 	text-align:left!important;
 	z-index:7000!important;
 	pointer-events:auto!important;
+	list-style:none!important;
 }
 
 #fa_menulist:not(.me-oh-open-menu){
@@ -632,55 +632,36 @@
 }
 
 #fa_menulist.me-oh-open-menu{
-	display:block!important;
+	display:grid!important;
+	grid-template-columns:minmax(0,1fr) 118px!important;
+	gap:14px!important;
+	align-items:start!important;
 }
 
-/* Reset vieux tableau Forumactif */
-#fa_menulist table,
-#fa_menulist tbody,
-#fa_menulist tr{
-	display:block!important;
-	width:100%!important;
-	margin:0!important;
-	padding:0!important;
-	background:transparent!important;
-	border:0!important;
-	border-collapse:collapse!important;
+/* Reset général */
+#fa_menulist,
+#fa_menulist li,
+#fa_menulist div,
+#fa_menulist a{
+	box-sizing:border-box!important;
 }
 
-#fa_menulist td{
-	display:block!important;
+/* Bloc avatar / stats */
+#fa_usermenu{
+	grid-column:2!important;
+	grid-row:1 / span 20!important;
+	width:118px!important;
+	min-width:118px!important;
 	margin:0!important;
 	padding:0!important;
 	background:transparent!important;
 	border:0!important;
 	color:#d8c8bf!important;
-	vertical-align:top!important;
-}
-
-/* Le premier TD contient souvent avatar + nom + stats */
-#fa_menulist td:first-child{
-	float:right!important;
-	width:118px!important;
-	min-height:170px!important;
-	margin:0 0 10px 14px!important;
-	padding:0!important;
 	text-align:center!important;
-	background:transparent!important;
-	border:0!important;
 }
 
-/* Le second TD contient les liens */
-#fa_menulist td:last-child{
-	display:block!important;
-	width:auto!important;
-	min-width:0!important;
-	padding:0!important;
-	overflow:hidden!important;
-}
-
-/* Avatar */
-#fa_menulist td:first-child img{
+#fa_usermenu img,
+#fa_menulist #fa_usermenu img{
 	display:block!important;
 	width:96px!important;
 	height:96px!important;
@@ -694,9 +675,10 @@
 		0 0 26px rgba(198,38,45,.18)!important;
 }
 
-/* Nom + stats */
-#fa_menulist td:first-child,
-#fa_menulist td:first-child *{
+/* Infos sous avatar */
+#fa_usermenu,
+#fa_usermenu *,
+#fa_usermenu a{
 	color:#d8c8bf!important;
 	font-family:var(--oh-font-body,Inter,Arial,sans-serif)!important;
 	font-size:11px!important;
@@ -706,26 +688,50 @@
 	letter-spacing:.06em!important;
 	text-align:center!important;
 	text-shadow:none!important;
+	text-decoration:none!important;
 }
 
-#fa_menulist td:first-child strong,
-#fa_menulist td:first-child b{
+#fa_usermenu strong,
+#fa_usermenu b{
 	color:#f4ece7!important;
 	font-size:13px!important;
 }
 
-#fa_menulist td:first-child br{
+/* Les lignes de menu */
+#fa_menulist li{
+	grid-column:1!important;
 	display:block!important;
+	width:100%!important;
+	min-width:0!important;
+	margin:0 0 3px!important;
+	padding:0!important;
+	background:transparent!important;
+	border:0!important;
+	list-style:none!important;
 }
 
-/* Liens du menu */
+/* Séparateurs natifs */
+#fa_menulist li.fa_separator,
+#fa_menulist .fa_separator{
+	height:1px!important;
+	min-height:1px!important;
+	margin:7px 0!important;
+	padding:0!important;
+	background:rgba(255,255,255,.10)!important;
+	border:0!important;
+	font-size:0!important;
+	line-height:0!important;
+}
+
+/* Liens */
+#fa_menulist li a,
 #fa_menulist a{
 	position:relative!important;
 	display:flex!important;
 	align-items:center!important;
 	width:100%!important;
 	min-height:34px!important;
-	margin:0 0 3px!important;
+	margin:0!important;
 	padding:9px 10px!important;
 	border:1px solid transparent!important;
 	background:transparent!important;
@@ -739,9 +745,11 @@
 	letter-spacing:.08em!important;
 	text-shadow:none!important;
 	transition:.18s ease!important;
-	box-sizing:border-box!important;
+	white-space:normal!important;
 }
 
+/* Puce rouge */
+#fa_menulist li a::before,
 #fa_menulist a::before{
 	content:"";
 	display:block;
@@ -755,6 +763,7 @@
 	opacity:.85;
 }
 
+#fa_menulist li a:hover,
 #fa_menulist a:hover{
 	border-color:rgba(198,38,45,.40)!important;
 	background:rgba(198,38,45,.10)!important;
@@ -782,21 +791,8 @@
 	text-shadow:none!important;
 }
 
-#fa_menulist a,
-#fa_menulist a:link,
-#fa_menulist a:visited{
-	color:#d8c8bf!important;
-}
-
-#fa_menulist a:hover{
-	color:#fff!important;
-}
-
-/* Sécurité : évite que le contenu déborde sur l'avatar */
-#fa_menulist::after{
-	content:"";
-	display:block;
-	clear:both;
+#fa_menulist br{
+	display:none!important;
 }
 /* =========================================================
    LISTE NOTIFICATIONS FORUMACTIF
