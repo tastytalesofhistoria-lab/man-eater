@@ -1600,3 +1600,38 @@
     max-height:220px!important;
   }
 }
+/* =========================================================
+   MAN EATER — FIX BEST OF IMAGE
+   L’image doit s’afficher entière dans la zone Best Of
+========================================================= */
+
+.me-post-bestof{
+  min-height:0!important;
+  overflow:hidden!important;
+}
+
+.me-post-bestof-content{
+  min-height:0!important;
+  max-height:100%!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+}
+
+/* Annule le recadrage forcé */
+.me-post-bestof-content img{
+  display:block!important;
+  width:auto!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  margin:8px auto!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  border-radius:0!important;
+}
+
+/* Si l'image est seule dans le Best Of, elle reste proprement centrée */
+.me-post-bestof-content > img:only-child{
+  margin:0 auto!important;
+}
