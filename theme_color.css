@@ -113,7 +113,35 @@ body{
 	border:0!important;
 	box-shadow:none!important;
 }
+/* =========================================================
+  EDITEUR FORUMACTIF / SCEDITOR
+   Texte blanc dans la zone de rédaction
+========================================================= */
 
+.sceditor-container,
+.sceditor-container iframe,
+.sceditor-container textarea{
+	background:#050505!important;
+	color:#f4ece7!important;
+}
+
+.sceditor-container textarea{
+	background:#050505!important;
+	color:#f4ece7!important;
+	caret-color:#c6262d!important;
+}
+
+.sceditor-container iframe{
+	background:#050505!important;
+}
+
+.sceditor-container .sceditor-toolbar{
+	background:#f4f4f4!important;
+}
+
+.sceditor-container .sceditor-button{
+	color:#111!important;
+}
 
 /* =========================================================
    02 — HEADER NATIF
