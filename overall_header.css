@@ -597,20 +597,21 @@
 
 /* =========================================================
    MENU PROFIL RAPIDE FORUMACTIF
+   Fenêtre sous "Bienvenue"
 ========================================================= */
 
 #fa_menulist{
 	position:fixed!important;
-	top:42px!important;
-	right:22px!important;
-	left:auto!important;
+	top:var(--me-oh-profile-top,42px)!important;
+	left:var(--me-oh-profile-left,auto)!important;
+	right:auto!important;
 	width:360px!important;
 	max-width:calc(100vw - 28px)!important;
 	margin:0!important;
 	padding:0!important;
 	overflow:hidden!important;
 	background:
-		radial-gradient(circle at 50% 0%,rgba(198,38,45,.12),transparent 34%),
+		radial-gradient(circle at 50% 0%,rgba(198,38,45,.14),transparent 34%),
 		linear-gradient(180deg,#111,#070707)!important;
 	border:1px solid rgba(198,38,45,.45)!important;
 	box-shadow:
@@ -632,31 +633,148 @@
 	display:block!important;
 }
 
+/* Structure interne : on casse le vieux tableau Forumactif */
 #fa_menulist table,
 #fa_menulist tbody,
-#fa_menulist tr,
+#fa_menulist tr{
+	display:block!important;
+	width:100%!important;
+	margin:0!important;
+	padding:0!important;
+	background:transparent!important;
+	border:0!important;
+	border-collapse:collapse!important;
+}
+
 #fa_menulist td{
+	display:block!important;
+	width:100%!important;
+	margin:0!important;
+	padding:0!important;
 	background:transparent!important;
 	border:0!important;
 	color:#d8c8bf!important;
+	vertical-align:top!important;
 }
 
-#fa_menulist img{
+/* Avatar / panneau gauche natif */
+#fa_menulist td:first-child{
+	position:relative!important;
+	display:grid!important;
+	grid-template-columns:92px minmax(0,1fr)!important;
+	align-items:center!important;
+	gap:14px!important;
+	padding:16px!important;
+	border-bottom:1px solid rgba(255,255,255,.10)!important;
+	background:
+		radial-gradient(circle at 18% 50%,rgba(198,38,45,.16),transparent 42%),
+		rgba(0,0,0,.26)!important;
+}
+
+#fa_menulist td:first-child img{
+	display:block!important;
+	width:82px!important;
+	height:82px!important;
+	object-fit:cover!important;
+	margin:0!important;
 	border-radius:50%!important;
-	border:1px solid rgba(198,38,45,.45)!important;
+	border:1px solid rgba(198,38,45,.55)!important;
 	background:#000!important;
+	box-shadow:0 0 26px rgba(198,38,45,.16)!important;
 }
 
-#fa_menulist a{
-	color:#f4ece7!important;
+/* Nom + stats dans le panneau */
+#fa_menulist td:first-child,
+#fa_menulist td:first-child *{
+	color:#d8c8bf!important;
 	font-family:var(--oh-font-body,Inter,Arial,sans-serif)!important;
-	font-size:12px!important;
-	font-weight:800!important;
+	font-size:11px!important;
+	font-weight:900!important;
+	line-height:1.35!important;
+	text-transform:uppercase!important;
+	letter-spacing:.08em!important;
+	text-align:left!important;
+	text-shadow:none!important;
+}
+
+#fa_menulist td:first-child strong,
+#fa_menulist td:first-child b{
+	color:#f4ece7!important;
+	font-size:13px!important;
+}
+
+#fa_menulist td:first-child a{
+	color:#c6262d!important;
+}
+
+/* Colonne liens */
+#fa_menulist td:last-child{
+	padding:8px!important;
+}
+
+/* Liens du menu */
+#fa_menulist a{
+	position:relative!important;
+	display:flex!important;
+	align-items:center!important;
+	min-height:34px!important;
+	margin:0!important;
+	padding:9px 12px!important;
+	border:1px solid transparent!important;
+	background:transparent!important;
+	color:#d8c8bf!important;
+	font-family:var(--oh-font-body,Inter,Arial,sans-serif)!important;
+	font-size:11px!important;
+	font-weight:900!important;
+	line-height:1!important;
 	text-decoration:none!important;
+	text-transform:uppercase!important;
+	letter-spacing:.10em!important;
+	text-shadow:none!important;
+	transition:.18s ease!important;
+}
+
+#fa_menulist a::before{
+	content:"";
+	display:block;
+	width:5px;
+	height:5px;
+	margin-right:9px;
+	border-radius:50%;
+	background:#c6262d;
+	box-shadow:0 0 10px rgba(198,38,45,.45);
+	opacity:.75;
 }
 
 #fa_menulist a:hover{
+	border-color:rgba(198,38,45,.40)!important;
+	background:rgba(198,38,45,.10)!important;
+	color:#fff!important;
+}
+
+/* Lien admin / déconnexion plus marqués */
+#fa_menulist a[href*="admin"],
+#fa_menulist a[href*="logout"],
+#fa_menulist a[href*="login?logout"]{
 	color:#ff333d!important;
+}
+
+#fa_menulist a[href*="admin"]:hover,
+#fa_menulist a[href*="logout"]:hover,
+#fa_menulist a[href*="login?logout"]:hover{
+	background:rgba(198,38,45,.16)!important;
+}
+
+/* Supprime les vieux fonds blancs/bleus internes */
+#fa_menulist *,
+#fa_menulist *::before,
+#fa_menulist *::after{
+	box-shadow:none!important;
+	text-shadow:none!important;
+}
+
+#fa_menulist br{
+	display:none!important;
 }
 
 /* =========================================================
