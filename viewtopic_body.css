@@ -1753,3 +1753,108 @@
 .me-post-links a:empty{
   display:none!important;
 }
+/* =========================================================
+   MAN EATER — PATCH ACTIONS VIEWTOPIC
+   À garder en bas du CSS si besoin
+========================================================= */
+
+.me-topic-btn,
+.me-topic-btn:link,
+.me-topic-btn:visited,
+.me-topic-btn:hover,
+.me-topic-btn:active,
+.me-topic-btn:focus,
+.me-topic-native-patch .button1,
+.me-topic-native-patch .button1:link,
+.me-topic-native-patch .button1:visited,
+.me-topic-native-patch .button1:hover,
+.me-topic-native-patch .button1:active,
+.me-topic-native-patch .button1:focus,
+.me-topic-native-patch .button2,
+.me-topic-native-patch .button2:hover,
+.me-topic-native-patch input[type="submit"],
+.me-topic-native-patch input[type="submit"]:hover,
+.me-topic-native-patch input[type="button"],
+.me-topic-native-patch input[type="button"]:hover{
+	color:#fff!important;
+	opacity:1!important;
+	text-shadow:none!important;
+	text-decoration:none!important;
+}
+
+.me-post-actions a,
+.me-post-actions span,
+.me-post-links a,
+.me-post-btn{
+	display:inline-flex!important;
+	align-items:center!important;
+	justify-content:center!important;
+	gap:7px!important;
+	min-height:34px!important;
+	padding:9px 12px!important;
+	border:1px solid rgba(255,255,255,.17)!important;
+	background:linear-gradient(90deg,#171717,rgba(23,23,23,.68))!important;
+	color:#f4ece7!important;
+	font-size:10px!important;
+	font-weight:900!important;
+	line-height:1!important;
+	text-transform:uppercase!important;
+	letter-spacing:.06em!important;
+	text-decoration:none!important;
+	cursor:pointer!important;
+	opacity:1!important;
+}
+
+.me-post-actions a:hover,
+.me-post-actions span:hover,
+.me-post-links a:hover,
+.me-post-btn:hover{
+	border-color:rgba(198,38,45,.55)!important;
+	background:#080808!important;
+	color:#fff!important;
+	text-decoration:none!important;
+}
+
+.me-post-actions a::before,
+.me-post-actions span::before,
+.me-post-links a::before,
+.me-post-btn::before{
+	content:"";
+	width:7px;
+	height:7px;
+	flex:0 0 auto;
+	border-radius:7px 7px 7px 0;
+	transform:rotate(-45deg);
+	background:var(--me-red,#c6262d);
+	box-shadow:0 0 8px rgba(198,38,45,.28);
+}
+
+.me-post-actions a[data-me-action="delete"]::before{
+	background:#fff;
+	box-shadow:0 0 8px rgba(255,255,255,.18);
+}
+
+.me-post-actions i,
+.me-post-links i,
+.me-post-btn i{
+	font-size:12px!important;
+	line-height:1!important;
+	color:inherit!important;
+}
+
+.me-post-report-btn img{
+	display:inline-block!important;
+	max-width:13px!important;
+	max-height:13px!important;
+	width:auto!important;
+	height:auto!important;
+	object-fit:contain!important;
+	margin:0 4px 0 0!important;
+	vertical-align:middle!important;
+}
+
+.me-post-actions a:empty,
+.me-post-actions span:empty,
+.me-post-links a:empty{
+	display:none!important;
+}
