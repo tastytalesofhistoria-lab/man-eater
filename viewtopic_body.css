@@ -1858,3 +1858,76 @@
 .me-post-links a:empty{
 	display:none!important;
 }
+/* =========================================================
+   MAN EATER — FIX BOUTONS HAUT VIEWTOPIC
+   texte lisible + hover noir
+========================================================= */
+
+/* état normal */
+.me-topic-hero-actions .me-topic-btn,
+.me-topic-hero-actions .me-topic-btn:link,
+.me-topic-hero-actions .me-topic-btn:visited,
+.me-topic-bottom .button1,
+.me-topic-bottom .button1:link,
+.me-topic-bottom .button1:visited,
+.topic-actions-buttons .button1,
+.topic-actions-buttons .button1:link,
+.topic-actions-buttons .button1:visited{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:42px!important;
+  padding:0 18px!important;
+  border:1px solid rgba(198,38,45,.72)!important;
+  background:linear-gradient(180deg,#d42531,#b91824)!important;
+  color:#fff!important;
+  text-decoration:none!important;
+  text-shadow:none!important;
+  box-shadow:0 10px 22px rgba(0,0,0,.20)!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+
+/* hover / focus / active : fond noir, texte blanc */
+.me-topic-hero-actions .me-topic-btn:hover,
+.me-topic-hero-actions .me-topic-btn:focus,
+.me-topic-hero-actions .me-topic-btn:active,
+.me-topic-bottom .button1:hover,
+.me-topic-bottom .button1:focus,
+.me-topic-bottom .button1:active,
+.topic-actions-buttons .button1:hover,
+.topic-actions-buttons .button1:focus,
+.topic-actions-buttons .button1:active{
+  background:#050505!important;
+  border-color:#c6262d!important;
+  color:#fff!important;
+  text-decoration:none!important;
+  text-shadow:none!important;
+  box-shadow:0 0 0 1px rgba(198,38,45,.18), 0 12px 24px rgba(0,0,0,.28)!important;
+}
+
+/* neutralise la règle globale du forum qui met les liens en rouge au hover */
+#page-body .me-topic-hero-actions a:hover,
+#page-body .me-topic-bottom a:hover,
+#page-body .topic-actions-buttons a:hover{
+  color:#fff!important;
+}
+
+/* si Forumactif injecte un état disabled, on garde quelque chose de propre */
+.me-topic-hero-actions .me-topic-btn[disabled],
+.me-topic-hero-actions .me-topic-btn.disabled,
+.me-topic-bottom .button1[disabled],
+.me-topic-bottom .button1.disabled{
+  opacity:.45!important;
+  cursor:not-allowed!important;
+  background:#2a0d10!important;
+  color:#f1d7d9!important;
+}
+
+/* icônes dans les boutons */
+.me-topic-hero-actions .me-topic-btn::before,
+.me-topic-bottom .button1::before,
+.topic-actions-buttons .button1::before{
+  margin-right:8px!important;
+  color:inherit!important;
+}
