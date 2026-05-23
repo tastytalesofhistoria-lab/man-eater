@@ -283,15 +283,18 @@
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-height:28px;
-  padding:7px 10px;
-  border:1px solid rgba(255,255,255,.09);
-  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.22));
-  color:#fff;
-  font-size:9px;
+  min-height:26px;
+  padding:6px 9px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.18);
+  color:var(--me-act-muted);
+  font-size:8px;
   font-weight:900;
   text-transform:uppercase;
-  letter-spacing:.11em;
+  letter-spacing:.12em;
+  opacity:.72;
+  cursor:default;
+  pointer-events:none;
 }
 
 .me-act-chip::before{
