@@ -818,3 +818,78 @@
     grid-template-columns:1fr;
   }
 }
+/* =========================================================
+   PATCH MEMBERLIST — lisibilité + corrections popup
+========================================================= */
+
+.me-ml-id-cardtitle,
+.me-ml-id-title,
+.me-ml-id-number-label,
+.me-ml-id-series,
+.me-ml-id-sub,
+.me-ml-id-label,
+.me-ml-id-stat span{
+  text-shadow:none!important;
+}
+
+.me-ml-id-cardtitle{
+  color:#2a211c!important;
+}
+
+.me-ml-id-title{
+  color:#1f1c18!important;
+}
+
+.me-ml-id-number-label,
+.me-ml-id-series,
+.me-ml-id-sub{
+  color:#5a5148!important;
+}
+
+.me-ml-id-value{
+  color:#1e1814!important;
+}
+
+.me-ml-id-value:empty::before{
+  content:"—";
+  color:rgba(43,36,30,.45);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:13px;
+  font-style:italic;
+}
+
+.me-ml-id-links{
+  gap:6px!important;
+}
+
+.me-ml-id-links a{
+  white-space:nowrap;
+  color:#f2eadb!important;
+  text-shadow:none!important;
+}
+
+.me-ml-id-links a.me-ml-link-missing{
+  display:none!important;
+}
+
+.me-ml-id-signature-line b,
+.me-ml-id-signature-line b a{
+  color:var(--me-ml-group)!important;
+  font-family:var(--me-ml-font-script)!important;
+  font-size:60px!important;
+  font-weight:400!important;
+  line-height:.82!important;
+  text-decoration:none!important;
+  text-shadow:none!important;
+}
+
+.me-ml-id-sub a{
+  color:#5a5148!important;
+  font-style:italic!important;
+  text-decoration:none!important;
+}
+
+.me-ml-id-stat b{
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+}
