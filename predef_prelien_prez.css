@@ -1,1 +1,474 @@
 
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+/* =========================================================
+   MAN EATER — FICHE PRÉ-LIENS SIMPLE
+   Forumactif ModernBB
+   Préfixe unique : plme-
+   Inspiré du style me-water : noir / gris / blanc cassé + rouge
+========================================================= */
+
+.plme,
+.plme *,
+.plme *::before,
+.plme *::after{
+  box-sizing:border-box;
+}
+
+.plme{
+  --plme-red:var(--mef-red,#c6262d);
+  --plme-red-hot:var(--mef-red-hot,#ff333d);
+  --plme-gold:#d4a838;
+  --plme-ivory:#f4ece7;
+  --plme-soft:#d8c8bf;
+  --plme-muted:var(--mef-muted,#b7aaa4);
+  --plme-dim:#8f8580;
+  --plme-black:#070707;
+  --plme-panel:#101010;
+  --plme-panel-soft:#151515;
+  --plme-line:var(--mef-line,rgba(255,255,255,.10));
+  --plme-line-soft:var(--mef-line-soft,rgba(255,255,255,.07));
+  --plme-line-strong:var(--mef-line-strong,rgba(255,255,255,.17));
+  --plme-font-title:var(--mef-font-title,"Cinzel Decorative",Cinzel,Georgia,serif);
+  --plme-font-body:var(--mef-font-body,Inter,Arial,Helvetica,sans-serif);
+
+  position:relative;
+  isolation:isolate;
+  width:calc(100% - 52px);
+  max-width:860px;
+  margin:30px auto;
+  padding:24px;
+  overflow:hidden;
+  border:1px solid var(--plme-line);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(198,38,45,.08),transparent 34%),
+    linear-gradient(180deg,#111,#080808);
+  color:var(--plme-ivory);
+  font-family:var(--plme-font-body);
+  font-size:14px;
+  line-height:1.55;
+}
+
+.plme::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(198,38,45,.055),transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent 30%);
+}
+
+.plme::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.10;
+  background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.11) 1px,transparent 1px);
+  background-size:34px 34px;
+}
+
+.plme > *{
+  position:relative;
+  z-index:2;
+}
+
+.plme a{
+  color:var(--plme-red-hot)!important;
+  text-decoration:none!important;
+  font-weight:900!important;
+  border-bottom:2px solid rgba(255,255,255,.72);
+}
+
+.plme a:hover{
+  color:#fff!important;
+  border-bottom-color:#fff!important;
+  text-decoration:none!important;
+}
+
+.plme strong{
+  color:#fff!important;
+  font-weight:900!important;
+}
+
+/* ===================== HEADER ===================== */
+
+.plme-head{
+  position:relative;
+  margin-bottom:22px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--plme-line);
+}
+
+.plme-kicker{
+  display:block;
+  margin-bottom:10px;
+  color:var(--plme-red-hot);
+  font-size:11px;
+  font-weight:900;
+  line-height:1;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+}
+
+.plme-title{
+  display:block;
+  width:100%;
+  max-width:none;
+  margin:0;
+  border:0!important;
+  color:var(--plme-ivory)!important;
+  font-family:var(--plme-font-title)!important;
+  font-size:clamp(28px,4.2vw,44px);
+  font-weight:900;
+  line-height:.96;
+  text-decoration:none!important;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+  text-shadow:2px 0 0 #000,-2px 0 0 #000,0 2px 0 #000,0 0 18px rgba(0,0,0,.75);
+  word-break:keep-all;
+  overflow-wrap:normal;
+  hyphens:none;
+}
+
+.plme-subtitle{
+  max-width:760px;
+  margin:12px 0 0;
+  color:var(--plme-muted);
+  font-size:14px;
+  font-weight:800;
+  line-height:1.55;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+/* ===================== BLOCS ===================== */
+
+.plme-block{
+  position:relative;
+  margin-top:22px;
+  padding:20px;
+  overflow:hidden;
+  border:1px solid var(--plme-line);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(198,38,45,.04),transparent 36%),
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.22));
+}
+
+.plme-block::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(198,38,45,.035),transparent 42%),
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent 38%);
+}
+
+.plme-block > *{
+  position:relative;
+  z-index:2;
+}
+
+.plme-block-title{
+  margin:0 0 18px;
+  padding-bottom:14px;
+  border:0!important;
+  border-bottom:1px solid var(--plme-line)!important;
+  color:var(--plme-ivory)!important;
+  font-family:var(--plme-font-title)!important;
+  font-size:30px;
+  font-weight:900;
+  line-height:1;
+  text-decoration:none!important;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  text-shadow:2px 0 0 #000,0 2px 0 #000;
+  word-break:normal;
+  overflow-wrap:normal;
+  hyphens:none;
+}
+
+.plme-block-title::after{
+  content:"";
+  display:block;
+  width:54px;
+  height:2px;
+  margin-top:12px;
+  background:var(--plme-red);
+}
+
+.plme-text{
+  margin:0;
+  color:var(--plme-muted);
+  font-size:14px;
+  font-weight:600;
+  line-height:1.6;
+  text-align:justify;
+  text-justify:inter-word;
+  white-space:pre-line;
+}
+
+.plme-text + .plme-text{
+  margin-top:12px;
+}
+
+/* ===================== MEMBRE ===================== */
+
+.plme-member{
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr);
+  gap:14px;
+  align-items:stretch;
+}
+
+.plme-avatar{
+  position:relative;
+  min-height:150px;
+  overflow:hidden;
+  border:1px solid var(--plme-line-soft);
+  border-top:2px solid rgba(255,255,255,.20);
+  background:
+    linear-gradient(180deg,rgba(198,38,45,.08),rgba(0,0,0,.45)),
+    var(--plme-img,url("https://images2.imgbox.com/57/e7/EbUzJuhX_o.png")) center/cover;
+}
+
+.plme-avatar::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--plme-red),transparent);
+}
+
+.plme-member-main{
+  min-width:0;
+  padding:14px;
+  border:1px solid var(--plme-line-soft);
+  border-left:3px solid var(--plme-red);
+  background:linear-gradient(90deg,rgba(255,255,255,.035),rgba(0,0,0,.20));
+}
+
+.plme-name{
+  margin:0 0 10px;
+  border:0!important;
+  color:#fff!important;
+  font-family:var(--plme-font-title)!important;
+  font-size:clamp(20px,2.6vw,26px);
+  font-weight:900;
+  line-height:1;
+  text-decoration:none!important;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+
+.plme-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 12px;
+}
+
+.plme-meta span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:28px;
+  padding:7px 10px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.35);
+  color:var(--plme-soft);
+  font-size:10px;
+  font-weight:900;
+  line-height:1;
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+
+/* ===================== PRÉ-LIENS ===================== */
+
+.plme-wanted{
+  display:grid;
+  gap:10px;
+}
+
+.plme-card{
+  position:relative;
+  padding:16px;
+  overflow:hidden;
+  border:1px solid var(--plme-line-soft);
+  border-left:3px solid var(--plme-red);
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.20));
+}
+
+.plme-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 0%,rgba(198,38,45,.075),transparent 46%);
+}
+
+.plme-card > *{
+  position:relative;
+  z-index:2;
+}
+
+.plme-card-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px;
+  margin:0 0 12px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--plme-line-soft);
+}
+
+.plme-card-title{
+  margin:0;
+  border:0!important;
+  color:#fff!important;
+  font-family:var(--plme-font-title)!important;
+  font-size:clamp(18px,2.2vw,22px);
+  font-weight:900;
+  line-height:1;
+  text-decoration:none!important;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  word-break:normal;
+  overflow-wrap:normal;
+  hyphens:none;
+}
+
+.plme-card-status{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:30px;
+  padding:7px 10px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.35);
+  color:var(--plme-soft);
+  font-size:10px;
+  font-weight:900;
+  line-height:1;
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  white-space:nowrap;
+}
+
+.plme-info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  margin:0 0 12px;
+}
+
+.plme-info{
+  position:relative;
+  min-height:58px;
+  padding:10px;
+  overflow:hidden;
+  border:1px solid var(--plme-line-soft);
+  border-top:2px solid rgba(255,255,255,.20);
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.24));
+}
+
+.plme-info::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.045),transparent 48%);
+}
+
+.plme-info b,
+.plme-info span{
+  position:relative;
+  z-index:2;
+  display:block;
+}
+
+.plme-info b{
+  margin:0 0 5px;
+  color:var(--plme-red-hot)!important;
+  font-size:9px;
+  font-weight:900;
+  line-height:1;
+  text-transform:uppercase;
+  letter-spacing:.10em;
+}
+
+.plme-info span{
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+  line-height:1.25;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+
+.plme-note{
+  margin:14px 0 0!important;
+  padding:14px 16px;
+  border:1px solid var(--plme-line-soft);
+  border-left:3px solid var(--plme-red);
+  background:linear-gradient(90deg,rgba(255,255,255,.035),rgba(0,0,0,.20));
+  color:var(--plme-muted);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.6;
+  text-align:left;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media (max-width:900px){
+  .plme{
+    width:calc(100% - 28px);
+    padding:18px;
+  }
+
+  .plme-title{
+    font-size:clamp(25px,7.2vw,34px);
+    white-space:normal;
+  }
+
+  .plme-block{
+    padding:18px;
+  }
+
+  .plme-block-title{
+    font-size:25px;
+  }
+
+  .plme-member{
+    grid-template-columns:1fr;
+  }
+
+  .plme-avatar{
+    min-height:210px;
+  }
+
+  .plme-info-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width:560px){
+  .plme-info-grid,
+  .plme-card-head{
+    grid-template-columns:1fr;
+  }
+
+  .plme-card-status{
+    justify-content:flex-start;
+    white-space:normal;
+    text-align:left;
+  }
+}
