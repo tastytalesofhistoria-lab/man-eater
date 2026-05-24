@@ -13,6 +13,7 @@
    MAN EATER — CODEBOX FORUMACTIF
    BBCode [code] / ModernBB
    Copie + numéros de lignes + coloration syntaxique
+   À placer tout en bas de la feuille CSS
 ========================================================= */
 
 .codebox,
@@ -64,7 +65,8 @@ dl.codebox dt{
   border:0!important;
   border-bottom:1px solid var(--me-line,rgba(255,255,255,.10))!important;
   border-left:4px solid var(--me-red,#c6262d)!important;
-  background:linear-gradient(90deg,rgba(255,255,255,.045),rgba(0,0,0,.20))!important;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.045),rgba(0,0,0,.20))!important;
   color:var(--me-soft,#d8c8bf)!important;
   font-family:var(--me-font-body,Inter,Arial,sans-serif)!important;
   font-size:11px!important;
@@ -86,10 +88,13 @@ dl.codebox dt::before{
   box-shadow:0 0 10px rgba(198,38,45,.28);
 }
 
+/* Cache le libellé natif Code: mais garde le bouton */
 .codebox dt > span:not(.me-code-actions),
 dl.codebox dt > span:not(.me-code-actions){
   display:none!important;
 }
+
+/* ===================== BOUTON COPIE ===================== */
 
 .me-code-actions{
   display:flex!important;
@@ -126,7 +131,11 @@ dl.codebox dt > span:not(.me-code-actions){
   appearance:none!important;
   -webkit-appearance:none!important;
   box-shadow:none!important;
-  transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease!important;
+  transition:
+    background .22s ease,
+    border-color .22s ease,
+    color .22s ease,
+    transform .22s ease!important;
 }
 
 .me-code-btn::before{
@@ -172,7 +181,8 @@ dl.codebox dd{
   overflow-y:auto!important;
   overflow-x:hidden!important;
   border:0!important;
-  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.20))!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.20))!important;
   color:var(--me-muted,#b7aaa4)!important;
   font-family:"Courier New",Consolas,monospace!important;
   font-size:12px!important;
@@ -200,12 +210,15 @@ dl.codebox pre{
   tab-size:2!important;
 }
 
-/* ===================== NUMÉROS DE LIGNE ===================== */
+/* ===================== NUMÉROS DE LIGNE
+   Numéros générés en CSS => non copiables
+========================================================= */
 
 .me-code-lines{
   display:block;
   padding:16px 0!important;
   white-space:normal!important;
+  counter-reset:me-code-line;
 }
 
 .me-code-line{
@@ -215,19 +228,22 @@ dl.codebox pre{
   align-items:start;
   min-height:19px;
   padding:0 16px 0 0;
+  counter-increment:me-code-line;
 }
 
-.me-code-line-no{
+.me-code-line::before{
+  content:counter(me-code-line);
   display:block;
   padding-right:10px;
-  color:rgba(183,170,164,.45);
+  color:rgba(216,200,191,.72);
   font-family:"Courier New",Consolas,monospace;
   font-size:11px;
   font-weight:900;
   line-height:1.6;
   text-align:right;
-  user-select:none;
-  border-right:1px solid rgba(255,255,255,.08);
+  user-select:none!important;
+  pointer-events:none!important;
+  border-right:1px solid rgba(255,255,255,.12);
 }
 
 .me-code-line-text{
@@ -241,39 +257,138 @@ dl.codebox pre{
   white-space:pre-wrap;
   overflow-wrap:anywhere;
   word-break:break-word;
+  user-select:text!important;
+}
+
+/* Ancienne numérotation JS : désactivée si présente */
+.me-code-line-no{
+  display:none!important;
 }
 
 /* ===================== COLORATION SYNTAXIQUE ===================== */
 
-.me-code-punct{color:#89ddff!important;font-weight:900!important;}
-.me-code-tag-div{color:#ff9f7a!important;font-weight:900!important;}
-.me-code-tag-structure{color:#7ee787!important;font-weight:900!important;}
-.me-code-tag-text{color:#d2a8ff!important;font-weight:900!important;}
-.me-code-attr{color:#79c0ff!important;font-weight:900!important;}
-.me-code-class-name{color:#ffb86c!important;font-weight:900!important;}
-.me-code-value{color:#a5d6ff!important;}
+/* HTML */
+.me-code-punct{
+  color:#89ddff!important;
+  font-weight:900!important;
+}
 
-.me-code-selector{color:#c792ea!important;font-weight:900!important;}
-.me-code-selector-class{color:#ff79c6!important;font-weight:900!important;}
-.me-code-selector-pseudo{color:#ffab70!important;font-weight:900!important;}
+.me-code-tag-div{
+  color:#ff9f7a!important;
+  font-weight:900!important;
+}
 
-.me-code-property-layout{color:#82aaff!important;font-weight:900!important;}
-.me-code-property-visual{color:#64ffda!important;font-weight:900!important;}
-.me-code-property-text{color:#7dcfff!important;font-weight:900!important;}
+.me-code-tag-structure{
+  color:#7ee787!important;
+  font-weight:900!important;
+}
 
-.me-code-css-fn{color:#d2a8ff!important;font-weight:900!important;}
-.me-code-var{color:#ffcb6b!important;font-weight:900!important;}
-.me-code-number{color:#f78c6c!important;font-weight:900!important;}
-.me-code-hex{color:#89ddff!important;font-weight:900!important;}
-.me-code-comment{color:#8b949e!important;font-style:italic!important;}
+.me-code-tag-text{
+  color:#d2a8ff!important;
+  font-weight:900!important;
+}
 
-.me-code-keyword{color:#c792ea!important;font-weight:900!important;}
-.me-code-function{color:#c792ea!important;font-weight:900!important;}
-.me-code-method{color:#82aaff!important;font-weight:900!important;}
-.me-code-object{color:#7ee787!important;font-weight:900!important;}
-.me-code-string{color:#c3e88d!important;}
-.me-code-operator{color:#f07178!important;font-weight:900!important;}
+.me-code-attr{
+  color:#79c0ff!important;
+  font-weight:900!important;
+}
 
+.me-code-class-name{
+  color:#ffb86c!important;
+  font-weight:900!important;
+}
+
+.me-code-value{
+  color:#a5d6ff!important;
+}
+
+/* CSS */
+.me-code-selector{
+  color:#c792ea!important;
+  font-weight:900!important;
+}
+
+.me-code-selector-class{
+  color:#ff79c6!important;
+  font-weight:900!important;
+}
+
+.me-code-selector-pseudo{
+  color:#ffab70!important;
+  font-weight:900!important;
+}
+
+.me-code-property-layout{
+  color:#82aaff!important;
+  font-weight:900!important;
+}
+
+.me-code-property-visual{
+  color:#64ffda!important;
+  font-weight:900!important;
+}
+
+.me-code-property-text{
+  color:#7dcfff!important;
+  font-weight:900!important;
+}
+
+.me-code-css-fn{
+  color:#d2a8ff!important;
+  font-weight:900!important;
+}
+
+.me-code-var{
+  color:#ffcb6b!important;
+  font-weight:900!important;
+}
+
+.me-code-number{
+  color:#f78c6c!important;
+  font-weight:900!important;
+}
+
+.me-code-hex{
+  color:#89ddff!important;
+  font-weight:900!important;
+}
+
+.me-code-comment{
+  color:#8b949e!important;
+  font-style:italic!important;
+}
+
+/* JS */
+.me-code-keyword{
+  color:#c792ea!important;
+  font-weight:900!important;
+}
+
+.me-code-function{
+  color:#c792ea!important;
+  font-weight:900!important;
+}
+
+.me-code-method{
+  color:#82aaff!important;
+  font-weight:900!important;
+}
+
+.me-code-object{
+  color:#7ee787!important;
+  font-weight:900!important;
+}
+
+.me-code-string{
+  color:#c3e88d!important;
+}
+
+.me-code-operator{
+  color:#f07178!important;
+  font-weight:900!important;
+}
+
+/* Rouge réservé à !important */
 .me-code-important{
   color:#ff3b45!important;
   font-weight:900!important;
@@ -321,18 +436,9 @@ dl.codebox dd::-webkit-scrollbar-thumb{
     gap:9px;
   }
 
-  .me-code-line-no{
+  .me-code-line::before{
     font-size:10px;
   }
-}
-
-.me-code-line-no{
-  user-select:none!important;
-  pointer-events:none!important;
-}
-
-.me-code-line-text{
-  user-select:text!important;
 }
 /* =========================================================
    00 — VARIABLES GLOBALES
