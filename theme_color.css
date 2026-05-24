@@ -1,8 +1,7 @@
 /* =========================================================
    MAN EATER — BASE THEME GLOBAL FORUMACTIF MODERNBB
    Fichier : man-eater-base-theme.css
-   Version corrigée / doublons fusionnés / conflits nettoyés
-
+  
    Objectif :
    - supprimer le gris/bleu natif ModernBB
    - poser la base noire / rouge / ivoire
@@ -11,7 +10,322 @@
    - corriger QEEL / légende / footer / lastpost
 ========================================================= */
 
+/* =========================================================
+   MAN EATER — CODEBOX FORUMACTIF
+   BBCode [code] / ModernBB
+   Bouton copie + numéros de lignes + coloration syntaxique
+========================================================= */
 
+.codebox,
+dl.codebox{
+  position:relative!important;
+  width:100%!important;
+  max-width:900px!important;
+  margin:18px auto!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:1px solid var(--me-line,rgba(255,255,255,.10))!important;
+  background:rgba(0,0,0,.25)!important;
+  color:var(--me-text,#f4ece7)!important;
+  font-family:var(--me-font-body,Inter,Arial,Helvetica,sans-serif)!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+
+.codebox::before,
+dl.codebox::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(198,38,45,.10),transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent 35%);
+}
+
+.codebox > *,
+dl.codebox > *{
+  position:relative;
+  z-index:2;
+}
+
+/* ===================== HEADER ===================== */
+
+.codebox dt,
+dl.codebox dt{
+  position:relative!important;
+  z-index:2!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:12px!important;
+  margin:0!important;
+  padding:14px 16px 13px!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-bottom:1px solid var(--me-line,rgba(255,255,255,.10))!important;
+  border-left:4px solid var(--me-red,#c6262d)!important;
+  background:linear-gradient(90deg,rgba(255,255,255,.045),rgba(0,0,0,.20))!important;
+  color:var(--me-soft,#d8c8bf)!important;
+  font-family:var(--me-font-body,Inter,Arial,sans-serif)!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  text-transform:uppercase!important;
+  letter-spacing:.18em!important;
+}
+
+.codebox dt::before,
+dl.codebox dt::before{
+  content:"";
+  width:8px;
+  height:8px;
+  flex:0 0 auto;
+  border-radius:8px 8px 8px 0;
+  transform:rotate(-45deg);
+  background:var(--me-red,#c6262d);
+  box-shadow:0 0 10px rgba(198,38,45,.28);
+}
+
+.codebox dt > span:not(.me-code-actions),
+dl.codebox dt > span:not(.me-code-actions){
+  display:none!important;
+}
+
+.me-code-actions{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:8px!important;
+  margin-left:auto!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+
+.me-code-btn{
+  position:relative!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:auto!important;
+  min-width:max-content!important;
+  min-height:31px!important;
+  padding:8px 11px!important;
+  border:1px solid var(--me-line-strong,rgba(255,255,255,.17))!important;
+  border-radius:0!important;
+  background:linear-gradient(90deg,#171717,rgba(23,23,23,.62))!important;
+  color:#d6cbc5!important;
+  font-family:var(--me-font-body,Inter,Arial,Helvetica,sans-serif)!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  text-align:center!important;
+  text-decoration:none!important;
+  text-transform:uppercase!important;
+  letter-spacing:.06em!important;
+  cursor:pointer!important;
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  box-shadow:none!important;
+  transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease!important;
+}
+
+.me-code-btn::before{
+  content:"";
+  width:7px;
+  height:7px;
+  margin-right:8px;
+  flex:0 0 auto;
+  background:var(--me-red,#c6262d);
+  border-radius:7px 7px 7px 0;
+  transform:rotate(-45deg);
+  box-shadow:0 0 8px rgba(198,38,45,.28);
+}
+
+.me-code-btn:hover{
+  border-color:rgba(198,38,45,.52)!important;
+  background:#000!important;
+  color:#fff!important;
+  transform:translateX(3px);
+}
+
+.me-code-btn.is-copied{
+  border-color:rgba(212,168,56,.45)!important;
+  color:#fff!important;
+}
+
+.me-code-btn.is-copied::before{
+  background:var(--me-gold,#d4a838);
+  box-shadow:0 0 8px rgba(212,168,56,.35);
+}
+
+/* ===================== CONTENU CODE ===================== */
+
+.codebox dd,
+dl.codebox dd{
+  position:relative!important;
+  z-index:2!important;
+  width:100%!important;
+  max-width:900px!important;
+  margin:0!important;
+  padding:0!important;
+  max-height:420px!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  border:0!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.20))!important;
+  color:var(--me-muted,#b7aaa4)!important;
+  font-family:"Courier New",Consolas,monospace!important;
+  font-size:12px!important;
+  font-weight:700!important;
+  line-height:1.6!important;
+  text-align:left!important;
+}
+
+.codebox code,
+.codebox pre,
+dl.codebox code,
+dl.codebox pre{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:var(--me-muted,#b7aaa4)!important;
+  font-family:"Courier New",Consolas,monospace!important;
+  font-size:12px!important;
+  font-weight:700!important;
+  line-height:1.6!important;
+  tab-size:2!important;
+}
+
+/* ===================== NUMÉROS DE LIGNE ===================== */
+
+.me-code-lines{
+  display:block;
+  padding:16px 0!important;
+  white-space:normal!important;
+}
+
+.me-code-line{
+  display:grid;
+  grid-template-columns:44px minmax(0,1fr);
+  gap:12px;
+  align-items:start;
+  min-height:19px;
+  padding:0 16px 0 0;
+}
+
+.me-code-line-no{
+  display:block;
+  padding-right:10px;
+  color:rgba(183,170,164,.45);
+  font-family:"Courier New",Consolas,monospace;
+  font-size:11px;
+  font-weight:900;
+  line-height:1.6;
+  text-align:right;
+  user-select:none;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+
+.me-code-line-text{
+  display:block;
+  min-width:0;
+  color:var(--me-muted,#b7aaa4);
+  font-family:"Courier New",Consolas,monospace;
+  font-size:12px;
+  font-weight:700;
+  line-height:1.6;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
+/* ===================== COLORATION SYNTAXIQUE ===================== */
+
+.me-code-punct{color:#89ddff!important;font-weight:900!important;}
+.me-code-tag-div{color:#ff9f7a!important;font-weight:900!important;}
+.me-code-tag-structure{color:#7ee787!important;font-weight:900!important;}
+.me-code-tag-text{color:#d2a8ff!important;font-weight:900!important;}
+.me-code-attr{color:#79c0ff!important;font-weight:900!important;}
+.me-code-class-name{color:#ffb86c!important;font-weight:900!important;}
+.me-code-value{color:#a5d6ff!important;}
+
+.me-code-selector{color:#c792ea!important;font-weight:900!important;}
+.me-code-selector-class{color:#ff79c6!important;font-weight:900!important;}
+.me-code-selector-pseudo{color:#ffab70!important;font-weight:900!important;}
+
+.me-code-property-layout{color:#82aaff!important;font-weight:900!important;}
+.me-code-property-visual{color:#64ffda!important;font-weight:900!important;}
+.me-code-property-text{color:#7dcfff!important;font-weight:900!important;}
+
+.me-code-css-fn{color:#d2a8ff!important;font-weight:900!important;}
+.me-code-var{color:#ffcb6b!important;font-weight:900!important;}
+.me-code-number{color:#f78c6c!important;font-weight:900!important;}
+.me-code-hex{color:#89ddff!important;font-weight:900!important;}
+.me-code-comment{color:#8b949e!important;font-style:italic!important;}
+
+.me-code-keyword{color:#c792ea!important;font-weight:900!important;}
+.me-code-function{color:#c792ea!important;font-weight:900!important;}
+.me-code-method{color:#82aaff!important;font-weight:900!important;}
+.me-code-object{color:#7ee787!important;font-weight:900!important;}
+.me-code-string{color:#c3e88d!important;}
+.me-code-operator{color:#f07178!important;font-weight:900!important;}
+
+.me-code-important{
+  color:#ff3b45!important;
+  font-weight:900!important;
+  text-shadow:0 0 8px rgba(255,59,69,.28)!important;
+}
+
+/* ===================== SCROLLBAR ===================== */
+
+.codebox dd::-webkit-scrollbar,
+dl.codebox dd::-webkit-scrollbar{
+  width:8px;
+  height:8px;
+}
+
+.codebox dd::-webkit-scrollbar-track,
+dl.codebox dd::-webkit-scrollbar-track{
+  background:#070707;
+}
+
+.codebox dd::-webkit-scrollbar-thumb,
+dl.codebox dd::-webkit-scrollbar-thumb{
+  background:var(--me-red,#c6262d);
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media (max-width:560px){
+  .codebox dt,
+  dl.codebox dt{
+    flex-wrap:wrap;
+  }
+
+  .me-code-actions{
+    width:100%!important;
+    justify-content:flex-end!important;
+    margin-left:0!important;
+  }
+
+  .me-code-btn{
+    width:100%!important;
+  }
+
+  .me-code-line{
+    grid-template-columns:34px minmax(0,1fr);
+    gap:9px;
+  }
+
+  .me-code-line-no{
+    font-size:10px;
+  }
+}
 /* =========================================================
    00 — VARIABLES GLOBALES
 ========================================================= */
