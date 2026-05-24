@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fuggles&display=swap');
 
+/* =========================================================
+   MAN EATER — MEMBERLIST / REGISTRE DES MEMBRES
+   Forumactif ModernBB
+   Prefixe unique : me-ml-
+========================================================= */
+
 :root{
   --me-ml-red:var(--mef-red,#c6262d);
   --me-ml-red-hot:var(--mef-red-hot,#ff333d);
@@ -27,17 +33,26 @@
 
 .me-ml{
   position:relative;
+  isolation:isolate;
   width:calc(100% - 52px);
   max-width:1120px;
   margin:30px auto;
   padding:22px;
   overflow:hidden;
   border:1px solid var(--me-ml-line);
-  background:radial-gradient(circle at 0% 0%,rgba(198,38,45,.13),transparent 26%),linear-gradient(180deg,var(--me-ml-bg-soft),var(--me-ml-bg));
+  background:
+    radial-gradient(circle at 0% 0%,rgba(198,38,45,.13),transparent 26%),
+    radial-gradient(circle at 95% 10%,rgba(212,168,56,.05),transparent 30%),
+    linear-gradient(180deg,var(--me-ml-bg-soft),var(--me-ml-bg));
   color:var(--me-ml-text);
   font-family:var(--me-ml-font-body);
   font-size:14px;
   line-height:1.55;
+}
+
+.me-ml>*{
+  position:relative;
+  z-index:2;
 }
 
 .me-ml a,
@@ -66,6 +81,18 @@
   display:none!important;
 }
 
+.me-ml table,
+.me-ml thead,
+.me-ml tbody,
+.me-ml tr,
+.me-ml th,
+.me-ml td{
+  border:0!important;
+  background:transparent!important;
+}
+
+/* HEADER */
+
 .me-ml-head{
   position:relative;
   margin-bottom:18px;
@@ -90,18 +117,24 @@
   color:var(--me-ml-red-hot);
   font-size:11px;
   font-weight:900;
+  line-height:1;
   text-transform:uppercase;
   letter-spacing:.22em;
 }
 
 .me-ml-title{
+  display:block!important;
   margin:0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
   color:#fff!important;
   font-family:var(--me-ml-font-title)!important;
   font-size:clamp(34px,5vw,56px)!important;
   font-weight:900!important;
   line-height:.92!important;
   text-transform:uppercase!important;
+  letter-spacing:.01em!important;
   text-shadow:2px 0 0 #000,-2px 0 0 #000,0 2px 0 #000,0 0 18px rgba(0,0,0,.72)!important;
 }
 
@@ -114,6 +147,8 @@
   text-transform:uppercase;
   letter-spacing:.06em;
 }
+
+/* SEARCH */
 
 .me-ml-search{
   margin:0 0 18px!important;
@@ -181,6 +216,8 @@
   cursor:pointer!important;
 }
 
+/* MEMBER CARDS */
+
 .me-ml-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -196,6 +233,7 @@
   padding:16px;
   border:1px solid var(--me-ml-line);
   background:linear-gradient(90deg,rgba(198,38,45,.08),rgba(255,255,255,.015) 38%,rgba(0,0,0,.18));
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
 }
 
 .me-ml-card::before{
@@ -206,6 +244,11 @@
   bottom:0;
   width:3px;
   background:linear-gradient(180deg,var(--me-ml-red-hot),rgba(198,38,45,.08));
+}
+
+.me-ml-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(198,38,45,.35);
 }
 
 .me-ml-avatar{
@@ -229,24 +272,29 @@
 
 .me-ml-info{
   display:grid;
+  align-content:center;
   gap:8px;
   min-width:0;
 }
 
 .me-ml-name{
+  display:block;
   color:#fff!important;
   font-family:var(--me-ml-font-title)!important;
   font-size:34px;
   font-weight:900;
   line-height:.9;
   text-transform:uppercase;
+  letter-spacing:.01em;
   text-shadow:2px 0 0 #000,-2px 0 0 #000,0 2px 0 #000,0 0 12px rgba(0,0,0,.7);
 }
 
 .me-ml-rank{
+  display:block;
   color:var(--me-ml-muted);
   font-size:10px;
   font-weight:900;
+  line-height:1;
   text-transform:uppercase;
   letter-spacing:.12em;
 }
@@ -268,6 +316,8 @@
   letter-spacing:.08em;
   cursor:pointer;
 }
+
+/* MODAL */
 
 .me-ml-modal{
   position:fixed;
@@ -299,7 +349,10 @@
   overflow:hidden;
   border:6px solid #3b161b;
   border-radius:3px;
-  background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(0,0,0,.035)),repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0,rgba(0,0,0,.025) 1px,transparent 1px,transparent 5px),linear-gradient(180deg,#e6dcc5,#cdbd9f);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.10),rgba(0,0,0,.035)),
+    repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0,rgba(0,0,0,.025) 1px,transparent 1px,transparent 5px),
+    linear-gradient(180deg,#e6dcc5,#cdbd9f);
   color:#2b241e;
   font-family:Georgia,"Times New Roman",serif;
   box-shadow:0 18px 55px rgba(0,0,0,.58);
@@ -385,12 +438,12 @@
 }
 
 .me-ml-id-cardtitle::before{
-  content:"Carte d identite";
+  content:"Carte d'identité";
 }
 
 .me-ml-id-sub,
 .me-ml-id-sub *{
-  display:block;
+  display:inline!important;
   margin-top:8px;
   color:#5a5148!important;
   font-size:12px;
@@ -403,6 +456,13 @@
   text-align:right;
   min-width:190px;
   padding-right:42px;
+}
+
+.me-ml-id-number-label{
+  display:inline-block;
+  margin-right:8px;
+  color:#5a5148!important;
+  font-size:15px;
 }
 
 .me-ml-id-title{
@@ -593,6 +653,10 @@
   line-height:1;
 }
 
+.me-ml-id-links{
+  gap:6px!important;
+}
+
 .me-ml-id-value a,
 .me-ml-id-links a{
   display:inline-flex;
@@ -653,11 +717,11 @@
 .me-ml-id-signature-line{
   display:grid;
   gap:2px;
-  min-height:96px;
+  min-height:108px;
   align-content:start;
   justify-items:center;
-  padding:6px 12px 10px;
-  margin-top:4px;
+  padding:6px 18px 16px;
+  margin-top:6px;
   border-top:1px solid rgba(60,45,32,.16);
   border-bottom:1px solid rgba(60,45,32,.22);
   background:rgba(255,255,255,.035);
@@ -678,20 +742,23 @@
   display:inline-block;
   color:var(--me-ml-group)!important;
   font-family:var(--me-ml-font-script)!important;
-  font-size:60px;
-  font-weight:400;
-  line-height:.82;
+  font-size:54px!important;
+  font-weight:400!important;
+  line-height:.82!important;
   text-decoration:none!important;
   text-shadow:none!important;
-  transform:rotate(-10deg);
+  transform:rotate(-8deg);
   position:relative;
   top:24px;
-  max-width:100%;
+  max-width:560px;
+  white-space:normal;
+  overflow-wrap:anywhere;
 }
 
 .me-ml-id-bottomquote{
   grid-column:1/-1;
-  padding:6px 12px;
+  margin-top:6px;
+  padding:7px 12px;
   border-top:2px solid rgba(60,45,32,.34);
   border-bottom:1px solid rgba(60,45,32,.24);
   background:rgba(255,255,255,.06);
@@ -702,6 +769,7 @@
   font-weight:700;
   line-height:1.45;
   text-align:center;
+  text-shadow:none;
 }
 
 .me-ml-id-footer{
@@ -743,19 +811,57 @@
   text-align:center!important;
 }
 
+/* RESPONSIVE */
+
 @media (max-width:900px){
-  .me-ml{width:calc(100% - 28px);padding:18px}
-  .me-ml-controls,.me-ml-grid{grid-template-columns:1fr}
-  .me-ml-id-paper{grid-template-columns:1fr}
-  .me-ml-id-stamp,.me-ml-idresume::after{display:none}
+  .me-ml{
+    width:calc(100% - 28px);
+    padding:18px;
+  }
+
+  .me-ml-controls,
+  .me-ml-grid{
+    grid-template-columns:1fr;
+  }
+
+  .me-ml-id-paper{
+    grid-template-columns:1fr;
+  }
+
+  .me-ml-id-stamp,
+  .me-ml-idresume::after{
+    display:none;
+  }
 }
 
 @media (max-width:640px){
-  .me-ml-card{grid-template-columns:80px minmax(0,1fr)}
-  .me-ml-avatar{width:80px;height:80px}
-  .me-ml-name{font-size:25px}
-  .me-ml-modal{padding:10px}
-  .me-ml-id-row{grid-template-columns:1fr}
-  .me-ml-id-label{border-right:0;border-bottom:1px solid rgba(60,45,32,.18)}
-  .me-ml-id-stats{grid-template-columns:1fr}
+  .me-ml-card{
+    grid-template-columns:80px minmax(0,1fr);
+  }
+
+  .me-ml-avatar{
+    width:80px;
+    height:80px;
+  }
+
+  .me-ml-name{
+    font-size:25px;
+  }
+
+  .me-ml-modal{
+    padding:10px;
+  }
+
+  .me-ml-id-row{
+    grid-template-columns:1fr;
+  }
+
+  .me-ml-id-label{
+    border-right:0;
+    border-bottom:1px solid rgba(60,45,32,.18);
+  }
+
+  .me-ml-id-stats{
+    grid-template-columns:1fr;
+  }
 }
