@@ -325,6 +325,15 @@ dl.codebox dd::-webkit-scrollbar-thumb{
     font-size:10px;
   }
 }
+
+.me-code-line-no{
+  user-select:none!important;
+  pointer-events:none!important;
+}
+
+.me-code-line-text{
+  user-select:text!important;
+}
 /* =========================================================
    00 — VARIABLES GLOBALES
 ========================================================= */
