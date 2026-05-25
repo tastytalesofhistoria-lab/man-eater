@@ -1,7 +1,8 @@
 /* =========================================================
    MAN EATER — PROFIL MODERNBB / FORUMACTIF
-   Fichier conseillé : profile_view_body.css
+   Fichier : profile_view_body.css
    Préfixe unique : mepv-
+   CSS nettoyé / conflits corrigés / doublons fusionnés
 ========================================================= */
 
 /* ===================== BASE ===================== */
@@ -45,7 +46,12 @@
 	--mef-water:#6e8fa8;
 
 	--mef-eau-noire:#c72cff;
+	--mef-eau-noire-bg:rgba(199,44,255,.16);
+	--mef-eau-noire-border:rgba(199,44,255,.70);
+
 	--mef-eau-potable:#d4a838;
+	--mef-eau-potable-bg:rgba(212,168,56,.16);
+	--mef-eau-potable-border:rgba(212,168,56,.70);
 
 	--mef-font-title:"Cinzel Decorative",Cinzel,"Cormorant Garamond",Georgia,serif;
 	--mef-font-body:Inter,Arial,Helvetica,sans-serif;
@@ -460,7 +466,7 @@
 
 .mepv-actions{
 	display:grid;
-	grid-template-columns:1fr 1fr;
+	grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
 	gap:8px;
 	padding:0 18px 18px;
 }
@@ -489,6 +495,12 @@
 	background:#000!important;
 	color:#fff!important;
 	transform:translateX(3px);
+}
+
+.mepv-btn:empty,
+.mepv-actions:empty,
+.mepv-contact-quick:empty{
+	display:none!important;
 }
 
 /* ===================== IDENTITÉ ===================== */
@@ -559,13 +571,17 @@
 .mepv-water{
 	--water-color:var(--mef-red-hot);
 	--water-icon:none;
+	--water-bg:rgba(198,38,45,.14);
+	--water-border:rgba(198,38,45,.70);
+
 	position:relative;
 	min-height:76px;
 	padding:10px 14px 10px 58px;
 	overflow:hidden;
 	isolation:isolate;
-	border:1px solid color-mix(in srgb,var(--water-color) 70%,rgba(255,255,255,.10));
-	background:linear-gradient(90deg,color-mix(in srgb,var(--water-color) 16%,#090909) 0%,#0b0b0b 46%,#090909 100%);
+	border:1px solid var(--water-border);
+	background:
+		linear-gradient(90deg,var(--water-bg) 0%,#0b0b0b 46%,#090909 100%);
 	box-shadow:
 		inset 0 0 0 1px rgba(255,255,255,.025),
 		0 0 0 1px rgba(0,0,0,.35);
@@ -587,7 +603,7 @@
 	width:30px;
 	height:30px;
 	z-index:2;
-	border:1px solid color-mix(in srgb,var(--water-color) 55%,rgba(255,255,255,.12));
+	border:1px solid var(--water-border);
 	background-color:var(--water-color);
 	box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
 	mask-image:var(--water-icon);
@@ -626,11 +642,15 @@
 
 .mepv-water--clean{
 	--water-color:var(--mef-eau-potable);
+	--water-bg:var(--mef-eau-potable-bg);
+	--water-border:var(--mef-eau-potable-border);
 	--water-icon:url("https://urls.fr/X6YZss");
 }
 
 .mepv-water--black{
 	--water-color:var(--mef-eau-noire);
+	--water-bg:var(--mef-eau-noire-bg);
+	--water-border:var(--mef-eau-noire-border);
 	--water-icon:url("https://urls.fr/xgGyEl");
 }
 
@@ -786,75 +806,8 @@
 	resize:vertical;
 }
 
-/* ===================== BANQUE DE CHAMPS / RPG ===================== */
+/* ===================== AJAX ÉDITION PROFIL ===================== */
 
-.mepv-field-bank{
-	display:none!important;
-}
-
-.mepv-rpg{
-	width:calc(100% - 52px);
-	max-width:1050px;
-	margin:30px auto;
-	padding:18px;
-	border:1px solid rgba(255,255,255,.10);
-	background:#101010;
-	color:#f4ece7;
-}
-
-.mepv-rpg-title{
-	width:calc(100% - 52px);
-	max-width:1050px;
-	margin:30px auto 0!important;
-}
-
-/* ===================== RESPONSIVE ===================== */
-
-@media(max-width:900px){
-	.mepv-profile{
-		width:calc(100% - 28px);
-		padding:18px;
-	}
-
-	.mepv-head,
-	.mepv-grid,
-	.mepv-bottom{
-		grid-template-columns:1fr;
-	}
-
-	.mepv-title{
-		font-size:34px!important;
-	}
-
-	.mepv-id-grid{
-		grid-template-columns:repeat(2,minmax(0,1fr));
-	}
-}
-
-@media(max-width:640px){
-	.mepv-titlebox{
-		padding:20px 18px;
-	}
-
-	.mepv-id-grid,
-	.mepv-water-grid{
-		grid-template-columns:1fr;
-	}
-
-	.mepv-field.is-2,
-	.mepv-field.is-3{
-		grid-column:auto;
-	}
-
-	.mepv-actions{
-		grid-template-columns:1fr;
-	}
-
-	.mepv-stat,
-	.mepv-contact-row{
-		grid-template-columns:1fr;
-	}
-}
 .mepv-profile .ajax-profil_parent{
 	position:relative;
 }
@@ -906,6 +859,69 @@
 	font:700 11px/1.3 var(--mef-font-body);
 }
 
-.mepv-profile .mepv-contact-quick:empty{
+/* ===================== BANQUE DE CHAMPS / RPG ===================== */
+
+.mepv-field-bank{
 	display:none!important;
+}
+
+.mepv-rpg{
+	width:calc(100% - 52px);
+	max-width:1050px;
+	margin:30px auto;
+	padding:18px;
+	border:1px solid rgba(255,255,255,.10);
+	background:#101010;
+	color:#f4ece7;
+}
+
+.mepv-rpg-title{
+	width:calc(100% - 52px);
+	max-width:1050px;
+	margin:30px auto 0!important;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media(max-width:900px){
+	.mepv-profile{
+		width:calc(100% - 28px);
+		padding:18px;
+	}
+
+	.mepv-head,
+	.mepv-grid,
+	.mepv-bottom{
+		grid-template-columns:1fr;
+	}
+
+	.mepv-title{
+		font-size:34px!important;
+	}
+
+	.mepv-id-grid{
+		grid-template-columns:repeat(2,minmax(0,1fr));
+	}
+}
+
+@media(max-width:640px){
+	.mepv-titlebox{
+		padding:20px 18px;
+	}
+
+	.mepv-id-grid,
+	.mepv-water-grid,
+	.mepv-actions{
+		grid-template-columns:1fr;
+	}
+
+	.mepv-field.is-2,
+	.mepv-field.is-3{
+		grid-column:auto;
+	}
+
+	.mepv-stat,
+	.mepv-contact-row{
+		grid-template-columns:1fr;
+	}
 }
