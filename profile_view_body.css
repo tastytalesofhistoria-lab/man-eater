@@ -925,3 +925,37 @@
 		grid-template-columns:1fr;
 	}
 }
+/* =========================================================
+   PATCH PROFIL — AVATAR PLEINE CASE
+   Corrige le max-width inline Forumactif sur l'avatar
+========================================================= */
+
+.mepv-profile .mepv-avatar{
+	width:100%!important;
+	aspect-ratio:2/3!important;
+	min-height:0!important;
+	display:block!important;
+	overflow:hidden!important;
+	background:#050505!important;
+}
+
+.mepv-profile .mepv-avatar a{
+	display:block!important;
+	width:100%!important;
+	height:100%!important;
+}
+
+.mepv-profile .mepv-avatar img{
+	display:block!important;
+	width:100%!important;
+	height:100%!important;
+	min-width:100%!important;
+	min-height:100%!important;
+	max-width:none!important;
+	max-height:none!important;
+	object-fit:cover!important;
+	object-position:center top!important;
+	border:0!important;
+	margin:0!important;
+	padding:0!important;
+}
