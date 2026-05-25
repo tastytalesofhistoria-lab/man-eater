@@ -959,3 +959,35 @@
 	margin:0!important;
 	padding:0!important;
 }
+/* =========================================================
+   PATCH PROFIL — BOUTONS CONTACT CLIQUABLES
+========================================================= */
+
+.mepv-contact-actions{
+	display:grid;
+	grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+	gap:8px;
+	padding:0 18px 18px;
+}
+
+.mepv-contact-quick{
+	position:relative;
+	pointer-events:auto!important;
+	cursor:pointer!important;
+}
+
+.mepv-contact-quick[href="#"],
+.mepv-contact-quick:not([href]),
+.mepv-contact-quick.is-empty{
+	opacity:.45;
+	cursor:not-allowed!important;
+	pointer-events:none!important;
+}
+
+.mepv-contact-quick[href="#"]:hover,
+.mepv-contact-quick:not([href]):hover,
+.mepv-contact-quick.is-empty:hover{
+	transform:none!important;
+	background:linear-gradient(90deg,#171717,rgba(23,23,23,.62))!important;
+	border-color:var(--mef-line-strong)!important;
+}
