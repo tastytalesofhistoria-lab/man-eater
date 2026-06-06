@@ -1,1 +1,81 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+/* NEVER SAY NEVER — COLORS
+   Dark par défaut.
+   Pour forcer le light : ajouter class="theme-light" sur body ou html.
+   Pour forcer le dark : ajouter class="theme-dark" sur body ou html.
+*/
+
+:root,
+.theme-dark{
+  --bg:#050607;
+  --wrap:#0a0d0f;
+  --panel:#111518;
+  --panel2:#171d21;
+  --panel-deep:#050708;
+  --line:#27343a;
+  --line-soft:rgba(123,156,159,.16);
+
+  --cream:#e5d5b0;
+  --sand:#c3ad7f;
+  --muted:#b4ab99;
+  --text:#ddd4c4;
+
+  --teal:#7b9c9f;
+  --teal2:#95b8b9;
+  --teal-dark:#31484c;
+
+  --red:#bb312b;
+  --red2:#ff6d4d;
+
+  --shadow:rgba(0,0,0,.72);
+  --glass:rgba(0,0,0,.18);
+  --panel-bg:linear-gradient(180deg,rgba(24,30,33,.94),rgba(12,15,17,.98));
+  --panel-qeel:linear-gradient(180deg,rgba(5,7,8,.82),rgba(7,10,12,.96));
+
+  --banner:url('https://urls.fr/oZDibD');
+  --qeel-img:url('https://pbs.twimg.com/media/DsXj4C3U0AEDDU5?format=jpg&name=large');
+  --rp-img:url('https://pbs.twimg.com/media/FugG92_WYAMrbV-?format=jpg&name=4096x4096');
+
+  --g-militaires:#e27557;
+  --g-alchimistes:#79bcc2;
+  --g-civils:#d6c08a;
+  --g-ishvals:#cb874d;
+  --g-xing:#6fc476;
+  --g-marginaux:#b28cb5;
+}
+
+.theme-light{
+  --bg:#d8d0c3;
+  --wrap:#ebe4d7;
+  --panel:#f3eadb;
+  --panel2:#e7dccb;
+  --panel-deep:#d4c8b8;
+  --line:#9aa7a8;
+  --line-soft:rgba(75,98,101,.22);
+
+  --cream:#312a24;
+  --sand:#805d31;
+  --muted:#695f52;
+  --text:#2f2b27;
+
+  --teal:#4e797c;
+  --teal2:#2f6268;
+  --teal-dark:#d0dede;
+
+  --red:#96352f;
+  --red2:#b94b39;
+
+  --shadow:rgba(55,42,28,.22);
+  --glass:rgba(255,255,255,.38);
+  --panel-bg:linear-gradient(180deg,rgba(250,244,232,.92),rgba(231,220,203,.98));
+  --panel-qeel:linear-gradient(180deg,rgba(244,236,220,.88),rgba(226,216,201,.98));
+}
+
+.militaires{color:var(--g-militaires)}
+.alchimistes{color:var(--g-alchimistes)}
+.civils{color:var(--g-civils)}
+.ishvals{color:var(--g-ishvals)}
+.xing{color:var(--g-xing)}
+.marginaux{color:var(--g-marginaux)}
